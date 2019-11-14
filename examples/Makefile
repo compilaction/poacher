@@ -1,11 +1,12 @@
 .POSIX:
-.SUFFIXES: .cpp .hpp .h .d .prog
+.SUFFIXES: .cpp .hpp .h .d .prog .run
 
 include config.mk
 
-CXXSRC = $(shell find . -name "*.cpp") # C++ Sources
-PROG 	= $(CXXSRC:.cpp=.prog) 				# Objects
-DEP   = $(CXXSRC:.cpp=.d) 					# Dependency files
+CXXSRC	= $(shell find . -name "*.cpp")	# C++ Sources
+PROG	= $(CXXSRC:.cpp=.prog)			# Objects
+DEP		= $(CXXSRC:.cpp=.d)				# Dependency files
+RUN		= $(CXXSRC:.cpp=.run)			# Run files (virtual)
 
 all: $(PROG)
 
@@ -16,8 +17,13 @@ all: $(PROG)
 .cpp.prog:
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -MMD -o $@ $<
 
+.prog.run:
+	./$<
+
 debug: CXXFLAGS += -DDEBUG -g
 debug: $(PROG)
+
+run: $(RUN)
 
 clean:
 	rm -f $(PROG) $(DEP)
