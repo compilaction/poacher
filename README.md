@@ -13,4 +13,8 @@ to provide some well known langages ready-to-use compile time parsers.
 
 ## Examples
 
+## References
+
+[Constexpr All The Things](https://github.com/lefticus/constexpr_all_the_things)
+
 ## Licensing
