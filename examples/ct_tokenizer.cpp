@@ -2,52 +2,40 @@
 #include <cstddef>
 #include <iostream>
 #include <tuple>
-#include <variant>
 
+#include <poacher/tokenizer/operators.hpp>
+#include <poacher/tokenizer/token.hpp>
 #include <poacher/utility/ct_array.hpp>
 #include <poacher/utility/ct_string.hpp>
 #include <poacher/utility/repeat.hpp>
 
-//---------------------------------------------------------------------------------------------
-// tokenize character
+//-----------------------------------------------------------------------------
+// tokenizer character
 
-namespace poacher::tokens {
 
-template<typename T> struct token {
+// User-defined namespace
+namespace algebra {
 
-   template<typename U> constexpr bool operator==( token<U> const& ) noexcept {
-      return std::is_same_v<T, U>;
-   }
-
-   template<typename U> constexpr bool operator!=( token<U> const& ) noexcept {
-      return !std::is_same_v<T, U>;
-   }
-
-};
-
-struct skip       : token<skip>     {};
-struct error      : token<error>    {};
-
-}  // namespace poacher::tokens
-
+// User-defined tokens
 namespace tokens {
-
-struct paren      : poacher::tokens::token<paren>    {};
-struct number     : poacher::tokens::token<number>   {};
-struct op_plus    : poacher::tokens::token<op_plus>  {};
-struct op_minus   : poacher::tokens::token<op_minus> {};
-
-using token_list = std::variant< paren, number, op_plus, op_minus,
-poacher::tokens::skip, poacher::tokens::error >;
-
+struct paren      : poacher::Token<paren>     {};
+struct number     : poacher::Token<number>    {};
+struct op_plus    : poacher::Token<op_plus>   {};
+struct op_minus   : poacher::Token<op_minus>  {};
 }  // namespace tokens
 
-template< typename Value >
-struct token
-{
-   Value value;
-   tokens::token_list type;
-};
+// Token list
+using token_list = std::variant< tokens::paren,
+                                 tokens::number,
+                                 tokens::op_plus,
+                                 tokens::op_minus,
+                              poacher::tokens::skip, poacher::tokens::error >;
+
+template<typename Value>
+using token_value = poacher::token_value<Value, token_list>;
+
+}  // namespace algebra
+
 
 template< typename String, typename Check, typename Token >
 constexpr auto tokenize_check( String const& str, int pos, Check p, Token t )
@@ -66,41 +54,22 @@ constexpr auto tokenize_check( String const& str, int pos, Check p, Token t )
          consumed++;
          c = str[pos+consumed];
       }
-      return token<array_t>{ value, t };
+      return algebra::token_value<array_t>{ value, t };
    }
 
-   return token<array_t>{ value, poacher::tokens::error{} };
+   return algebra::token_value<array_t>{ value, poacher::tokens::error{} };
 }
 
 template< typename String, typename Token >
-constexpr auto tokenize_character( String const& str, int pos, char value, Token t )
+constexpr auto tokenize_character( String const& str, int pos, char val, Token t )
 {
    using array_t = poacher::ct_array<char, String::static_size>;
 
    array_t v;
-   if( str[pos] == value ) { v.push_back(value); return token<array_t>{v, t}; }
-   else                    return token<array_t>{ v, poacher::tokens::error{} };
+   if( str[pos] == val ) { v.push_back(val); return algebra::token_value<array_t>{v, t}; }
+   else                    return algebra::token_value<array_t>{ v, poacher::tokens::error{} };
 }
 
-template<typename T1, typename T2>
-constexpr auto either( T1 v1, T2 v2 ) {
-   return [=] ( auto str, int pos ) constexpr {
-      auto r = v1( str, pos );
-      if ( !std::holds_alternative<poacher::tokens::error>(r.type) )
-         return r;
-      return v2( str, pos );
-   };
-}
-
-template<typename T1, typename T2>
-constexpr auto then( T1 v1, T2 v2 ) {
-   return [=] ( auto str, int pos ) constexpr {
-      auto r = v1( str, pos );
-      if ( std::holds_alternative<poacher::tokens::error>(r.type) )
-         return r;
-      return v2( str, pos );
-   };
-}
 
 constexpr auto tokenize_char_gen = [] ( char c, auto tok ) {
    return [=] ( auto str, int pos ) constexpr {
@@ -108,16 +77,16 @@ constexpr auto tokenize_char_gen = [] ( char c, auto tok ) {
    };
 };
 
-constexpr auto tokenize_open_paren  = tokenize_char_gen( '(', tokens::paren{} );
-constexpr auto tokenize_close_paren = tokenize_char_gen( ')', tokens::paren{} );
-constexpr auto tokenize_op_plus     = tokenize_char_gen( '+', tokens::op_plus{} );
-constexpr auto tokenize_op_minus    = tokenize_char_gen( '-', tokens::op_minus{} );
+constexpr auto tokenize_open_paren  = tokenize_char_gen( '(', algebra::tokens::paren{} );
+constexpr auto tokenize_close_paren = tokenize_char_gen( ')', algebra::tokens::paren{} );
+constexpr auto tokenize_op_plus     = tokenize_char_gen( '+', algebra::tokens::op_plus{} );
+constexpr auto tokenize_op_minus    = tokenize_char_gen( '-', algebra::tokens::op_minus{} );
 
 constexpr auto skip_space           = tokenize_char_gen( ' ', poacher::tokens::skip{} );
 constexpr auto skip_tab             = tokenize_char_gen( '\t', poacher::tokens::skip{} );
 constexpr auto skip_cr              = tokenize_char_gen( '\n', poacher::tokens::skip{} );
 
-constexpr auto skip_whites          = either( either( skip_space, skip_tab ), skip_cr );
+constexpr auto skip_whites          = poacher::either( poacher::either( skip_space, skip_tab ), skip_cr );
 
 
 constexpr auto tokenize_numbers = []( auto str, int pos ) constexpr
@@ -125,7 +94,7 @@ constexpr auto tokenize_numbers = []( auto str, int pos ) constexpr
    return tokenize_check ( str, pos,
       [] ( auto c ) constexpr {
          return c >= '0' && c <= '9';
-      }, tokens::number{} );
+      }, algebra::tokens::number{} );
 };
 
 template< typename String, typename Tokenizer >
@@ -133,7 +102,7 @@ constexpr auto tokenize(String str, Tokenizer tkz)
 {
    int current = 0;
    using array_t = poacher::ct_array< char, String::static_size >;
-   poacher::ct_array< token<array_t>, String::static_size > token_list;
+   poacher::ct_array< algebra::token_value<array_t>, String::static_size > token_list;
 
    while( current < str.size() )
    {
@@ -171,6 +140,8 @@ constexpr auto my_tokenizer = std::make_tuple ( skip_whites,
                                                 tokenize_op_plus,
                                                 tokenize_op_minus,
                                                 tokenize_numbers );
+
+
 
 int main()
 {
