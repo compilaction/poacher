@@ -12,9 +12,8 @@
 //-----------------------------------------------------------------------------
 // tokenizer character
 
-
-// User-defined namespace
-namespace algebra {
+// User-defined namespace (ASCIImath)
+namespace amath {
 
 // User-defined tokens
 namespace tokens {
@@ -34,8 +33,7 @@ using token_list = std::variant< tokens::paren,
 template<typename Value>
 using token_value = poacher::token_value<Value, token_list>;
 
-}  // namespace algebra
-
+}  // namespace amath
 
 template< typename String, typename Check, typename Token >
 constexpr auto tokenize_check( String const& str, int pos, Check p, Token t )
@@ -54,10 +52,10 @@ constexpr auto tokenize_check( String const& str, int pos, Check p, Token t )
          consumed++;
          c = str[pos+consumed];
       }
-      return algebra::token_value<array_t>{ value, t };
+      return amath::token_value<array_t>{ value, t };
    }
 
-   return algebra::token_value<array_t>{ value, poacher::tokens::error{} };
+   return amath::token_value<array_t>{ value, poacher::tokens::error{} };
 }
 
 template< typename String, typename Token >
@@ -66,8 +64,8 @@ constexpr auto tokenize_character( String const& str, int pos, char val, Token t
    using array_t = poacher::ct_array<char, String::static_size>;
 
    array_t v;
-   if( str[pos] == val ) { v.push_back(val); return algebra::token_value<array_t>{v, t}; }
-   else                    return algebra::token_value<array_t>{ v, poacher::tokens::error{} };
+   if( str[pos] == val ) { v.push_back(val); return amath::token_value<array_t>{v, t}; }
+   else                    return amath::token_value<array_t>{ v, poacher::tokens::error{} };
 }
 
 
@@ -77,10 +75,10 @@ constexpr auto tokenize_char_gen = [] ( char c, auto tok ) {
    };
 };
 
-constexpr auto tokenize_open_paren  = tokenize_char_gen( '(', algebra::tokens::paren{} );
-constexpr auto tokenize_close_paren = tokenize_char_gen( ')', algebra::tokens::paren{} );
-constexpr auto tokenize_op_plus     = tokenize_char_gen( '+', algebra::tokens::op_plus{} );
-constexpr auto tokenize_op_minus    = tokenize_char_gen( '-', algebra::tokens::op_minus{} );
+constexpr auto tokenize_open_paren  = tokenize_char_gen( '(', amath::tokens::paren{} );
+constexpr auto tokenize_close_paren = tokenize_char_gen( ')', amath::tokens::paren{} );
+constexpr auto tokenize_op_plus     = tokenize_char_gen( '+', amath::tokens::op_plus{} );
+constexpr auto tokenize_op_minus    = tokenize_char_gen( '-', amath::tokens::op_minus{} );
 
 constexpr auto skip_space           = tokenize_char_gen( ' ', poacher::tokens::skip{} );
 constexpr auto skip_tab             = tokenize_char_gen( '\t', poacher::tokens::skip{} );
@@ -94,7 +92,7 @@ constexpr auto tokenize_numbers = []( auto str, int pos ) constexpr
    return tokenize_check ( str, pos,
       [] ( auto c ) constexpr {
          return c >= '0' && c <= '9';
-      }, algebra::tokens::number{} );
+      }, amath::tokens::number{} );
 };
 
 template< typename String, typename Tokenizer >
@@ -102,7 +100,7 @@ constexpr auto tokenize(String str, Tokenizer tkz)
 {
    int current = 0;
    using array_t = poacher::ct_array< char, String::static_size >;
-   poacher::ct_array< algebra::token_value<array_t>, String::static_size > token_list;
+   poacher::ct_array< amath::token_value<array_t>, String::static_size > token_list;
 
    while( current < str.size() )
    {
