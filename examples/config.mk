@@ -12,7 +12,7 @@ CXXFLAGS += -Wall -Wextra -Werror -Wnull-dereference -Wold-style-cast \
 CXXFLAGS += -std=c++17
 
 # Includes
-INCLUDES += -I../poacher
+INCLUDES += -I..
 CXXFLAGS += $(INCLUDES)
 
 # Linker flags
