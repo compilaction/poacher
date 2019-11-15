@@ -2,7 +2,7 @@
 
 #include <variant>
 
-namespace poacher {   //-----------------------------------------------------------------------
+namespace poacher {   //-------------------------------------------------------
 
 template<typename T>
 struct Token {
@@ -24,11 +24,11 @@ struct token_value
    TokenList type;
 };
 
-namespace tokens {   //------------------------------------------------------------------------
+namespace tokens {   //--------------------------------------------------------
 
 struct skip    : Token<skip>  {};
 struct error   : Token<error> {};
 
-}  // namespace poacher::tokens  //------------------------------------------------------------
+}  // namespace poacher::tokens  //--------------------------------------------
 
-}  // namespace poacher  //--------------------------------------------------------------------
+}  // namespace poacher  //----------------------------------------------------

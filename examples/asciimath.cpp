@@ -59,33 +59,37 @@ constexpr auto tokenize_check( String const& str, int pos, Check p, Token t )
 }
 
 template< typename String, typename Token >
-constexpr auto tokenize_character( String const& str, int pos, char val, Token t )
+constexpr auto tokenize_char( String const& str, int pos, char val, Token t )
 {
    using array_t = poacher::ct_array<char, String::static_size>;
 
    array_t v;
-   if( str[pos] == val ) { v.push_back(val); return amath::token_value<array_t>{v, t}; }
-   else                    return amath::token_value<array_t>{ v, poacher::tokens::error{} };
+   if( str[pos] == val ) {
+      v.push_back(val);
+      return amath::token_value<array_t>{v, t};
+   }
+
+   return amath::token_value<array_t>{ v, poacher::tokens::error{} };
 }
 
 
 constexpr auto tokenize_char_gen = [] ( char c, auto tok ) {
    return [=] ( auto str, int pos ) constexpr {
-      return tokenize_character( str, pos, c, tok );
+      return tokenize_char( str, pos, c, tok );
    };
 };
 
-constexpr auto tokenize_open_paren  = tokenize_char_gen( '(', amath::tokens::paren{} );
-constexpr auto tokenize_close_paren = tokenize_char_gen( ')', amath::tokens::paren{} );
-constexpr auto tokenize_op_plus     = tokenize_char_gen( '+', amath::tokens::op_plus{} );
-constexpr auto tokenize_op_minus    = tokenize_char_gen( '-', amath::tokens::op_minus{} );
+constexpr auto tokenize_open_paren  =  tokenize_char_gen( '(', amath::tokens::paren{} );
+constexpr auto tokenize_close_paren =  tokenize_char_gen( ')', amath::tokens::paren{} );
+constexpr auto tokenize_op_plus     =  tokenize_char_gen( '+', amath::tokens::op_plus{} );
+constexpr auto tokenize_op_minus    =  tokenize_char_gen( '-', amath::tokens::op_minus{} );
 
-constexpr auto skip_space           = tokenize_char_gen( ' ', poacher::tokens::skip{} );
-constexpr auto skip_tab             = tokenize_char_gen( '\t', poacher::tokens::skip{} );
-constexpr auto skip_cr              = tokenize_char_gen( '\n', poacher::tokens::skip{} );
+constexpr auto skip_space           =  tokenize_char_gen( ' ', poacher::tokens::skip{} );
+constexpr auto skip_tab             =  tokenize_char_gen( '\t', poacher::tokens::skip{} );
+constexpr auto skip_cr              =  tokenize_char_gen( '\n', poacher::tokens::skip{} );
 
-constexpr auto skip_whites          = poacher::either( poacher::either( skip_space, skip_tab ), skip_cr );
-
+constexpr auto skip_whitespace
+   =  poacher::either( poacher::either( skip_space, skip_tab ), skip_cr );
 
 constexpr auto tokenize_numbers = []( auto str, int pos ) constexpr
 {
@@ -132,14 +136,12 @@ constexpr auto tokenize(String str, Tokenizer tkz)
 
 constexpr auto s = poacher::ct_string( "(123 \t88(7 + 7 - 7)     \t\t\n+ \n45)" );
 
-constexpr auto my_tokenizer = std::make_tuple ( skip_whites,
+constexpr auto my_tokenizer = std::make_tuple ( skip_whitespace,
                                                 tokenize_open_paren,
                                                 tokenize_close_paren,
                                                 tokenize_op_plus,
                                                 tokenize_op_minus,
                                                 tokenize_numbers );
-
-
 
 int main()
 {

@@ -4,7 +4,7 @@
 
 #include <poacher/tokenizer/token.hpp>
 
-namespace poacher {   //-----------------------------------------------------------------------
+namespace poacher {   //-------------------------------------------------------
 
 template<typename T1, typename T2>
 constexpr auto either( T1 v1, T2 v2 ) {
@@ -26,4 +26,4 @@ constexpr auto then( T1 v1, T2 v2 ) {
    };
 }
 
-}  // namespace poacher  //--------------------------------------------------------------------
+}  // namespace poacher  //----------------------------------------------------
