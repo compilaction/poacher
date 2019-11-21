@@ -17,10 +17,10 @@ namespace amath {
 
 // User-defined tokens
 namespace tokens {
-struct paren      : poacher::Token<paren>     {};
-struct number     : poacher::Token<number>    {};
-struct op_plus    : poacher::Token<op_plus>   {};
-struct op_minus   : poacher::Token<op_minus>  {};
+   struct paren      : poacher::Token<paren>     {};
+   struct number     : poacher::Token<number>    {};
+   struct op_plus    : poacher::Token<op_plus>   {};
+   struct op_minus   : poacher::Token<op_minus>  {};
 }  // namespace tokens
 
 // Token list
