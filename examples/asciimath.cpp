@@ -35,27 +35,10 @@ using token_value = poacher::token_value< token_type, Value >;
 
 }  // namespace amath
 
-
-template < template<typename> typename TokenValType
-         , typename String, typename Token >
-constexpr auto tokenize_char( String const& str, int pos, char val, Token t )
-{
-   using array_t = poacher::ct_array<char, String::static_size>;
-
-   array_t v;
-   if( str[pos] == val ) {
-      v.push_back(val);
-      return TokenValType<array_t>{ t, v };
-   }
-
-   return TokenValType<array_t>{ poacher::tokens::error{}, v };
-}
-
-
 template<template<typename> typename TokenValType>
 constexpr auto tokenize_char_gen = [] ( char c, auto tok ) {
    return [=] ( auto str, int pos ) constexpr {
-      return tokenize_char<TokenValType>( str, pos, c, tok );
+      return poacher::tokenize_char<TokenValType>( str, pos, c, tok );
    };
 };
 
@@ -87,17 +70,17 @@ constexpr auto tokenize_numbers = []( auto str, int pos ) constexpr
 };
 
 
-constexpr auto s = poacher::ct_string( "(123 \t88(7 + 7 - 7)  \t\t\n+ \n45)" );
-
-constexpr auto my_tokenizer = std::make_tuple ( skip_whitespace,
-                                                tokenize_open_paren,
-                                                tokenize_close_paren,
-                                                tokenize_op_plus,
-                                                tokenize_op_minus,
-                                                tokenize_numbers );
-
 int main()
 {
+   constexpr auto s = poacher::ct_string( "(123 88(7 + 7 - 7) \t\t\n+ \n45)" );
+
+   constexpr auto my_tokenizer = std::make_tuple ( skip_whitespace,
+                                                   tokenize_open_paren,
+                                                   tokenize_close_paren,
+                                                   tokenize_op_plus,
+                                                   tokenize_op_minus,
+                                                   tokenize_numbers );
+
    constexpr auto t = poacher::tokenize<amath::token_value>( s, my_tokenizer );
 
    for( auto tt : t )

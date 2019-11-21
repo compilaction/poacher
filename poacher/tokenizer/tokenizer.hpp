@@ -5,6 +5,21 @@
 namespace poacher {   //-------------------------------------------------------
 
 template < template<typename> typename TokenValType
+         , typename String, typename Token >
+constexpr auto tokenize_char( String const& str, int pos, char val, Token t )
+{
+   using array_t = poacher::ct_array<char, String::static_size>;
+
+   array_t v;
+   if( str[pos] == val ) {
+      v.push_back(val);
+      return TokenValType<array_t>{ t, v };
+   }
+
+   return TokenValType<array_t>{ poacher::tokens::error{}, v };
+}
+
+template < template<typename> typename TokenValType
          , typename String, typename Check, typename Token >
 constexpr auto tokenize_check( String const& str, int pos, Check p, Token t )
 {
