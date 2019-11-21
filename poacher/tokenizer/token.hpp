@@ -23,6 +23,9 @@ struct Token {
 template< typename TokenType, typename Value >
 struct token_value
 {
+   using type_t = TokenType;
+   using value_t = Value;
+
    TokenType type;
    Value value;
 };
@@ -33,5 +36,8 @@ namespace tokens {   //--------------------------------------------------------
    struct error   : Token<error> {};
 
 }  // namespace poacher::tokens  //--------------------------------------------
+
+template<typename... Ts>
+using token_type_list = std::variant<Ts..., tokens::skip, tokens::error>;
 
 }  // namespace poacher  //----------------------------------------------------
