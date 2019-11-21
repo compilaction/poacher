@@ -2,6 +2,9 @@
 
 #include <variant>
 
+#include <poacher/utility/ct_array.hpp>
+#include <poacher/utility/repeat.hpp>
+
 namespace poacher {   //-------------------------------------------------------
 
 template<typename T>
@@ -17,17 +20,17 @@ struct Token {
 
 };
 
-template< typename Value, typename TokenList >
+template< typename TokenType, typename Value >
 struct token_value
 {
+   TokenType type;
    Value value;
-   TokenList type;
 };
 
 namespace tokens {   //--------------------------------------------------------
 
-struct skip    : Token<skip>  {};
-struct error   : Token<error> {};
+   struct skip    : Token<skip>  {};
+   struct error   : Token<error> {};
 
 }  // namespace poacher::tokens  //--------------------------------------------
 
