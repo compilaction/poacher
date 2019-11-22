@@ -674,5 +674,4 @@ constexpr auto get_sym_token( tokens::fun_max )                   { return poach
 constexpr auto get_sym_token( tokens::fun_f )                     { return poacher::ct_string( "f" ); }
 constexpr auto get_sym_token( tokens::fun_g )                     { return poacher::ct_string( "g" ); }
 
-
 }
