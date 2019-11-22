@@ -17,18 +17,25 @@ namespace amath {
 
 // User-defined tokens
 namespace tokens {
-   struct paren      : poacher::Token<paren>     {};
-   struct number     : poacher::Token<number>    {};
-   struct op_plus    : poacher::Token<op_plus>   {};
-   struct op_minus   : poacher::Token<op_minus>  {};
+   struct paren      : poacher::Token<paren>    {};
+   struct number     : poacher::Token<number>   {};
+   struct op_add     : poacher::Token<op_add>   {};
+   struct op_sub     : poacher::Token<op_sub>   {};
+   struct op_mul     : poacher::Token<op_mul>   {};
+   struct op_div     : poacher::Token<op_div>   {};
+   struct op_exp     : poacher::Token<op_exp>   {};
 }  // namespace tokens
 
 // Token list
-using token_type_list = poacher::token_type_list< tokens::paren
-                                                , tokens::number
-                                                , tokens::op_plus
-                                                , tokens::op_minus
-                                                >;
+using token_type_list
+   = poacher::token_type_list < tokens::paren
+                              , tokens::number
+                              , tokens::op_add
+                              , tokens::op_sub
+                              , tokens::op_mul
+                              , tokens::op_div
+                              , tokens::op_exp
+                              >;
 
 template<typename Value>
 using token_value = poacher::token_value< token_type_list, Value >;
@@ -39,14 +46,27 @@ constexpr auto tokenize_char_gen = [] ( char c, auto tok ) {
    };
 };
 
+constexpr auto tokenize_str_gen = [] ( auto s, auto tok ) {
+   return [=] ( auto str, int pos ) constexpr {
+      return poacher::tokenize_string< token_value > ( str, pos, s, tok );
+   };
+};
+
+constexpr auto tokenize_ident
+   = tokenize_str_gen( poacher::ct_string("ident"), amath::tokens::paren{} );
+
 constexpr auto tokenize_open_paren
    = tokenize_char_gen( '(', amath::tokens::paren{} );
 constexpr auto tokenize_close_paren
    = tokenize_char_gen( ')', amath::tokens::paren{} );
-constexpr auto tokenize_op_plus
-   = tokenize_char_gen( '+', amath::tokens::op_plus{} );
-constexpr auto tokenize_op_minus
-   = tokenize_char_gen( '-', amath::tokens::op_minus{} );
+constexpr auto tokenize_op_mul
+   = tokenize_char_gen( '*', amath::tokens::op_mul{} );
+constexpr auto tokenize_op_div
+   = tokenize_char_gen( '/', amath::tokens::op_div{} );
+constexpr auto tokenize_op_add
+   = tokenize_char_gen( '+', amath::tokens::op_add{} );
+constexpr auto tokenize_op_sub
+   = tokenize_char_gen( '-', amath::tokens::op_sub{} );
 
 constexpr auto skip_space
    = tokenize_char_gen( ' ', poacher::tokens::skip{} );
@@ -67,10 +87,13 @@ constexpr auto tokenize_numbers = []( auto str, int pos ) constexpr {
 
 constexpr auto tokenizer
    = std::make_tuple ( skip_whitespace
+                     , tokenize_ident
                      , tokenize_open_paren
                      , tokenize_close_paren
-                     , tokenize_op_plus
-                     , tokenize_op_minus
+                     , tokenize_op_mul
+                     , tokenize_op_div
+                     , tokenize_op_add
+                     , tokenize_op_sub
                      , tokenize_numbers
                      );
 
@@ -79,7 +102,7 @@ constexpr auto tokenizer
 //-----------------------------------------------------------------------------
 // Tokenizer usage
 
-constexpr auto s = poacher::ct_string( "(123 88(7 + 7 - 7) \t\t\n+ \n45)" );
+constexpr auto s = poacher::ct_string( "( ident 123 88(7 + 7 - 7) \t\t\n+ \n45)" );
 constexpr auto t = poacher::tokenize<amath::token_value>( s, amath::tokenizer );
 
 int main()
