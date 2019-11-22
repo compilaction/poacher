@@ -1,23 +1,39 @@
 #pragma once
 
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 // ct_array
+
+#include <utility>
 
 #include <poacher/utility/ct_assert.hpp>
 
 namespace poacher {
 
-template<typename T, int Capacity>
-struct ct_array
+template < typename T, std::size_t Capacity >
+class ct_array
 {
+
+private:
+
+   std::size_t actual_size_;
+   T   data_[ Capacity ];
+
+   //--------------------------------------------------------------------------
+   // Constructors
+
+public:
+
    constexpr ct_array() noexcept : actual_size_(0), data_{} {}
 
-   template<typename U, typename... Ts>
-   constexpr ct_array(U v, Ts... vs) noexcept: actual_size_(1 + sizeof...(Ts)), data_{v, vs...} { }
+   template < typename U, typename... Ts >
+   constexpr ct_array(U v, Ts... vs) noexcept
+      : actual_size_(1 + sizeof...(Ts)), data_{v, vs...}
+      {}
 
-   constexpr int capacity()        const  noexcept { return Capacity; }
-   constexpr int size()            const  noexcept { return actual_size_; }
-   constexpr T&  operator[](int i)        noexcept
+   constexpr std::size_t capacity() const  noexcept { return Capacity; }
+   constexpr std::size_t size()     const  noexcept { return actual_size_; }
+
+   constexpr T&  operator[](int i) noexcept
    {
       POACHER_CT_ASSERT( i < actual_size_ );
       return data_[i];
@@ -64,11 +80,10 @@ struct ct_array
       POACHER_CT_ASSERT( actual_size_ );
       actual_size_--;
    }
-
-private:
-   int actual_size_;
-   T   data_[ Capacity ];
 };
+
+template <typename T, int Capacity>
+ct_array(const T (&)[Capacity]) -> ct_array<T, Capacity>;
 
 template< typename T, typename... Ts >
 ct_array( T v, Ts... vs ) -> ct_array< T, 1 + sizeof...(Ts) >;

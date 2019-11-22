@@ -1,14 +1,16 @@
 #pragma once
 
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 // ct_string
 
 #include <cstddef>
 #include <utility>
 
+#include <poacher/utility/ct_array.hpp>
+
 namespace poacher {
 
-template <typename CharT, int N>
+template <typename CharT, std::size_t N>
 class ct_string
 {
    CharT content[N];
@@ -16,21 +18,26 @@ public:
    using char_type = CharT;
    static constexpr auto static_size = N;
 
+   //--------------------------------------------------------------------------
+   // Constructors
+
    constexpr ct_string() : content{} {}
 
    template <size_t... I>
-   constexpr ct_string( const CharT (&input)[N], std::index_sequence<I...> ) noexcept
+   constexpr ct_string( const CharT (&input)[N], std::index_sequence<I...> )
+   noexcept
       : content{ input[I]... }
-      { }
+      {}
 
    constexpr ct_string(const CharT (&input)[N]) noexcept
       : ct_string( input, std::make_index_sequence<N>() )
-      { }
+      {}
 
    constexpr int size() const noexcept
    {
-      // if it's zero terminated string (from const char * literal) then size N - 1
-      if (content[N-1] == '\0') return N - 1;
+      // If it's a zero terminated string (from const char * literal)
+      // then size N - 1
+      if ( content[N-1] == '\0' ) return N - 1;
       else return N;
    }
 
@@ -55,7 +62,7 @@ class ct_string<CharT, 0> {
 public:
    using char_type = CharT;
 
-   constexpr ct_string(const CharT *) noexcept { }
+   constexpr ct_string(const CharT *) noexcept {}
 
    constexpr int size() const noexcept {
       return 0;
@@ -73,7 +80,7 @@ public:
 template <typename CharT, int N>
 ct_string(const CharT (&)[N]) -> ct_string<CharT, N>;
 
-template <typename CharT, int N>
-ct_string(ct_string<CharT, N>) -> ct_string<CharT, N>;
+//template <typename CharT, int N>
+//ct_string(ct_string<CharT, N>) -> ct_string<CharT, N>;
 
 }  // namespace poacher
