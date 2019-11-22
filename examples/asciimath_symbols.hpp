@@ -1,3 +1,7 @@
+#pragma once
+
+#include <poacher/tokenizer/token.hpp>
+
 // http://asciimath.org/
 
 // Operation symbols
@@ -49,8 +53,8 @@
 //s "|cdots|",    "misc_cdots"
 //s "vdots",      "misc_vdots"
 //s "ddots",      "misc_ddots"
-//s "|\ |",       "misc_???"
-//s "|quad|",     "misc_???"
+//s "|\ |",       "misc_smallquad"
+//s "|quad|",     "misc_quad"
 //s "/_",         "misc_angle"
 //s "frown",      "misc_frown"
 //s "/_\",        "misc_triangle"
