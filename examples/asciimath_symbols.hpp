@@ -241,6 +241,11 @@
 //s "f",          "fun_f"
 //s "g",          "fun_g"
 
+// Other tokens
+
+//s "",           "spe_number"
+//s "",           "spe_ident"
+
 namespace amath::tokens {
 
 struct op_add                    : poacher::Token<op_add>                   {};
@@ -455,6 +460,9 @@ struct fun_min                   : poacher::Token<fun_min>                  {};
 struct fun_max                   : poacher::Token<fun_max>                  {};
 struct fun_f                     : poacher::Token<fun_f>                    {};
 struct fun_g                     : poacher::Token<fun_g>                    {};
+
+struct spe_number                : poacher::Token<spe_number>               {};
+struct spe_ident                 : poacher::Token<spe_ident>                {};
 
 }  // namespace amath::tokens
 
@@ -673,5 +681,232 @@ constexpr auto get_sym_token( tokens::fun_min )                   { return poach
 constexpr auto get_sym_token( tokens::fun_max )                   { return poacher::ct_string( "max" ); }
 constexpr auto get_sym_token( tokens::fun_f )                     { return poacher::ct_string( "f" ); }
 constexpr auto get_sym_token( tokens::fun_g )                     { return poacher::ct_string( "g" ); }
+
+constexpr auto get_sym_token( tokens::spe_number )                { return poacher::ct_string( "." ); }
+constexpr auto get_sym_token( tokens::spe_ident )                 { return poacher::ct_string( "." ); }
+
+}
+
+namespace amath {
+
+using token_type_list = poacher::token_type_list
+
+   < tokens::op_add
+   , tokens::op_sub
+   , tokens::op_cdot
+   , tokens::op_ast
+   , tokens::op_star
+   , tokens::op_slash
+   , tokens::op_backslash
+   , tokens::op_times
+   , tokens::op_div
+   , tokens::op_ltimes
+   , tokens::op_rtimes
+   , tokens::op_bowtie
+   , tokens::op_circ
+   , tokens::op_oplus
+   , tokens::op_otimes
+   , tokens::op_odot
+   , tokens::op_sum
+   , tokens::op_prod
+   , tokens::op_wedge
+   , tokens::op_bidwedge
+   , tokens::op_vee
+   , tokens::op_bigvee
+   , tokens::op_cap
+   , tokens::op_bigcap
+   , tokens::op_cup
+   , tokens::op_bigcup
+
+   , tokens::misc_frac
+   , tokens::misc_exp
+   , tokens::misc_sqrt
+   , tokens::misc_root
+   , tokens::misc_int
+   , tokens::misc_oint
+   , tokens::misc_partial
+   , tokens::misc_nabla
+   , tokens::misc_pm
+   , tokens::misc_emptyset
+   , tokens::misc_infty
+   , tokens::misc_aleph
+   , tokens::misc_therefore
+   , tokens::misc_because
+   , tokens::misc_ldots
+   , tokens::misc_cdots
+   , tokens::misc_vdots
+   , tokens::misc_ddots
+   , tokens::misc_smallquad
+   , tokens::misc_quad
+   , tokens::misc_angle
+   , tokens::misc_frown
+   , tokens::misc_triangle
+   , tokens::misc_diamond
+   , tokens::misc_square
+   , tokens::misc_lfloor
+   , tokens::misc_rfloor
+   , tokens::misc_lceiling
+   , tokens::misc_rceiling
+   , tokens::misc_C
+   , tokens::misc_N
+   , tokens::misc_Q
+   , tokens::misc_R
+   , tokens::misc_Z
+
+   , tokens::rel_eq
+   , tokens::rel_ne
+   , tokens::rel_lt
+   , tokens::rel_gt
+   , tokens::rel_le
+   , tokens::rel_ge
+   , tokens::rel_prec
+   , tokens::rel_preceq
+   , tokens::rel_succ
+   , tokens::rel_succeq
+   , tokens::rel_in
+   , tokens::rel_notin
+   , tokens::rel_subset
+   , tokens::rel_supset
+   , tokens::rel_subseteq
+   , tokens::rel_supseteq
+   , tokens::rel_equiv
+   , tokens::rel_cong
+   , tokens::rel_approx
+   , tokens::rel_propto
+
+   , tokens::logic_and
+   , tokens::logic_or
+   , tokens::logic_neg
+   , tokens::logic_implies
+   , tokens::logic_if
+   , tokens::logic_iff
+   , tokens::logic_forall
+   , tokens::logic_exists
+   , tokens::logic_bot
+   , tokens::logic_top
+   , tokens::logic_vdash
+   , tokens::logic_models
+
+   , tokens::grp_lpar
+   , tokens::grp_rpar
+   , tokens::grp_lsqbra
+   , tokens::grp_rsqbra
+   , tokens::grp_lcubra
+   , tokens::grp_rcubra
+   , tokens::grp_langle
+   , tokens::grp_rangle
+   , tokens::grp_langle_
+   , tokens::grp_rangle_
+   , tokens::grp_lxpar
+   , tokens::grp_rxpar
+   , tokens::grp_abs
+   , tokens::grp_floor
+   , tokens::grp_ceil
+   , tokens::grp_norm
+
+   , tokens::arr_uparrow
+   , tokens::arr_downarrow
+   , tokens::arr_rightarrow
+   , tokens::arr_to
+   , tokens::arr_rightarrowtail
+   , tokens::arr_twoheadrightarrow
+   , tokens::arr_twoheadrightarrowtail
+   , tokens::arr_mapsto
+   , tokens::arr_leftarrow
+   , tokens::arr_leftrightarrow
+   , tokens::arr_Rightarrow
+   , tokens::arr_Leftarrow
+   , tokens::arr_Leftrightarrow
+
+   , tokens::acc_hat
+   , tokens::acc_bar
+   , tokens::acc_ul
+   , tokens::acc_vec
+   , tokens::acc_dot
+   , tokens::acc_ddot
+   , tokens::acc_overset
+   , tokens::acc_underset
+   , tokens::acc_ubrace
+   , tokens::acc_obrace
+   , tokens::acc_color
+   , tokens::acc_cancel
+
+   , tokens::gr_alpha
+   , tokens::gr_beta
+   , tokens::gr_gamma
+   , tokens::gr_Gamma
+   , tokens::gr_delta
+   , tokens::gr_Delta
+   , tokens::gr_epsilon
+   , tokens::gr_varepsilon
+   , tokens::gr_zeta
+   , tokens::gr_eta
+   , tokens::gr_theta
+   , tokens::gr_Theta
+   , tokens::gr_vartheta
+   , tokens::gr_iota
+   , tokens::gr_kappa
+   , tokens::gr_lambda
+   , tokens::gr_Lambda
+   , tokens::gr_mu
+   , tokens::gr_nu
+   , tokens::gr_xi
+   , tokens::gr_Xi
+   , tokens::gr_pi
+   , tokens::gr_Pi
+   , tokens::gr_rho
+   , tokens::gr_sigma
+   , tokens::gr_Sigma
+   , tokens::gr_tau
+   , tokens::gr_upsilon
+   , tokens::gr_phi
+   , tokens::gr_Phi
+   , tokens::gr_varphi
+   , tokens::gr_chi
+   , tokens::gr_psi
+   , tokens::gr_Psi
+   , tokens::gr_omega
+   , tokens::gr_Omega
+
+   , tokens::ft_bb
+   , tokens::ft_bbb
+   , tokens::ft_cc
+   , tokens::ft_tt
+   , tokens::ft_fr
+   , tokens::ft_sf
+
+   , tokens::fun_sin
+   , tokens::fun_cos
+   , tokens::fun_tan
+   , tokens::fun_sec
+   , tokens::fun_csc
+   , tokens::fun_cot
+   , tokens::fun_arcsin
+   , tokens::fun_arccos
+   , tokens::fun_arctan
+   , tokens::fun_sinh
+   , tokens::fun_cosh
+   , tokens::fun_tanh
+   , tokens::fun_sech
+   , tokens::fun_csch
+   , tokens::fun_coth
+   , tokens::fun_exp
+   , tokens::fun_log
+   , tokens::fun_ln
+   , tokens::fun_det
+   , tokens::fun_dim
+   , tokens::fun_mod
+   , tokens::fun_gcd
+   , tokens::fun_lcm
+   , tokens::fun_lub
+   , tokens::fun_glb
+   , tokens::fun_min
+   , tokens::fun_max
+   , tokens::fun_f
+   , tokens::fun_g
+
+   , tokens::spe_number
+   , tokens::spe_ident
+   >;
 
 }
