@@ -3,6 +3,10 @@
 #include <poacher/tokenizer/token.hpp>
 #include <poacher/utility/ct_string.hpp>
 
+//-----------------------------------------------------------------------------
+// ASCIImath symbols representation
+
+// TODO: Arborescence
 
 // http://asciimath.org/
 
@@ -74,26 +78,26 @@
 
 // Relation symbols
 
-//s "=",          "rel_eq"
-//s "!=",         "rel_ne"
-//s "<",          "rel_lt"
-//s ">",          "rel_gt"
-//s "<=",         "rel_le"
-//s ">=",         "rel_ge"
-//s "-<",         "rel_prec"
-//s "-<=",        "rel_preceq"
-//s ">-",         "rel_succ"
-//s ">-=",        "rel_succeq"
-//s "in",         "rel_in"
-//s "!in",        "rel_notin"
-//s "sub",        "rel_subset"
-//s "sup",        "rel_supset"
-//s "sube",       "rel_subseteq"
-//s "supe",       "rel_supseteq"
-//s "-=",         "rel_equiv"
-//s "~=",         "rel_cong"
-//s "~~",         "rel_approx"
-//s "prop",       "rel_propto"
+//o //s "=",          "rel_eq"
+//o //s "!=",         "rel_ne"
+//o //s "<",          "rel_lt"
+//o //s ">",          "rel_gt"
+//o //s "<=",         "rel_le"
+//o //s ">=",         "rel_ge"
+//o //s "-<",         "rel_prec"
+//o //s "-<=",        "rel_preceq"
+//o //s ">-",         "rel_succ"
+//o //s ">-=",        "rel_succeq"
+//o //s "in",         "rel_in"
+//o //s "!in",        "rel_notin"
+//o //s "sub",        "rel_subset"
+//o //s "sup",        "rel_supset"
+//o //s "sube",       "rel_subseteq"
+//o //s "supe",       "rel_supseteq"
+//o //s "-=",         "rel_equiv"
+//o //s "~=",         "rel_cong"
+//o //s "~~",         "rel_approx"
+//o //s "prop",       "rel_propto"
 
 // Logical symbols
 
@@ -132,73 +136,73 @@
 
 // Arrows
 
-//s "uarr",       "arr_uparrow"
-//s "darr",       "arr_downarrow"
-//s "rarr",       "arr_rightarrow"
-//s "->",         "arr_to"
-//s ">->",        "arr_rightarrowtail"
-//s "->>",        "arr_twoheadrightarrow"
-//s ">->>",       "arr_twoheadrightarrowtail"
-//s "|->",        "arr_mapsto"
-//s "larr",       "arr_leftarrow"
-//s "harr",       "arr_leftrightarrow"
-//s "rArr",       "arr_Rightarrow"
-//s "lArr",       "arr_Leftarrow"
-//s "hArr",       "arr_Leftrightarrow"
+//o //s "uarr",       "arr_uparrow"
+//o //s "darr",       "arr_downarrow"
+//o //s "rarr",       "arr_rightarrow"
+//o //s "->",         "arr_to"
+//o //s ">->",        "arr_rightarrowtail"
+//o //s "->>",        "arr_twoheadrightarrow"
+//o //s ">->>",       "arr_twoheadrightarrowtail"
+//o //s "|->",        "arr_mapsto"
+//o //s "larr",       "arr_leftarrow"
+//o //s "harr",       "arr_leftrightarrow"
+//o //s "rArr",       "arr_Rightarrow"
+//o //s "lArr",       "arr_Leftarrow"
+//o //s "hArr",       "arr_Leftrightarrow"
 
 // Accents
 
-//s "hat",        "acc_hat"
-//s "bar",        "acc_bar"
-//s "ul",         "acc_ul"
-//s "vec",        "acc_vec"
-//s "dot",        "acc_dot"
-//s "ddot",       "acc_ddot"
-//s "overset",    "acc_overset"
-//s "underset",   "acc_underset"
-//s "ubrace",     "acc_ubrace"
-//s "obrace",     "acc_obrace"
-//s "color",      "acc_color"
-//s "cancel",     "acc_cancel"
+//o //s "hat",        "acc_hat"
+//o //s "bar",        "acc_bar"
+//o //s "ul",         "acc_ul"
+//o //s "vec",        "acc_vec"
+//o //s "dot",        "acc_dot"
+//o //s "ddot",       "acc_ddot"
+//o //s "overset",    "acc_overset"
+//o //s "underset",   "acc_underset"
+//o //s "ubrace",     "acc_ubrace"
+//o //s "obrace",     "acc_obrace"
+//o //s "color",      "acc_color"
+//o //s "cancel",     "acc_cancel"
 
 // Greek Letters
 
-//s "alpha",      "gr_alpha"
-//s "beta",       "gr_beta"
-//s "gamma",      "gr_gamma"
-//s "Gamma",      "gr_Gamma"
-//s "delta",      "gr_delta"
-//s "Delta",      "gr_Delta"
-//s "epsilon",    "gr_epsilon"
-//s "varepsilon", "gr_varepsilon"
-//s "zeta",       "gr_zeta"
-//s "eta",        "gr_eta"
-//s "theta",      "gr_theta"
-//s "Theta",      "gr_Theta"
-//s "vartheta",   "gr_vartheta"
-//s "iota",       "gr_iota"
-//s "kappa",      "gr_kappa"
-//s "lambda",     "gr_lambda"
-//s "Lambda",     "gr_Lambda"
-//s "mu",         "gr_mu"
-//s "nu",         "gr_nu"
-//s "xi",         "gr_xi"
-//s "Xi",         "gr_Xi"
-//s "pi",         "gr_pi"
-//s "Pi",         "gr_Pi"
-//s "rho",        "gr_rho"
-//s "sigma",      "gr_sigma"
-//s "Sigma",      "gr_Sigma"
-//s "tau",        "gr_tau"
-//s "upsilon",    "gr_upsilon"
-//s "phi",        "gr_phi"
-//s "Phi",        "gr_Phi"
-//s "varphi",     "gr_varphi"
-//s "chi",        "gr_chi"
-//s "psi",        "gr_psi"
-//s "Psi",        "gr_Psi"
-//s "omega",      "gr_omega"
-//s "Omega",      "gr_Omega"
+//o //s "alpha",      "gr_alpha"
+//o //s "beta",       "gr_beta"
+//o //s "gamma",      "gr_gamma"
+//o //s "Gamma",      "gr_Gamma"
+//o //s "delta",      "gr_delta"
+//o //s "Delta",      "gr_Delta"
+//o //s "epsilon",    "gr_epsilon"
+//o //s "varepsilon", "gr_varepsilon"
+//o //s "zeta",       "gr_zeta"
+//o //s "eta",        "gr_eta"
+//o //s "theta",      "gr_theta"
+//o //s "Theta",      "gr_Theta"
+//o //s "vartheta",   "gr_vartheta"
+//o //s "iota",       "gr_iota"
+//o //s "kappa",      "gr_kappa"
+//o //s "lambda",     "gr_lambda"
+//o //s "Lambda",     "gr_Lambda"
+//o //s "mu",         "gr_mu"
+//o //s "nu",         "gr_nu"
+//o //s "xi",         "gr_xi"
+//o //s "Xi",         "gr_Xi"
+//o //s "pi",         "gr_pi"
+//o //s "Pi",         "gr_Pi"
+//o //s "rho",        "gr_rho"
+//o //s "sigma",      "gr_sigma"
+//o //s "Sigma",      "gr_Sigma"
+//o //s "tau",        "gr_tau"
+//o //s "upsilon",    "gr_upsilon"
+//o //s "phi",        "gr_phi"
+//o //s "Phi",        "gr_Phi"
+//o //s "varphi",     "gr_varphi"
+//o //s "chi",        "gr_chi"
+//o //s "psi",        "gr_psi"
+//o //s "Psi",        "gr_Psi"
+//o //s "omega",      "gr_omega"
+//o //s "Omega",      "gr_Omega"
 
 // Font commands
 
@@ -211,35 +215,35 @@
 
 // Standard Functions
 
-//s "sin",        "fun_sin"
-//s "cos",        "fun_cos"
-//s "tan",        "fun_tan"
-//s "sec",        "fun_sec"
-//s "csc",        "fun_csc"
-//s "cot",        "fun_cot"
-//s "arcsin",     "fun_arcsin"
-//s "arccos",     "fun_arccos"
-//s "arctan",     "fun_arctan"
-//s "sinh",       "fun_sinh"
-//s "cosh",       "fun_cosh"
-//s "tanh",       "fun_tanh"
-//s "sech",       "fun_sech"
-//s "csch",       "fun_csch"
-//s "coth",       "fun_coth"
-//s "exp",        "fun_exp"
-//s "log",        "fun_log"
-//s "ln",         "fun_ln"
-//s "det",        "fun_det"
-//s "dim",        "fun_dim"
-//s "mod",        "fun_mod"
-//s "gcd",        "fun_gcd"
-//s "lcm",        "fun_lcm"
-//s "lub",        "fun_lub"
-//s "glb",        "fun_glb"
-//s "min",        "fun_min"
-//s "max",        "fun_max"
-//s "f",          "fun_f"
-//s "g",          "fun_g"
+//o //s "sin",        "fun_sin"
+//o //s "cos",        "fun_cos"
+//o //s "tan",        "fun_tan"
+//o //s "sec",        "fun_sec"
+//o //s "csc",        "fun_csc"
+//o //s "cot",        "fun_cot"
+//o //s "arcsin",     "fun_arcsin"
+//o //s "arccos",     "fun_arccos"
+//o //s "arctan",     "fun_arctan"
+//o //s "sinh",       "fun_sinh"
+//o //s "cosh",       "fun_cosh"
+//o //s "tanh",       "fun_tanh"
+//o //s "sech",       "fun_sech"
+//o //s "csch",       "fun_csch"
+//o //s "coth",       "fun_coth"
+//o //s "exp",        "fun_exp"
+//o //s "log",        "fun_log"
+//o //s "ln",         "fun_ln"
+//o //s "det",        "fun_det"
+//o //s "dim",        "fun_dim"
+//o //s "mod",        "fun_mod"
+//o //s "gcd",        "fun_gcd"
+//o //s "lcm",        "fun_lcm"
+//o //s "lub",        "fun_lub"
+//o //s "glb",        "fun_glb"
+//o //s "min",        "fun_min"
+//o //s "max",        "fun_max"
+//o //s "f",          "fun_f"
+//o //s "g",          "fun_g"
 
 // Other tokens
 
@@ -310,26 +314,26 @@ struct misc_Q                    : poacher::Token<misc_Q>                   {};
 struct misc_R                    : poacher::Token<misc_R>                   {};
 struct misc_Z                    : poacher::Token<misc_Z>                   {};
 
-struct rel_eq                    : poacher::Token<rel_eq>                   {};
-struct rel_ne                    : poacher::Token<rel_ne>                   {};
-struct rel_lt                    : poacher::Token<rel_lt>                   {};
-struct rel_gt                    : poacher::Token<rel_gt>                   {};
-struct rel_le                    : poacher::Token<rel_le>                   {};
-struct rel_ge                    : poacher::Token<rel_ge>                   {};
-struct rel_prec                  : poacher::Token<rel_prec>                 {};
-struct rel_preceq                : poacher::Token<rel_preceq>               {};
-struct rel_succ                  : poacher::Token<rel_succ>                 {};
-struct rel_succeq                : poacher::Token<rel_succeq>               {};
-struct rel_in                    : poacher::Token<rel_in>                   {};
-struct rel_notin                 : poacher::Token<rel_notin>                {};
-struct rel_subset                : poacher::Token<rel_subset>               {};
-struct rel_supset                : poacher::Token<rel_supset>               {};
-struct rel_subseteq              : poacher::Token<rel_subseteq>             {};
-struct rel_supseteq              : poacher::Token<rel_supseteq>             {};
-struct rel_equiv                 : poacher::Token<rel_equiv>                {};
-struct rel_cong                  : poacher::Token<rel_cong>                 {};
-struct rel_approx                : poacher::Token<rel_approx>               {};
-struct rel_propto                : poacher::Token<rel_propto>               {};
+//o struct rel_eq                    : poacher::Token<rel_eq>                   {};
+//o struct rel_ne                    : poacher::Token<rel_ne>                   {};
+//o struct rel_lt                    : poacher::Token<rel_lt>                   {};
+//o struct rel_gt                    : poacher::Token<rel_gt>                   {};
+//o struct rel_le                    : poacher::Token<rel_le>                   {};
+//o struct rel_ge                    : poacher::Token<rel_ge>                   {};
+//o struct rel_prec                  : poacher::Token<rel_prec>                 {};
+//o struct rel_preceq                : poacher::Token<rel_preceq>               {};
+//o struct rel_succ                  : poacher::Token<rel_succ>                 {};
+//o struct rel_succeq                : poacher::Token<rel_succeq>               {};
+//o struct rel_in                    : poacher::Token<rel_in>                   {};
+//o struct rel_notin                 : poacher::Token<rel_notin>                {};
+//o struct rel_subset                : poacher::Token<rel_subset>               {};
+//o struct rel_supset                : poacher::Token<rel_supset>               {};
+//o struct rel_subseteq              : poacher::Token<rel_subseteq>             {};
+//o struct rel_supseteq              : poacher::Token<rel_supseteq>             {};
+//o struct rel_equiv                 : poacher::Token<rel_equiv>                {};
+//o struct rel_cong                  : poacher::Token<rel_cong>                 {};
+//o struct rel_approx                : poacher::Token<rel_approx>               {};
+//o struct rel_propto                : poacher::Token<rel_propto>               {};
 
 struct logic_and                 : poacher::Token<logic_and>                {};
 struct logic_or                  : poacher::Token<logic_or>                 {};
@@ -361,69 +365,69 @@ struct grp_floor                 : poacher::Token<grp_floor>                {};
 struct grp_ceil                  : poacher::Token<grp_ceil>                 {};
 struct grp_norm                  : poacher::Token<grp_norm>                 {};
 
-struct arr_uparrow               : poacher::Token<arr_uparrow>              {};
-struct arr_downarrow             : poacher::Token<arr_downarrow>            {};
-struct arr_rightarrow            : poacher::Token<arr_rightarrow>           {};
-struct arr_to                    : poacher::Token<arr_to>                   {};
-struct arr_rightarrowtail        : poacher::Token<arr_rightarrowtail>       {};
-struct arr_twoheadrightarrow     : poacher::Token<arr_twoheadrightarrow>    {};
-struct arr_twoheadrightarrowtail : poacher::Token<arr_twoheadrightarrowtail>{};
-struct arr_mapsto                : poacher::Token<arr_mapsto>               {};
-struct arr_leftarrow             : poacher::Token<arr_leftarrow>            {};
-struct arr_leftrightarrow        : poacher::Token<arr_leftrightarrow>       {};
-struct arr_Rightarrow            : poacher::Token<arr_Rightarrow>           {};
-struct arr_Leftarrow             : poacher::Token<arr_Leftarrow>            {};
-struct arr_Leftrightarrow        : poacher::Token<arr_Leftrightarrow>       {};
+//o struct arr_uparrow               : poacher::Token<arr_uparrow>              {};
+//o struct arr_downarrow             : poacher::Token<arr_downarrow>            {};
+//o struct arr_rightarrow            : poacher::Token<arr_rightarrow>           {};
+//o struct arr_to                    : poacher::Token<arr_to>                   {};
+//o struct arr_rightarrowtail        : poacher::Token<arr_rightarrowtail>       {};
+//o struct arr_twoheadrightarrow     : poacher::Token<arr_twoheadrightarrow>    {};
+//o struct arr_twoheadrightarrowtail : poacher::Token<arr_twoheadrightarrowtail>{};
+//o struct arr_mapsto                : poacher::Token<arr_mapsto>               {};
+//o struct arr_leftarrow             : poacher::Token<arr_leftarrow>            {};
+//o struct arr_leftrightarrow        : poacher::Token<arr_leftrightarrow>       {};
+//o struct arr_Rightarrow            : poacher::Token<arr_Rightarrow>           {};
+//o struct arr_Leftarrow             : poacher::Token<arr_Leftarrow>            {};
+//o struct arr_Leftrightarrow        : poacher::Token<arr_Leftrightarrow>       {};
 
-struct acc_hat                   : poacher::Token<acc_hat>                  {};
-struct acc_bar                   : poacher::Token<acc_bar>                  {};
-struct acc_ul                    : poacher::Token<acc_ul>                   {};
-struct acc_vec                   : poacher::Token<acc_vec>                  {};
-struct acc_dot                   : poacher::Token<acc_dot>                  {};
-struct acc_ddot                  : poacher::Token<acc_ddot>                 {};
-struct acc_overset               : poacher::Token<acc_overset>              {};
-struct acc_underset              : poacher::Token<acc_underset>             {};
-struct acc_ubrace                : poacher::Token<acc_ubrace>               {};
-struct acc_obrace                : poacher::Token<acc_obrace>               {};
-struct acc_color                 : poacher::Token<acc_color>                {};
-struct acc_cancel                : poacher::Token<acc_cancel>               {};
+//o struct acc_hat                   : poacher::Token<acc_hat>                  {};
+//o struct acc_bar                   : poacher::Token<acc_bar>                  {};
+//o struct acc_ul                    : poacher::Token<acc_ul>                   {};
+//o struct acc_vec                   : poacher::Token<acc_vec>                  {};
+//o struct acc_dot                   : poacher::Token<acc_dot>                  {};
+//o struct acc_ddot                  : poacher::Token<acc_ddot>                 {};
+//o struct acc_overset               : poacher::Token<acc_overset>              {};
+//o struct acc_underset              : poacher::Token<acc_underset>             {};
+//o struct acc_ubrace                : poacher::Token<acc_ubrace>               {};
+//o struct acc_obrace                : poacher::Token<acc_obrace>               {};
+//o struct acc_color                 : poacher::Token<acc_color>                {};
+//o struct acc_cancel                : poacher::Token<acc_cancel>               {};
 
-struct gr_alpha                  : poacher::Token<gr_alpha>                 {};
-struct gr_beta                   : poacher::Token<gr_beta>                  {};
-struct gr_gamma                  : poacher::Token<gr_gamma>                 {};
-struct gr_Gamma                  : poacher::Token<gr_Gamma>                 {};
-struct gr_delta                  : poacher::Token<gr_delta>                 {};
-struct gr_Delta                  : poacher::Token<gr_Delta>                 {};
-struct gr_epsilon                : poacher::Token<gr_epsilon>               {};
-struct gr_varepsilon             : poacher::Token<gr_varepsilon>            {};
-struct gr_zeta                   : poacher::Token<gr_zeta>                  {};
-struct gr_eta                    : poacher::Token<gr_eta>                   {};
-struct gr_theta                  : poacher::Token<gr_theta>                 {};
-struct gr_Theta                  : poacher::Token<gr_Theta>                 {};
-struct gr_vartheta               : poacher::Token<gr_vartheta>              {};
-struct gr_iota                   : poacher::Token<gr_iota>                  {};
-struct gr_kappa                  : poacher::Token<gr_kappa>                 {};
-struct gr_lambda                 : poacher::Token<gr_lambda>                {};
-struct gr_Lambda                 : poacher::Token<gr_Lambda>                {};
-struct gr_mu                     : poacher::Token<gr_mu>                    {};
-struct gr_nu                     : poacher::Token<gr_nu>                    {};
-struct gr_xi                     : poacher::Token<gr_xi>                    {};
-struct gr_Xi                     : poacher::Token<gr_Xi>                    {};
-struct gr_pi                     : poacher::Token<gr_pi>                    {};
-struct gr_Pi                     : poacher::Token<gr_Pi>                    {};
-struct gr_rho                    : poacher::Token<gr_rho>                   {};
-struct gr_sigma                  : poacher::Token<gr_sigma>                 {};
-struct gr_Sigma                  : poacher::Token<gr_Sigma>                 {};
-struct gr_tau                    : poacher::Token<gr_tau>                   {};
-struct gr_upsilon                : poacher::Token<gr_upsilon>               {};
-struct gr_phi                    : poacher::Token<gr_phi>                   {};
-struct gr_Phi                    : poacher::Token<gr_Phi>                   {};
-struct gr_varphi                 : poacher::Token<gr_varphi>                {};
-struct gr_chi                    : poacher::Token<gr_chi>                   {};
-struct gr_psi                    : poacher::Token<gr_psi>                   {};
-struct gr_Psi                    : poacher::Token<gr_Psi>                   {};
-struct gr_omega                  : poacher::Token<gr_omega>                 {};
-struct gr_Omega                  : poacher::Token<gr_Omega>                 {};
+//o struct gr_alpha                  : poacher::Token<gr_alpha>                 {};
+//o struct gr_beta                   : poacher::Token<gr_beta>                  {};
+//o struct gr_gamma                  : poacher::Token<gr_gamma>                 {};
+//o struct gr_Gamma                  : poacher::Token<gr_Gamma>                 {};
+//o struct gr_delta                  : poacher::Token<gr_delta>                 {};
+//o struct gr_Delta                  : poacher::Token<gr_Delta>                 {};
+//o struct gr_epsilon                : poacher::Token<gr_epsilon>               {};
+//o struct gr_varepsilon             : poacher::Token<gr_varepsilon>            {};
+//o struct gr_zeta                   : poacher::Token<gr_zeta>                  {};
+//o struct gr_eta                    : poacher::Token<gr_eta>                   {};
+//o struct gr_theta                  : poacher::Token<gr_theta>                 {};
+//o struct gr_Theta                  : poacher::Token<gr_Theta>                 {};
+//o struct gr_vartheta               : poacher::Token<gr_vartheta>              {};
+//o struct gr_iota                   : poacher::Token<gr_iota>                  {};
+//o struct gr_kappa                  : poacher::Token<gr_kappa>                 {};
+//o struct gr_lambda                 : poacher::Token<gr_lambda>                {};
+//o struct gr_Lambda                 : poacher::Token<gr_Lambda>                {};
+//o struct gr_mu                     : poacher::Token<gr_mu>                    {};
+//o struct gr_nu                     : poacher::Token<gr_nu>                    {};
+//o struct gr_xi                     : poacher::Token<gr_xi>                    {};
+//o struct gr_Xi                     : poacher::Token<gr_Xi>                    {};
+//o struct gr_pi                     : poacher::Token<gr_pi>                    {};
+//o struct gr_Pi                     : poacher::Token<gr_Pi>                    {};
+//o struct gr_rho                    : poacher::Token<gr_rho>                   {};
+//o struct gr_sigma                  : poacher::Token<gr_sigma>                 {};
+//o struct gr_Sigma                  : poacher::Token<gr_Sigma>                 {};
+//o struct gr_tau                    : poacher::Token<gr_tau>                   {};
+//o struct gr_upsilon                : poacher::Token<gr_upsilon>               {};
+//o struct gr_phi                    : poacher::Token<gr_phi>                   {};
+//o struct gr_Phi                    : poacher::Token<gr_Phi>                   {};
+//o struct gr_varphi                 : poacher::Token<gr_varphi>                {};
+//o struct gr_chi                    : poacher::Token<gr_chi>                   {};
+//o struct gr_psi                    : poacher::Token<gr_psi>                   {};
+//o struct gr_Psi                    : poacher::Token<gr_Psi>                   {};
+//o struct gr_omega                  : poacher::Token<gr_omega>                 {};
+//o struct gr_Omega                  : poacher::Token<gr_Omega>                 {};
 
 struct ft_bb                     : poacher::Token<ft_bb>                    {};
 struct ft_bbb                    : poacher::Token<ft_bbb>                   {};
@@ -431,35 +435,36 @@ struct ft_cc                     : poacher::Token<ft_cc>                    {};
 struct ft_tt                     : poacher::Token<ft_tt>                    {};
 struct ft_fr                     : poacher::Token<ft_fr>                    {};
 struct ft_sf                     : poacher::Token<ft_sf>                    {};
-struct fun_sin                   : poacher::Token<fun_sin>                  {};
-struct fun_cos                   : poacher::Token<fun_cos>                  {};
-struct fun_tan                   : poacher::Token<fun_tan>                  {};
-struct fun_sec                   : poacher::Token<fun_sec>                  {};
-struct fun_csc                   : poacher::Token<fun_csc>                  {};
-struct fun_cot                   : poacher::Token<fun_cot>                  {};
-struct fun_arcsin                : poacher::Token<fun_arcsin>               {};
-struct fun_arccos                : poacher::Token<fun_arccos>               {};
-struct fun_arctan                : poacher::Token<fun_arctan>               {};
-struct fun_sinh                  : poacher::Token<fun_sinh>                 {};
-struct fun_cosh                  : poacher::Token<fun_cosh>                 {};
-struct fun_tanh                  : poacher::Token<fun_tanh>                 {};
-struct fun_sech                  : poacher::Token<fun_sech>                 {};
-struct fun_csch                  : poacher::Token<fun_csch>                 {};
-struct fun_coth                  : poacher::Token<fun_coth>                 {};
-struct fun_exp                   : poacher::Token<fun_exp>                  {};
-struct fun_log                   : poacher::Token<fun_log>                  {};
-struct fun_ln                    : poacher::Token<fun_ln>                   {};
-struct fun_det                   : poacher::Token<fun_det>                  {};
-struct fun_dim                   : poacher::Token<fun_dim>                  {};
-struct fun_mod                   : poacher::Token<fun_mod>                  {};
-struct fun_gcd                   : poacher::Token<fun_gcd>                  {};
-struct fun_lcm                   : poacher::Token<fun_lcm>                  {};
-struct fun_lub                   : poacher::Token<fun_lub>                  {};
-struct fun_glb                   : poacher::Token<fun_glb>                  {};
-struct fun_min                   : poacher::Token<fun_min>                  {};
-struct fun_max                   : poacher::Token<fun_max>                  {};
-struct fun_f                     : poacher::Token<fun_f>                    {};
-struct fun_g                     : poacher::Token<fun_g>                    {};
+
+//o struct fun_sin                   : poacher::Token<fun_sin>                  {};
+//o struct fun_cos                   : poacher::Token<fun_cos>                  {};
+//o struct fun_tan                   : poacher::Token<fun_tan>                  {};
+//o struct fun_sec                   : poacher::Token<fun_sec>                  {};
+//o struct fun_csc                   : poacher::Token<fun_csc>                  {};
+//o struct fun_cot                   : poacher::Token<fun_cot>                  {};
+//o struct fun_arcsin                : poacher::Token<fun_arcsin>               {};
+//o struct fun_arccos                : poacher::Token<fun_arccos>               {};
+//o struct fun_arctan                : poacher::Token<fun_arctan>               {};
+//o struct fun_sinh                  : poacher::Token<fun_sinh>                 {};
+//o struct fun_cosh                  : poacher::Token<fun_cosh>                 {};
+//o struct fun_tanh                  : poacher::Token<fun_tanh>                 {};
+//o struct fun_sech                  : poacher::Token<fun_sech>                 {};
+//o struct fun_csch                  : poacher::Token<fun_csch>                 {};
+//o struct fun_coth                  : poacher::Token<fun_coth>                 {};
+//o struct fun_exp                   : poacher::Token<fun_exp>                  {};
+//o struct fun_log                   : poacher::Token<fun_log>                  {};
+//o struct fun_ln                    : poacher::Token<fun_ln>                   {};
+//o struct fun_det                   : poacher::Token<fun_det>                  {};
+//o struct fun_dim                   : poacher::Token<fun_dim>                  {};
+//o struct fun_mod                   : poacher::Token<fun_mod>                  {};
+//o struct fun_gcd                   : poacher::Token<fun_gcd>                  {};
+//o struct fun_lcm                   : poacher::Token<fun_lcm>                  {};
+//o struct fun_lub                   : poacher::Token<fun_lub>                  {};
+//o struct fun_glb                   : poacher::Token<fun_glb>                  {};
+//o struct fun_min                   : poacher::Token<fun_min>                  {};
+//o struct fun_max                   : poacher::Token<fun_max>                  {};
+//o struct fun_f                     : poacher::Token<fun_f>                    {};
+//o struct fun_g                     : poacher::Token<fun_g>                    {};
 
 struct spe_number                : poacher::Token<spe_number>               {};
 struct spe_ident                 : poacher::Token<spe_ident>                {};
@@ -530,26 +535,26 @@ constexpr auto get_sym_token( tokens::misc_Q )                    { return poach
 constexpr auto get_sym_token( tokens::misc_R )                    { return poacher::ct_string( "RR" ); }
 constexpr auto get_sym_token( tokens::misc_Z )                    { return poacher::ct_string( "ZZ" ); }
 
-constexpr auto get_sym_token( tokens::rel_eq )                    { return poacher::ct_string( "=" ); }
-constexpr auto get_sym_token( tokens::rel_ne )                    { return poacher::ct_string( "!=" ); }
-constexpr auto get_sym_token( tokens::rel_lt )                    { return poacher::ct_string( "<" ); }
-constexpr auto get_sym_token( tokens::rel_gt )                    { return poacher::ct_string( ">" ); }
-constexpr auto get_sym_token( tokens::rel_le )                    { return poacher::ct_string( "<=" ); }
-constexpr auto get_sym_token( tokens::rel_ge )                    { return poacher::ct_string( ">=" ); }
-constexpr auto get_sym_token( tokens::rel_prec )                  { return poacher::ct_string( "-<" ); }
-constexpr auto get_sym_token( tokens::rel_preceq )                { return poacher::ct_string( "-<=" ); }
-constexpr auto get_sym_token( tokens::rel_succ )                  { return poacher::ct_string( ">-" ); }
-constexpr auto get_sym_token( tokens::rel_succeq )                { return poacher::ct_string( ">-=" ); }
-constexpr auto get_sym_token( tokens::rel_in )                    { return poacher::ct_string( "in" ); }
-constexpr auto get_sym_token( tokens::rel_notin )                 { return poacher::ct_string( "!in" ); }
-constexpr auto get_sym_token( tokens::rel_subset )                { return poacher::ct_string( "sub" ); }
-constexpr auto get_sym_token( tokens::rel_supset )                { return poacher::ct_string( "sup" ); }
-constexpr auto get_sym_token( tokens::rel_subseteq )              { return poacher::ct_string( "sube" ); }
-constexpr auto get_sym_token( tokens::rel_supseteq )              { return poacher::ct_string( "supe" ); }
-constexpr auto get_sym_token( tokens::rel_equiv )                 { return poacher::ct_string( "-=" ); }
-constexpr auto get_sym_token( tokens::rel_cong )                  { return poacher::ct_string( "~=" ); }
-constexpr auto get_sym_token( tokens::rel_approx )                { return poacher::ct_string( "~~" ); }
-constexpr auto get_sym_token( tokens::rel_propto )                { return poacher::ct_string( "prop" ); }
+//o constexpr auto get_sym_token( tokens::rel_eq )                    { return poacher::ct_string( "=" ); }
+//o constexpr auto get_sym_token( tokens::rel_ne )                    { return poacher::ct_string( "!=" ); }
+//o constexpr auto get_sym_token( tokens::rel_lt )                    { return poacher::ct_string( "<" ); }
+//o constexpr auto get_sym_token( tokens::rel_gt )                    { return poacher::ct_string( ">" ); }
+//o constexpr auto get_sym_token( tokens::rel_le )                    { return poacher::ct_string( "<=" ); }
+//o constexpr auto get_sym_token( tokens::rel_ge )                    { return poacher::ct_string( ">=" ); }
+//o constexpr auto get_sym_token( tokens::rel_prec )                  { return poacher::ct_string( "-<" ); }
+//o constexpr auto get_sym_token( tokens::rel_preceq )                { return poacher::ct_string( "-<=" ); }
+//o constexpr auto get_sym_token( tokens::rel_succ )                  { return poacher::ct_string( ">-" ); }
+//o constexpr auto get_sym_token( tokens::rel_succeq )                { return poacher::ct_string( ">-=" ); }
+//o constexpr auto get_sym_token( tokens::rel_in )                    { return poacher::ct_string( "in" ); }
+//o constexpr auto get_sym_token( tokens::rel_notin )                 { return poacher::ct_string( "!in" ); }
+//o constexpr auto get_sym_token( tokens::rel_subset )                { return poacher::ct_string( "sub" ); }
+//o constexpr auto get_sym_token( tokens::rel_supset )                { return poacher::ct_string( "sup" ); }
+//o constexpr auto get_sym_token( tokens::rel_subseteq )              { return poacher::ct_string( "sube" ); }
+//o constexpr auto get_sym_token( tokens::rel_supseteq )              { return poacher::ct_string( "supe" ); }
+//o constexpr auto get_sym_token( tokens::rel_equiv )                 { return poacher::ct_string( "-=" ); }
+//o constexpr auto get_sym_token( tokens::rel_cong )                  { return poacher::ct_string( "~=" ); }
+//o constexpr auto get_sym_token( tokens::rel_approx )                { return poacher::ct_string( "~~" ); }
+//o constexpr auto get_sym_token( tokens::rel_propto )                { return poacher::ct_string( "prop" ); }
 
 constexpr auto get_sym_token( tokens::logic_and )                 { return poacher::ct_string( "and" ); }
 constexpr auto get_sym_token( tokens::logic_or )                  { return poacher::ct_string( "or" ); }
@@ -581,69 +586,69 @@ constexpr auto get_sym_token( tokens::grp_floor )                 { return poach
 constexpr auto get_sym_token( tokens::grp_ceil )                  { return poacher::ct_string( "ceil" ); }
 constexpr auto get_sym_token( tokens::grp_norm )                  { return poacher::ct_string( "norm" ); }
 
-constexpr auto get_sym_token( tokens::arr_uparrow )               { return poacher::ct_string( "uarr" ); }
-constexpr auto get_sym_token( tokens::arr_downarrow )             { return poacher::ct_string( "darr" ); }
-constexpr auto get_sym_token( tokens::arr_rightarrow )            { return poacher::ct_string( "rarr" ); }
-constexpr auto get_sym_token( tokens::arr_to )                    { return poacher::ct_string( "->" ); }
-constexpr auto get_sym_token( tokens::arr_rightarrowtail )        { return poacher::ct_string( ">->" ); }
-constexpr auto get_sym_token( tokens::arr_twoheadrightarrow )     { return poacher::ct_string( "->>" ); }
-constexpr auto get_sym_token( tokens::arr_twoheadrightarrowtail ) { return poacher::ct_string( ">->>" ); }
-constexpr auto get_sym_token( tokens::arr_mapsto )                { return poacher::ct_string( "|->" ); }
-constexpr auto get_sym_token( tokens::arr_leftarrow )             { return poacher::ct_string( "larr" ); }
-constexpr auto get_sym_token( tokens::arr_leftrightarrow )        { return poacher::ct_string( "harr" ); }
-constexpr auto get_sym_token( tokens::arr_Rightarrow )            { return poacher::ct_string( "rArr" ); }
-constexpr auto get_sym_token( tokens::arr_Leftarrow )             { return poacher::ct_string( "lArr" ); }
-constexpr auto get_sym_token( tokens::arr_Leftrightarrow )        { return poacher::ct_string( "hArr" ); }
+//o constexpr auto get_sym_token( tokens::arr_uparrow )               { return poacher::ct_string( "uarr" ); }
+//o constexpr auto get_sym_token( tokens::arr_downarrow )             { return poacher::ct_string( "darr" ); }
+//o constexpr auto get_sym_token( tokens::arr_rightarrow )            { return poacher::ct_string( "rarr" ); }
+//o constexpr auto get_sym_token( tokens::arr_to )                    { return poacher::ct_string( "->" ); }
+//o constexpr auto get_sym_token( tokens::arr_rightarrowtail )        { return poacher::ct_string( ">->" ); }
+//o constexpr auto get_sym_token( tokens::arr_twoheadrightarrow )     { return poacher::ct_string( "->>" ); }
+//o constexpr auto get_sym_token( tokens::arr_twoheadrightarrowtail ) { return poacher::ct_string( ">->>" ); }
+//o constexpr auto get_sym_token( tokens::arr_mapsto )                { return poacher::ct_string( "|->" ); }
+//o constexpr auto get_sym_token( tokens::arr_leftarrow )             { return poacher::ct_string( "larr" ); }
+//o constexpr auto get_sym_token( tokens::arr_leftrightarrow )        { return poacher::ct_string( "harr" ); }
+//o constexpr auto get_sym_token( tokens::arr_Rightarrow )            { return poacher::ct_string( "rArr" ); }
+//o constexpr auto get_sym_token( tokens::arr_Leftarrow )             { return poacher::ct_string( "lArr" ); }
+//o constexpr auto get_sym_token( tokens::arr_Leftrightarrow )        { return poacher::ct_string( "hArr" ); }
 
-constexpr auto get_sym_token( tokens::acc_hat )                   { return poacher::ct_string( "hat" ); }
-constexpr auto get_sym_token( tokens::acc_bar )                   { return poacher::ct_string( "bar" ); }
-constexpr auto get_sym_token( tokens::acc_ul )                    { return poacher::ct_string( "ul" ); }
-constexpr auto get_sym_token( tokens::acc_vec )                   { return poacher::ct_string( "vec" ); }
-constexpr auto get_sym_token( tokens::acc_dot )                   { return poacher::ct_string( "dot" ); }
-constexpr auto get_sym_token( tokens::acc_ddot )                  { return poacher::ct_string( "ddot" ); }
-constexpr auto get_sym_token( tokens::acc_overset )               { return poacher::ct_string( "overset" ); }
-constexpr auto get_sym_token( tokens::acc_underset )              { return poacher::ct_string( "underset" ); }
-constexpr auto get_sym_token( tokens::acc_ubrace )                { return poacher::ct_string( "ubrace" ); }
-constexpr auto get_sym_token( tokens::acc_obrace )                { return poacher::ct_string( "obrace" ); }
-constexpr auto get_sym_token( tokens::acc_color )                 { return poacher::ct_string( "color" ); }
-constexpr auto get_sym_token( tokens::acc_cancel )                { return poacher::ct_string( "cancel" ); }
+//o constexpr auto get_sym_token( tokens::acc_hat )                   { return poacher::ct_string( "hat" ); }
+//o constexpr auto get_sym_token( tokens::acc_bar )                   { return poacher::ct_string( "bar" ); }
+//o constexpr auto get_sym_token( tokens::acc_ul )                    { return poacher::ct_string( "ul" ); }
+//o constexpr auto get_sym_token( tokens::acc_vec )                   { return poacher::ct_string( "vec" ); }
+//o constexpr auto get_sym_token( tokens::acc_dot )                   { return poacher::ct_string( "dot" ); }
+//o constexpr auto get_sym_token( tokens::acc_ddot )                  { return poacher::ct_string( "ddot" ); }
+//o constexpr auto get_sym_token( tokens::acc_overset )               { return poacher::ct_string( "overset" ); }
+//o constexpr auto get_sym_token( tokens::acc_underset )              { return poacher::ct_string( "underset" ); }
+//o constexpr auto get_sym_token( tokens::acc_ubrace )                { return poacher::ct_string( "ubrace" ); }
+//o constexpr auto get_sym_token( tokens::acc_obrace )                { return poacher::ct_string( "obrace" ); }
+//o constexpr auto get_sym_token( tokens::acc_color )                 { return poacher::ct_string( "color" ); }
+//o constexpr auto get_sym_token( tokens::acc_cancel )                { return poacher::ct_string( "cancel" ); }
 
-constexpr auto get_sym_token( tokens::gr_alpha )                  { return poacher::ct_string( "alpha" ); }
-constexpr auto get_sym_token( tokens::gr_beta )                   { return poacher::ct_string( "beta" ); }
-constexpr auto get_sym_token( tokens::gr_gamma )                  { return poacher::ct_string( "gamma" ); }
-constexpr auto get_sym_token( tokens::gr_Gamma )                  { return poacher::ct_string( "Gamma" ); }
-constexpr auto get_sym_token( tokens::gr_delta )                  { return poacher::ct_string( "delta" ); }
-constexpr auto get_sym_token( tokens::gr_Delta )                  { return poacher::ct_string( "Delta" ); }
-constexpr auto get_sym_token( tokens::gr_epsilon )                { return poacher::ct_string( "epsilon" ); }
-constexpr auto get_sym_token( tokens::gr_varepsilon )             { return poacher::ct_string( "varepsilon" ); }
-constexpr auto get_sym_token( tokens::gr_zeta )                   { return poacher::ct_string( "zeta" ); }
-constexpr auto get_sym_token( tokens::gr_eta )                    { return poacher::ct_string( "eta" ); }
-constexpr auto get_sym_token( tokens::gr_theta )                  { return poacher::ct_string( "theta" ); }
-constexpr auto get_sym_token( tokens::gr_Theta )                  { return poacher::ct_string( "Theta" ); }
-constexpr auto get_sym_token( tokens::gr_vartheta )               { return poacher::ct_string( "vartheta" ); }
-constexpr auto get_sym_token( tokens::gr_iota )                   { return poacher::ct_string( "iota" ); }
-constexpr auto get_sym_token( tokens::gr_kappa )                  { return poacher::ct_string( "kappa" ); }
-constexpr auto get_sym_token( tokens::gr_lambda )                 { return poacher::ct_string( "lambda" ); }
-constexpr auto get_sym_token( tokens::gr_Lambda )                 { return poacher::ct_string( "Lambda" ); }
-constexpr auto get_sym_token( tokens::gr_mu )                     { return poacher::ct_string( "mu" ); }
-constexpr auto get_sym_token( tokens::gr_nu )                     { return poacher::ct_string( "nu" ); }
-constexpr auto get_sym_token( tokens::gr_xi )                     { return poacher::ct_string( "xi" ); }
-constexpr auto get_sym_token( tokens::gr_Xi )                     { return poacher::ct_string( "Xi" ); }
-constexpr auto get_sym_token( tokens::gr_pi )                     { return poacher::ct_string( "pi" ); }
-constexpr auto get_sym_token( tokens::gr_Pi )                     { return poacher::ct_string( "Pi" ); }
-constexpr auto get_sym_token( tokens::gr_rho )                    { return poacher::ct_string( "rho" ); }
-constexpr auto get_sym_token( tokens::gr_sigma )                  { return poacher::ct_string( "sigma" ); }
-constexpr auto get_sym_token( tokens::gr_Sigma )                  { return poacher::ct_string( "Sigma" ); }
-constexpr auto get_sym_token( tokens::gr_tau )                    { return poacher::ct_string( "tau" ); }
-constexpr auto get_sym_token( tokens::gr_upsilon )                { return poacher::ct_string( "upsilon" ); }
-constexpr auto get_sym_token( tokens::gr_phi )                    { return poacher::ct_string( "phi" ); }
-constexpr auto get_sym_token( tokens::gr_Phi )                    { return poacher::ct_string( "Phi" ); }
-constexpr auto get_sym_token( tokens::gr_varphi )                 { return poacher::ct_string( "varphi" ); }
-constexpr auto get_sym_token( tokens::gr_chi )                    { return poacher::ct_string( "chi" ); }
-constexpr auto get_sym_token( tokens::gr_psi )                    { return poacher::ct_string( "psi" ); }
-constexpr auto get_sym_token( tokens::gr_Psi )                    { return poacher::ct_string( "Psi" ); }
-constexpr auto get_sym_token( tokens::gr_omega )                  { return poacher::ct_string( "omega" ); }
-constexpr auto get_sym_token( tokens::gr_Omega )                  { return poacher::ct_string( "Omega" ); }
+//o constexpr auto get_sym_token( tokens::gr_alpha )                  { return poacher::ct_string( "alpha" ); }
+//o constexpr auto get_sym_token( tokens::gr_beta )                   { return poacher::ct_string( "beta" ); }
+//o constexpr auto get_sym_token( tokens::gr_gamma )                  { return poacher::ct_string( "gamma" ); }
+//o constexpr auto get_sym_token( tokens::gr_Gamma )                  { return poacher::ct_string( "Gamma" ); }
+//o constexpr auto get_sym_token( tokens::gr_delta )                  { return poacher::ct_string( "delta" ); }
+//o constexpr auto get_sym_token( tokens::gr_Delta )                  { return poacher::ct_string( "Delta" ); }
+//o constexpr auto get_sym_token( tokens::gr_epsilon )                { return poacher::ct_string( "epsilon" ); }
+//o constexpr auto get_sym_token( tokens::gr_varepsilon )             { return poacher::ct_string( "varepsilon" ); }
+//o constexpr auto get_sym_token( tokens::gr_zeta )                   { return poacher::ct_string( "zeta" ); }
+//o constexpr auto get_sym_token( tokens::gr_eta )                    { return poacher::ct_string( "eta" ); }
+//o constexpr auto get_sym_token( tokens::gr_theta )                  { return poacher::ct_string( "theta" ); }
+//o constexpr auto get_sym_token( tokens::gr_Theta )                  { return poacher::ct_string( "Theta" ); }
+//o constexpr auto get_sym_token( tokens::gr_vartheta )               { return poacher::ct_string( "vartheta" ); }
+//o constexpr auto get_sym_token( tokens::gr_iota )                   { return poacher::ct_string( "iota" ); }
+//o constexpr auto get_sym_token( tokens::gr_kappa )                  { return poacher::ct_string( "kappa" ); }
+//o constexpr auto get_sym_token( tokens::gr_lambda )                 { return poacher::ct_string( "lambda" ); }
+//o constexpr auto get_sym_token( tokens::gr_Lambda )                 { return poacher::ct_string( "Lambda" ); }
+//o constexpr auto get_sym_token( tokens::gr_mu )                     { return poacher::ct_string( "mu" ); }
+//o constexpr auto get_sym_token( tokens::gr_nu )                     { return poacher::ct_string( "nu" ); }
+//o constexpr auto get_sym_token( tokens::gr_xi )                     { return poacher::ct_string( "xi" ); }
+//o constexpr auto get_sym_token( tokens::gr_Xi )                     { return poacher::ct_string( "Xi" ); }
+//o constexpr auto get_sym_token( tokens::gr_pi )                     { return poacher::ct_string( "pi" ); }
+//o constexpr auto get_sym_token( tokens::gr_Pi )                     { return poacher::ct_string( "Pi" ); }
+//o constexpr auto get_sym_token( tokens::gr_rho )                    { return poacher::ct_string( "rho" ); }
+//o constexpr auto get_sym_token( tokens::gr_sigma )                  { return poacher::ct_string( "sigma" ); }
+//o constexpr auto get_sym_token( tokens::gr_Sigma )                  { return poacher::ct_string( "Sigma" ); }
+//o constexpr auto get_sym_token( tokens::gr_tau )                    { return poacher::ct_string( "tau" ); }
+//o constexpr auto get_sym_token( tokens::gr_upsilon )                { return poacher::ct_string( "upsilon" ); }
+//o constexpr auto get_sym_token( tokens::gr_phi )                    { return poacher::ct_string( "phi" ); }
+//o constexpr auto get_sym_token( tokens::gr_Phi )                    { return poacher::ct_string( "Phi" ); }
+//o constexpr auto get_sym_token( tokens::gr_varphi )                 { return poacher::ct_string( "varphi" ); }
+//o constexpr auto get_sym_token( tokens::gr_chi )                    { return poacher::ct_string( "chi" ); }
+//o constexpr auto get_sym_token( tokens::gr_psi )                    { return poacher::ct_string( "psi" ); }
+//o constexpr auto get_sym_token( tokens::gr_Psi )                    { return poacher::ct_string( "Psi" ); }
+//o constexpr auto get_sym_token( tokens::gr_omega )                  { return poacher::ct_string( "omega" ); }
+//o constexpr auto get_sym_token( tokens::gr_Omega )                  { return poacher::ct_string( "Omega" ); }
 
 constexpr auto get_sym_token( tokens::ft_bb )                     { return poacher::ct_string( "bb" ); }
 constexpr auto get_sym_token( tokens::ft_bbb )                    { return poacher::ct_string( "bbb" ); }
@@ -652,35 +657,35 @@ constexpr auto get_sym_token( tokens::ft_tt )                     { return poach
 constexpr auto get_sym_token( tokens::ft_fr )                     { return poacher::ct_string( "fr" ); }
 constexpr auto get_sym_token( tokens::ft_sf )                     { return poacher::ct_string( "sf" ); }
 
-constexpr auto get_sym_token( tokens::fun_sin )                   { return poacher::ct_string( "sin" ); }
-constexpr auto get_sym_token( tokens::fun_cos )                   { return poacher::ct_string( "cos" ); }
-constexpr auto get_sym_token( tokens::fun_tan )                   { return poacher::ct_string( "tan" ); }
-constexpr auto get_sym_token( tokens::fun_sec )                   { return poacher::ct_string( "sec" ); }
-constexpr auto get_sym_token( tokens::fun_csc )                   { return poacher::ct_string( "csc" ); }
-constexpr auto get_sym_token( tokens::fun_cot )                   { return poacher::ct_string( "cot" ); }
-constexpr auto get_sym_token( tokens::fun_arcsin )                { return poacher::ct_string( "arcsin" ); }
-constexpr auto get_sym_token( tokens::fun_arccos )                { return poacher::ct_string( "arccos" ); }
-constexpr auto get_sym_token( tokens::fun_arctan )                { return poacher::ct_string( "arctan" ); }
-constexpr auto get_sym_token( tokens::fun_sinh )                  { return poacher::ct_string( "sinh" ); }
-constexpr auto get_sym_token( tokens::fun_cosh )                  { return poacher::ct_string( "cosh" ); }
-constexpr auto get_sym_token( tokens::fun_tanh )                  { return poacher::ct_string( "tanh" ); }
-constexpr auto get_sym_token( tokens::fun_sech )                  { return poacher::ct_string( "sech" ); }
-constexpr auto get_sym_token( tokens::fun_csch )                  { return poacher::ct_string( "csch" ); }
-constexpr auto get_sym_token( tokens::fun_coth )                  { return poacher::ct_string( "coth" ); }
-constexpr auto get_sym_token( tokens::fun_exp )                   { return poacher::ct_string( "exp" ); }
-constexpr auto get_sym_token( tokens::fun_log )                   { return poacher::ct_string( "log" ); }
-constexpr auto get_sym_token( tokens::fun_ln )                    { return poacher::ct_string( "ln" ); }
-constexpr auto get_sym_token( tokens::fun_det )                   { return poacher::ct_string( "det" ); }
-constexpr auto get_sym_token( tokens::fun_dim )                   { return poacher::ct_string( "dim" ); }
-constexpr auto get_sym_token( tokens::fun_mod )                   { return poacher::ct_string( "mod" ); }
-constexpr auto get_sym_token( tokens::fun_gcd )                   { return poacher::ct_string( "gcd" ); }
-constexpr auto get_sym_token( tokens::fun_lcm )                   { return poacher::ct_string( "lcm" ); }
-constexpr auto get_sym_token( tokens::fun_lub )                   { return poacher::ct_string( "lub" ); }
-constexpr auto get_sym_token( tokens::fun_glb )                   { return poacher::ct_string( "glb" ); }
-constexpr auto get_sym_token( tokens::fun_min )                   { return poacher::ct_string( "min" ); }
-constexpr auto get_sym_token( tokens::fun_max )                   { return poacher::ct_string( "max" ); }
-constexpr auto get_sym_token( tokens::fun_f )                     { return poacher::ct_string( "f" ); }
-constexpr auto get_sym_token( tokens::fun_g )                     { return poacher::ct_string( "g" ); }
+//o constexpr auto get_sym_token( tokens::fun_sin )                   { return poacher::ct_string( "sin" ); }
+//o constexpr auto get_sym_token( tokens::fun_cos )                   { return poacher::ct_string( "cos" ); }
+//o constexpr auto get_sym_token( tokens::fun_tan )                   { return poacher::ct_string( "tan" ); }
+//o constexpr auto get_sym_token( tokens::fun_sec )                   { return poacher::ct_string( "sec" ); }
+//o constexpr auto get_sym_token( tokens::fun_csc )                   { return poacher::ct_string( "csc" ); }
+//o constexpr auto get_sym_token( tokens::fun_cot )                   { return poacher::ct_string( "cot" ); }
+//o constexpr auto get_sym_token( tokens::fun_arcsin )                { return poacher::ct_string( "arcsin" ); }
+//o constexpr auto get_sym_token( tokens::fun_arccos )                { return poacher::ct_string( "arccos" ); }
+//o constexpr auto get_sym_token( tokens::fun_arctan )                { return poacher::ct_string( "arctan" ); }
+//o constexpr auto get_sym_token( tokens::fun_sinh )                  { return poacher::ct_string( "sinh" ); }
+//o constexpr auto get_sym_token( tokens::fun_cosh )                  { return poacher::ct_string( "cosh" ); }
+//o constexpr auto get_sym_token( tokens::fun_tanh )                  { return poacher::ct_string( "tanh" ); }
+//o constexpr auto get_sym_token( tokens::fun_sech )                  { return poacher::ct_string( "sech" ); }
+//o constexpr auto get_sym_token( tokens::fun_csch )                  { return poacher::ct_string( "csch" ); }
+//o constexpr auto get_sym_token( tokens::fun_coth )                  { return poacher::ct_string( "coth" ); }
+//o constexpr auto get_sym_token( tokens::fun_exp )                   { return poacher::ct_string( "exp" ); }
+//o constexpr auto get_sym_token( tokens::fun_log )                   { return poacher::ct_string( "log" ); }
+//o constexpr auto get_sym_token( tokens::fun_ln )                    { return poacher::ct_string( "ln" ); }
+//o constexpr auto get_sym_token( tokens::fun_det )                   { return poacher::ct_string( "det" ); }
+//o constexpr auto get_sym_token( tokens::fun_dim )                   { return poacher::ct_string( "dim" ); }
+//o constexpr auto get_sym_token( tokens::fun_mod )                   { return poacher::ct_string( "mod" ); }
+//o constexpr auto get_sym_token( tokens::fun_gcd )                   { return poacher::ct_string( "gcd" ); }
+//o constexpr auto get_sym_token( tokens::fun_lcm )                   { return poacher::ct_string( "lcm" ); }
+//o constexpr auto get_sym_token( tokens::fun_lub )                   { return poacher::ct_string( "lub" ); }
+//o constexpr auto get_sym_token( tokens::fun_glb )                   { return poacher::ct_string( "glb" ); }
+//o constexpr auto get_sym_token( tokens::fun_min )                   { return poacher::ct_string( "min" ); }
+//o constexpr auto get_sym_token( tokens::fun_max )                   { return poacher::ct_string( "max" ); }
+//o constexpr auto get_sym_token( tokens::fun_f )                     { return poacher::ct_string( "f" ); }
+//o constexpr auto get_sym_token( tokens::fun_g )                     { return poacher::ct_string( "g" ); }
 
 constexpr auto get_sym_token( tokens::spe_number )                { return poacher::ct_string( "." ); }
 constexpr auto get_sym_token( tokens::spe_ident )                 { return poacher::ct_string( "." ); }
@@ -753,26 +758,26 @@ using token_type_list = poacher::token_type_list
    , tokens::misc_R
    , tokens::misc_Z
 
-   , tokens::rel_eq
-   , tokens::rel_ne
-   , tokens::rel_lt
-   , tokens::rel_gt
-   , tokens::rel_le
-   , tokens::rel_ge
-   , tokens::rel_prec
-   , tokens::rel_preceq
-   , tokens::rel_succ
-   , tokens::rel_succeq
-   , tokens::rel_in
-   , tokens::rel_notin
-   , tokens::rel_subset
-   , tokens::rel_supset
-   , tokens::rel_subseteq
-   , tokens::rel_supseteq
-   , tokens::rel_equiv
-   , tokens::rel_cong
-   , tokens::rel_approx
-   , tokens::rel_propto
+   //o , tokens::rel_eq
+   //o , tokens::rel_ne
+   //o , tokens::rel_lt
+   //o , tokens::rel_gt
+   //o , tokens::rel_le
+   //o , tokens::rel_ge
+   //o , tokens::rel_prec
+   //o , tokens::rel_preceq
+   //o , tokens::rel_succ
+   //o , tokens::rel_succeq
+   //o , tokens::rel_in
+   //o , tokens::rel_notin
+   //o , tokens::rel_subset
+   //o , tokens::rel_supset
+   //o , tokens::rel_subseteq
+   //o , tokens::rel_supseteq
+   //o , tokens::rel_equiv
+   //o , tokens::rel_cong
+   //o , tokens::rel_approx
+   //o , tokens::rel_propto
 
    , tokens::logic_and
    , tokens::logic_or
@@ -804,69 +809,69 @@ using token_type_list = poacher::token_type_list
    , tokens::grp_ceil
    , tokens::grp_norm
 
-   , tokens::arr_uparrow
-   , tokens::arr_downarrow
-   , tokens::arr_rightarrow
-   , tokens::arr_to
-   , tokens::arr_rightarrowtail
-   , tokens::arr_twoheadrightarrow
-   , tokens::arr_twoheadrightarrowtail
-   , tokens::arr_mapsto
-   , tokens::arr_leftarrow
-   , tokens::arr_leftrightarrow
-   , tokens::arr_Rightarrow
-   , tokens::arr_Leftarrow
-   , tokens::arr_Leftrightarrow
+   //o , tokens::arr_uparrow
+   //o , tokens::arr_downarrow
+   //o , tokens::arr_rightarrow
+   //o , tokens::arr_to
+   //o , tokens::arr_rightarrowtail
+   //o , tokens::arr_twoheadrightarrow
+   //o , tokens::arr_twoheadrightarrowtail
+   //o , tokens::arr_mapsto
+   //o , tokens::arr_leftarrow
+   //o , tokens::arr_leftrightarrow
+   //o , tokens::arr_Rightarrow
+   //o , tokens::arr_Leftarrow
+   //o , tokens::arr_Leftrightarrow
 
-   , tokens::acc_hat
-   , tokens::acc_bar
-   , tokens::acc_ul
-   , tokens::acc_vec
-   , tokens::acc_dot
-   , tokens::acc_ddot
-   , tokens::acc_overset
-   , tokens::acc_underset
-   , tokens::acc_ubrace
-   , tokens::acc_obrace
-   , tokens::acc_color
-   , tokens::acc_cancel
+   //o , tokens::acc_hat
+   //o , tokens::acc_bar
+   //o , tokens::acc_ul
+   //o , tokens::acc_vec
+   //o , tokens::acc_dot
+   //o , tokens::acc_ddot
+   //o , tokens::acc_overset
+   //o , tokens::acc_underset
+   //o , tokens::acc_ubrace
+   //o , tokens::acc_obrace
+   //o , tokens::acc_color
+   //o , tokens::acc_cancel
 
-   , tokens::gr_alpha
-   , tokens::gr_beta
-   , tokens::gr_gamma
-   , tokens::gr_Gamma
-   , tokens::gr_delta
-   , tokens::gr_Delta
-   , tokens::gr_epsilon
-   , tokens::gr_varepsilon
-   , tokens::gr_zeta
-   , tokens::gr_eta
-   , tokens::gr_theta
-   , tokens::gr_Theta
-   , tokens::gr_vartheta
-   , tokens::gr_iota
-   , tokens::gr_kappa
-   , tokens::gr_lambda
-   , tokens::gr_Lambda
-   , tokens::gr_mu
-   , tokens::gr_nu
-   , tokens::gr_xi
-   , tokens::gr_Xi
-   , tokens::gr_pi
-   , tokens::gr_Pi
-   , tokens::gr_rho
-   , tokens::gr_sigma
-   , tokens::gr_Sigma
-   , tokens::gr_tau
-   , tokens::gr_upsilon
-   , tokens::gr_phi
-   , tokens::gr_Phi
-   , tokens::gr_varphi
-   , tokens::gr_chi
-   , tokens::gr_psi
-   , tokens::gr_Psi
-   , tokens::gr_omega
-   , tokens::gr_Omega
+   //o , tokens::gr_alpha
+   //o , tokens::gr_beta
+   //o , tokens::gr_gamma
+   //o , tokens::gr_Gamma
+   //o , tokens::gr_delta
+   //o , tokens::gr_Delta
+   //o , tokens::gr_epsilon
+   //o , tokens::gr_varepsilon
+   //o , tokens::gr_zeta
+   //o , tokens::gr_eta
+   //o , tokens::gr_theta
+   //o , tokens::gr_Theta
+   //o , tokens::gr_vartheta
+   //o , tokens::gr_iota
+   //o , tokens::gr_kappa
+   //o , tokens::gr_lambda
+   //o , tokens::gr_Lambda
+   //o , tokens::gr_mu
+   //o , tokens::gr_nu
+   //o , tokens::gr_xi
+   //o , tokens::gr_Xi
+   //o , tokens::gr_pi
+   //o , tokens::gr_Pi
+   //o , tokens::gr_rho
+   //o , tokens::gr_sigma
+   //o , tokens::gr_Sigma
+   //o , tokens::gr_tau
+   //o , tokens::gr_upsilon
+   //o , tokens::gr_phi
+   //o , tokens::gr_Phi
+   //o , tokens::gr_varphi
+   //o , tokens::gr_chi
+   //o , tokens::gr_psi
+   //o , tokens::gr_Psi
+   //o , tokens::gr_omega
+   //o , tokens::gr_Omega
 
    , tokens::ft_bb
    , tokens::ft_bbb
@@ -875,35 +880,35 @@ using token_type_list = poacher::token_type_list
    , tokens::ft_fr
    , tokens::ft_sf
 
-   , tokens::fun_sin
-   , tokens::fun_cos
-   , tokens::fun_tan
-   , tokens::fun_sec
-   , tokens::fun_csc
-   , tokens::fun_cot
-   , tokens::fun_arcsin
-   , tokens::fun_arccos
-   , tokens::fun_arctan
-   , tokens::fun_sinh
-   , tokens::fun_cosh
-   , tokens::fun_tanh
-   , tokens::fun_sech
-   , tokens::fun_csch
-   , tokens::fun_coth
-   , tokens::fun_exp
-   , tokens::fun_log
-   , tokens::fun_ln
-   , tokens::fun_det
-   , tokens::fun_dim
-   , tokens::fun_mod
-   , tokens::fun_gcd
-   , tokens::fun_lcm
-   , tokens::fun_lub
-   , tokens::fun_glb
-   , tokens::fun_min
-   , tokens::fun_max
-   , tokens::fun_f
-   , tokens::fun_g
+   //o , tokens::fun_sin
+   //o , tokens::fun_cos
+   //o , tokens::fun_tan
+   //o , tokens::fun_sec
+   //o , tokens::fun_csc
+   //o , tokens::fun_cot
+   //o , tokens::fun_arcsin
+   //o , tokens::fun_arccos
+   //o , tokens::fun_arctan
+   //o , tokens::fun_sinh
+   //o , tokens::fun_cosh
+   //o , tokens::fun_tanh
+   //o , tokens::fun_sech
+   //o , tokens::fun_csch
+   //o , tokens::fun_coth
+   //o , tokens::fun_exp
+   //o , tokens::fun_log
+   //o , tokens::fun_ln
+   //o , tokens::fun_det
+   //o , tokens::fun_dim
+   //o , tokens::fun_mod
+   //o , tokens::fun_gcd
+   //o , tokens::fun_lcm
+   //o , tokens::fun_lub
+   //o , tokens::fun_glb
+   //o , tokens::fun_min
+   //o , tokens::fun_max
+   //o , tokens::fun_f
+   //o , tokens::fun_g
 
    , tokens::spe_number
    , tokens::spe_ident
