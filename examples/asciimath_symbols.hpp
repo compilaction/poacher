@@ -252,443 +252,465 @@
 
 namespace amath::tokens {
 
-struct op_add                    : poacher::Token<op_add>                   {};
-struct op_sub                    : poacher::Token<op_sub>                   {};
-struct op_cdot                   : poacher::Token<op_cdot>                  {};
-struct op_ast                    : poacher::Token<op_ast>                   {};
-struct op_star                   : poacher::Token<op_star>                  {};
-struct op_slash                  : poacher::Token<op_slash>                 {};
-struct op_backslash              : poacher::Token<op_backslash>             {};
-struct op_times                  : poacher::Token<op_times>                 {};
-struct op_div                    : poacher::Token<op_div>                   {};
-struct op_ltimes                 : poacher::Token<op_ltimes>                {};
-struct op_rtimes                 : poacher::Token<op_rtimes>                {};
-struct op_bowtie                 : poacher::Token<op_bowtie>                {};
-struct op_circ                   : poacher::Token<op_circ>                  {};
-struct op_oplus                  : poacher::Token<op_oplus>                 {};
-struct op_otimes                 : poacher::Token<op_otimes>                {};
-struct op_odot                   : poacher::Token<op_odot>                  {};
-struct op_sum                    : poacher::Token<op_sum>                   {};
-struct op_prod                   : poacher::Token<op_prod>                  {};
-struct op_wedge                  : poacher::Token<op_wedge>                 {};
-struct op_bidwedge               : poacher::Token<op_bidwedge>              {};
-struct op_vee                    : poacher::Token<op_vee>                   {};
-struct op_bigvee                 : poacher::Token<op_bigvee>                {};
-struct op_cap                    : poacher::Token<op_cap>                   {};
-struct op_bigcap                 : poacher::Token<op_bigcap>                {};
-struct op_cup                    : poacher::Token<op_cup>                   {};
-struct op_bigcup                 : poacher::Token<op_bigcup>                {};
+namespace op {
+struct add_       : poacher::Token<add_>        {};
+struct sub_       : poacher::Token<sub_>        {};
+struct cdot_      : poacher::Token<cdot_>       {};
+struct ast_       : poacher::Token<ast_>        {};
+struct star_      : poacher::Token<star_>       {};
+struct slash_     : poacher::Token<slash_>      {};
+struct backslash_ : poacher::Token<backslash_>  {};
+struct times_     : poacher::Token<times_>      {};
+struct div_       : poacher::Token<div_>        {};
+struct ltimes_    : poacher::Token<ltimes_>     {};
+struct rtimes_    : poacher::Token<rtimes_>     {};
+struct bowtie_    : poacher::Token<bowtie_>     {};
+struct circ_      : poacher::Token<circ_>       {};
+struct oplus_     : poacher::Token<oplus_>      {};
+struct otimes_    : poacher::Token<otimes_>     {};
+struct odot_      : poacher::Token<odot_>       {};
+struct sum_       : poacher::Token<sum_>        {};
+struct prod_      : poacher::Token<prod_>       {};
+struct wedge_     : poacher::Token<wedge_>      {};
+struct bidwedge_  : poacher::Token<bidwedge_>   {};
+struct vee_       : poacher::Token<vee_>        {};
+struct bigvee_    : poacher::Token<bigvee_>     {};
+struct cap_       : poacher::Token<cap_>        {};
+struct bigcap_    : poacher::Token<bigcap_>     {};
+struct cup_       : poacher::Token<cup_>        {};
+struct bigcup_    : poacher::Token<bigcup_>     {};
+}
 
-struct misc_frac                 : poacher::Token<misc_frac>                {};
-struct misc_exp                  : poacher::Token<misc_exp>                 {};
-struct misc_sqrt                 : poacher::Token<misc_sqrt>                {};
-struct misc_root                 : poacher::Token<misc_root>                {};
-struct misc_int                  : poacher::Token<misc_int>                 {};
-struct misc_oint                 : poacher::Token<misc_oint>                {};
-struct misc_partial              : poacher::Token<misc_partial>             {};
-struct misc_nabla                : poacher::Token<misc_nabla>               {};
-struct misc_pm                   : poacher::Token<misc_pm>                  {};
-struct misc_emptyset             : poacher::Token<misc_emptyset>            {};
-struct misc_infty                : poacher::Token<misc_infty>               {};
-struct misc_aleph                : poacher::Token<misc_aleph>               {};
-struct misc_therefore            : poacher::Token<misc_therefore>           {};
-struct misc_because              : poacher::Token<misc_because>             {};
-struct misc_ldots                : poacher::Token<misc_ldots>               {};
-struct misc_cdots                : poacher::Token<misc_cdots>               {};
-struct misc_vdots                : poacher::Token<misc_vdots>               {};
-struct misc_ddots                : poacher::Token<misc_ddots>               {};
-struct misc_smallquad            : poacher::Token<misc_smallquad>           {};
-struct misc_quad                 : poacher::Token<misc_quad>                {};
-struct misc_angle                : poacher::Token<misc_angle>               {};
-struct misc_frown                : poacher::Token<misc_frown>               {};
-struct misc_triangle             : poacher::Token<misc_triangle>            {};
-struct misc_diamond              : poacher::Token<misc_diamond>             {};
-struct misc_square               : poacher::Token<misc_square>              {};
-struct misc_lfloor               : poacher::Token<misc_lfloor>              {};
-struct misc_rfloor               : poacher::Token<misc_rfloor>              {};
-struct misc_lceiling             : poacher::Token<misc_lceiling>            {};
-struct misc_rceiling             : poacher::Token<misc_rceiling>            {};
-struct misc_C                    : poacher::Token<misc_C>                   {};
-struct misc_N                    : poacher::Token<misc_N>                   {};
-struct misc_Q                    : poacher::Token<misc_Q>                   {};
-struct misc_R                    : poacher::Token<misc_R>                   {};
-struct misc_Z                    : poacher::Token<misc_Z>                   {};
+namespace misc {
+struct frac_      : poacher::Token<frac_>       {};
+struct exp_       : poacher::Token<exp_>        {};
+struct sqrt_      : poacher::Token<sqrt_>       {};
+struct root_      : poacher::Token<root_>       {};
+struct int_       : poacher::Token<int_>        {};
+struct oint_      : poacher::Token<oint_>       {};
+struct partial_   : poacher::Token<partial_>    {};
+struct nabla_     : poacher::Token<nabla_>      {};
+struct pm_        : poacher::Token<pm_>         {};
+struct emptyset_  : poacher::Token<emptyset_>   {};
+struct infty_     : poacher::Token<infty_>      {};
+struct aleph_     : poacher::Token<aleph_>      {};
+struct therefore_ : poacher::Token<therefore_>  {};
+struct because_   : poacher::Token<because_>    {};
+struct ldots_     : poacher::Token<ldots_>      {};
+struct cdots_     : poacher::Token<cdots_>      {};
+struct vdots_     : poacher::Token<vdots_>      {};
+struct ddots_     : poacher::Token<ddots_>      {};
+struct smallquad_ : poacher::Token<smallquad_>  {};
+struct quad_      : poacher::Token<quad_>       {};
+struct angle_     : poacher::Token<angle_>      {};
+struct frown_     : poacher::Token<frown_>      {};
+struct triangle_  : poacher::Token<triangle_>   {};
+struct diamond_   : poacher::Token<diamond_>    {};
+struct square_    : poacher::Token<square_>     {};
+struct lfloor_    : poacher::Token<lfloor_>     {};
+struct rfloor_    : poacher::Token<rfloor_>     {};
+struct lceiling_  : poacher::Token<lceiling_>   {};
+struct rceiling_  : poacher::Token<rceiling_>   {};
+struct C_         : poacher::Token<C_>          {};
+struct N_         : poacher::Token<N_>          {};
+struct Q_         : poacher::Token<Q_>          {};
+struct R_         : poacher::Token<R_>          {};
+struct Z_         : poacher::Token<Z_>          {};
+}
 
-struct rel_eq                    : poacher::Token<rel_eq>                   {};
-struct rel_ne                    : poacher::Token<rel_ne>                   {};
-struct rel_lt                    : poacher::Token<rel_lt>                   {};
-struct rel_gt                    : poacher::Token<rel_gt>                   {};
-struct rel_le                    : poacher::Token<rel_le>                   {};
-struct rel_ge                    : poacher::Token<rel_ge>                   {};
-struct rel_prec                  : poacher::Token<rel_prec>                 {};
-struct rel_preceq                : poacher::Token<rel_preceq>               {};
-struct rel_succ                  : poacher::Token<rel_succ>                 {};
-struct rel_succeq                : poacher::Token<rel_succeq>               {};
-struct rel_in                    : poacher::Token<rel_in>                   {};
-struct rel_notin                 : poacher::Token<rel_notin>                {};
-struct rel_subset                : poacher::Token<rel_subset>               {};
-struct rel_supset                : poacher::Token<rel_supset>               {};
-struct rel_subseteq              : poacher::Token<rel_subseteq>             {};
-struct rel_supseteq              : poacher::Token<rel_supseteq>             {};
-struct rel_equiv                 : poacher::Token<rel_equiv>                {};
-struct rel_cong                  : poacher::Token<rel_cong>                 {};
-struct rel_approx                : poacher::Token<rel_approx>               {};
-struct rel_propto                : poacher::Token<rel_propto>               {};
+namespace rel {
+struct eq_        : poacher::Token<eq_>         {};
+struct ne_        : poacher::Token<ne_>         {};
+struct lt_        : poacher::Token<lt_>         {};
+struct gt_        : poacher::Token<gt_>         {};
+struct le_        : poacher::Token<le_>         {};
+struct ge_        : poacher::Token<ge_>         {};
+struct prec_      : poacher::Token<prec_>       {};
+struct preceq_    : poacher::Token<preceq_>     {};
+struct succ_      : poacher::Token<succ_>       {};
+struct succeq_    : poacher::Token<succeq_>     {};
+struct in_        : poacher::Token<in_>         {};
+struct notin_     : poacher::Token<notin_>      {};
+struct subset_    : poacher::Token<subset_>     {};
+struct supset_    : poacher::Token<supset_>     {};
+struct subseteq_  : poacher::Token<subseteq_>   {};
+struct supseteq_  : poacher::Token<supseteq_>   {};
+struct equiv_     : poacher::Token<equiv_>      {};
+struct cong_      : poacher::Token<cong_>       {};
+struct approx_    : poacher::Token<approx_>     {};
+struct propto_    : poacher::Token<propto_>     {};
+}
 
-struct logic_and                 : poacher::Token<logic_and>                {};
-struct logic_or                  : poacher::Token<logic_or>                 {};
-struct logic_neg                 : poacher::Token<logic_neg>                {};
-struct logic_implies             : poacher::Token<logic_implies>            {};
-struct logic_if                  : poacher::Token<logic_if>                 {};
-struct logic_iff                 : poacher::Token<logic_iff>                {};
-struct logic_forall              : poacher::Token<logic_forall>             {};
-struct logic_exists              : poacher::Token<logic_exists>             {};
-struct logic_bot                 : poacher::Token<logic_bot>                {};
-struct logic_top                 : poacher::Token<logic_top>                {};
-struct logic_vdash               : poacher::Token<logic_vdash>              {};
-struct logic_models              : poacher::Token<logic_models>             {};
+namespace logic {
+struct and_       : poacher::Token<and_>     {};
+struct or_        : poacher::Token<or_>      {};
+struct neg_       : poacher::Token<neg_>     {};
+struct implies_   : poacher::Token<implies_> {};
+struct if_        : poacher::Token<if_>      {};
+struct iff_       : poacher::Token<iff_>     {};
+struct forall_    : poacher::Token<forall_>  {};
+struct exists_    : poacher::Token<exists_>  {};
+struct bot_       : poacher::Token<bot_>     {};
+struct top_       : poacher::Token<top_>     {};
+struct vdash_     : poacher::Token<vdash_>   {};
+struct models_    : poacher::Token<models_>  {};
+}
 
-struct grp_lpar                  : poacher::Token<grp_lpar>                 {};
-struct grp_rpar                  : poacher::Token<grp_rpar>                 {};
-struct grp_lsqbra                : poacher::Token<grp_lsqbra>               {};
-struct grp_rsqbra                : poacher::Token<grp_rsqbra>               {};
-struct grp_lcubra                : poacher::Token<grp_lcubra>               {};
-struct grp_rcubra                : poacher::Token<grp_rcubra>               {};
-struct grp_langle                : poacher::Token<grp_langle>               {};
-struct grp_rangle                : poacher::Token<grp_rangle>               {};
-struct grp_langle_               : poacher::Token<grp_langle_>              {};
-struct grp_rangle_               : poacher::Token<grp_rangle_>              {};
-struct grp_lxpar                 : poacher::Token<grp_lxpar>                {};
-struct grp_rxpar                 : poacher::Token<grp_rxpar>                {};
-struct grp_abs                   : poacher::Token<grp_abs>                  {};
-struct grp_floor                 : poacher::Token<grp_floor>                {};
-struct grp_ceil                  : poacher::Token<grp_ceil>                 {};
-struct grp_norm                  : poacher::Token<grp_norm>                 {};
+namespace grp {
+struct lpar_      : poacher::Token<lpar_>    {};
+struct rpar_      : poacher::Token<rpar_>    {};
+struct lsqbra_    : poacher::Token<lsqbra_>  {};
+struct rsqbra_    : poacher::Token<rsqbra_>  {};
+struct lcubra_    : poacher::Token<lcubra_>  {};
+struct rcubra_    : poacher::Token<rcubra_>  {};
+struct langle_    : poacher::Token<langle_>  {};
+struct rangle_    : poacher::Token<rangle_>  {};
+struct langle__   : poacher::Token<langle__> {};
+struct rangle__   : poacher::Token<rangle__> {};
+struct lxpar_     : poacher::Token<lxpar_>   {};
+struct rxpar_     : poacher::Token<rxpar_>   {};
+struct abs_       : poacher::Token<abs_>     {};
+struct floor_     : poacher::Token<floor_>   {};
+struct ceil_      : poacher::Token<ceil_>    {};
+struct norm_      : poacher::Token<norm_>    {};
+}
 
-struct arr_uparrow               : poacher::Token<arr_uparrow>              {};
-struct arr_downarrow             : poacher::Token<arr_downarrow>            {};
-struct arr_rightarrow            : poacher::Token<arr_rightarrow>           {};
-struct arr_to                    : poacher::Token<arr_to>                   {};
-struct arr_rightarrowtail        : poacher::Token<arr_rightarrowtail>       {};
-struct arr_twoheadrightarrow     : poacher::Token<arr_twoheadrightarrow>    {};
-struct arr_twoheadrightarrowtail : poacher::Token<arr_twoheadrightarrowtail>{};
-struct arr_mapsto                : poacher::Token<arr_mapsto>               {};
-struct arr_leftarrow             : poacher::Token<arr_leftarrow>            {};
-struct arr_leftrightarrow        : poacher::Token<arr_leftrightarrow>       {};
-struct arr_Rightarrow            : poacher::Token<arr_Rightarrow>           {};
-struct arr_Leftarrow             : poacher::Token<arr_Leftarrow>            {};
-struct arr_Leftrightarrow        : poacher::Token<arr_Leftrightarrow>       {};
+namespace arr {
+struct uparrow_               : poacher::Token<uparrow_>                {};
+struct downarrow_             : poacher::Token<downarrow_>              {};
+struct rightarrow_            : poacher::Token<rightarrow_>             {};
+struct to_                    : poacher::Token<to_>                     {};
+struct rightarrowtail_        : poacher::Token<rightarrowtail_>         {};
+struct twoheadrightarrow_     : poacher::Token<twoheadrightarrow_>      {};
+struct twoheadrightarrowtail_ : poacher::Token<twoheadrightarrowtail_>  {};
+struct mapsto_                : poacher::Token<mapsto_>                 {};
+struct leftarrow_             : poacher::Token<leftarrow_>              {};
+struct leftrightarrow_        : poacher::Token<leftrightarrow_>         {};
+struct Rightarrow_            : poacher::Token<Rightarrow_>             {};
+struct Leftarrow_             : poacher::Token<Leftarrow_>              {};
+struct Leftrightarrow_        : poacher::Token<Leftrightarrow_>         {};
+}
 
-struct acc_hat                   : poacher::Token<acc_hat>                  {};
-struct acc_bar                   : poacher::Token<acc_bar>                  {};
-struct acc_ul                    : poacher::Token<acc_ul>                   {};
-struct acc_vec                   : poacher::Token<acc_vec>                  {};
-struct acc_dot                   : poacher::Token<acc_dot>                  {};
-struct acc_ddot                  : poacher::Token<acc_ddot>                 {};
-struct acc_overset               : poacher::Token<acc_overset>              {};
-struct acc_underset              : poacher::Token<acc_underset>             {};
-struct acc_ubrace                : poacher::Token<acc_ubrace>               {};
-struct acc_obrace                : poacher::Token<acc_obrace>               {};
-struct acc_color                 : poacher::Token<acc_color>                {};
-struct acc_cancel                : poacher::Token<acc_cancel>               {};
+namespace acc {
+struct hat_       : poacher::Token<hat_>        {};
+struct bar_       : poacher::Token<bar_>        {};
+struct ul_        : poacher::Token<ul_>         {};
+struct vec_       : poacher::Token<vec_>        {};
+struct dot_       : poacher::Token<dot_>        {};
+struct ddot_      : poacher::Token<ddot_>       {};
+struct overset_   : poacher::Token<overset_>    {};
+struct underset_  : poacher::Token<underset_>   {};
+struct ubrace_    : poacher::Token<ubrace_>     {};
+struct obrace_    : poacher::Token<obrace_>     {};
+struct color_     : poacher::Token<color_>      {};
+struct cancel_    : poacher::Token<cancel_>     {};
+}
 
-struct gr_alpha                  : poacher::Token<gr_alpha>                 {};
-struct gr_beta                   : poacher::Token<gr_beta>                  {};
-struct gr_gamma                  : poacher::Token<gr_gamma>                 {};
-struct gr_Gamma                  : poacher::Token<gr_Gamma>                 {};
-struct gr_delta                  : poacher::Token<gr_delta>                 {};
-struct gr_Delta                  : poacher::Token<gr_Delta>                 {};
-struct gr_epsilon                : poacher::Token<gr_epsilon>               {};
-struct gr_varepsilon             : poacher::Token<gr_varepsilon>            {};
-struct gr_zeta                   : poacher::Token<gr_zeta>                  {};
-struct gr_eta                    : poacher::Token<gr_eta>                   {};
-struct gr_theta                  : poacher::Token<gr_theta>                 {};
-struct gr_Theta                  : poacher::Token<gr_Theta>                 {};
-struct gr_vartheta               : poacher::Token<gr_vartheta>              {};
-struct gr_iota                   : poacher::Token<gr_iota>                  {};
-struct gr_kappa                  : poacher::Token<gr_kappa>                 {};
-struct gr_lambda                 : poacher::Token<gr_lambda>                {};
-struct gr_Lambda                 : poacher::Token<gr_Lambda>                {};
-struct gr_mu                     : poacher::Token<gr_mu>                    {};
-struct gr_nu                     : poacher::Token<gr_nu>                    {};
-struct gr_xi                     : poacher::Token<gr_xi>                    {};
-struct gr_Xi                     : poacher::Token<gr_Xi>                    {};
-struct gr_pi                     : poacher::Token<gr_pi>                    {};
-struct gr_Pi                     : poacher::Token<gr_Pi>                    {};
-struct gr_rho                    : poacher::Token<gr_rho>                   {};
-struct gr_sigma                  : poacher::Token<gr_sigma>                 {};
-struct gr_Sigma                  : poacher::Token<gr_Sigma>                 {};
-struct gr_tau                    : poacher::Token<gr_tau>                   {};
-struct gr_upsilon                : poacher::Token<gr_upsilon>               {};
-struct gr_phi                    : poacher::Token<gr_phi>                   {};
-struct gr_Phi                    : poacher::Token<gr_Phi>                   {};
-struct gr_varphi                 : poacher::Token<gr_varphi>                {};
-struct gr_chi                    : poacher::Token<gr_chi>                   {};
-struct gr_psi                    : poacher::Token<gr_psi>                   {};
-struct gr_Psi                    : poacher::Token<gr_Psi>                   {};
-struct gr_omega                  : poacher::Token<gr_omega>                 {};
-struct gr_Omega                  : poacher::Token<gr_Omega>                 {};
+namespace gr {
+struct alpha_        : poacher::Token<alpha_>      {};
+struct beta_         : poacher::Token<beta_>       {};
+struct gamma_        : poacher::Token<gamma_>      {};
+struct Gamma_        : poacher::Token<Gamma_>      {};
+struct delta_        : poacher::Token<delta_>      {};
+struct Delta_        : poacher::Token<Delta_>      {};
+struct epsilon_      : poacher::Token<epsilon_>    {};
+struct varepsilon_   : poacher::Token<varepsilon_> {};
+struct zeta_         : poacher::Token<zeta_>       {};
+struct eta_          : poacher::Token<eta_>        {};
+struct theta_        : poacher::Token<theta_>      {};
+struct Theta_        : poacher::Token<Theta_>      {};
+struct vartheta_     : poacher::Token<vartheta_>   {};
+struct iota_         : poacher::Token<iota_>       {};
+struct kappa_        : poacher::Token<kappa_>      {};
+struct lambda_       : poacher::Token<lambda_>     {};
+struct Lambda_       : poacher::Token<Lambda_>     {};
+struct mu_           : poacher::Token<mu_>         {};
+struct nu_           : poacher::Token<nu_>         {};
+struct xi_           : poacher::Token<xi_>         {};
+struct Xi_           : poacher::Token<Xi_>         {};
+struct pi_           : poacher::Token<pi_>         {};
+struct Pi_           : poacher::Token<Pi_>         {};
+struct rho_          : poacher::Token<rho_>        {};
+struct sigma_        : poacher::Token<sigma_>      {};
+struct Sigma_        : poacher::Token<Sigma_>      {};
+struct tau_          : poacher::Token<tau_>        {};
+struct upsilon_      : poacher::Token<upsilon_>    {};
+struct phi_          : poacher::Token<phi_>        {};
+struct Phi_          : poacher::Token<Phi_>        {};
+struct varphi_       : poacher::Token<varphi_>     {};
+struct chi_          : poacher::Token<chi_>        {};
+struct psi_          : poacher::Token<psi_>        {};
+struct Psi_          : poacher::Token<Psi_>        {};
+struct omega_        : poacher::Token<omega_>      {};
+struct Omega_        : poacher::Token<Omega_>      {};
+}
 
-struct ft_bb                     : poacher::Token<ft_bb>                    {};
-struct ft_bbb                    : poacher::Token<ft_bbb>                   {};
-struct ft_cc                     : poacher::Token<ft_cc>                    {};
-struct ft_tt                     : poacher::Token<ft_tt>                    {};
-struct ft_fr                     : poacher::Token<ft_fr>                    {};
-struct ft_sf                     : poacher::Token<ft_sf>                    {};
+namespace ft {
+struct bb_  : poacher::Token<bb_>   {};
+struct bbb_ : poacher::Token<bbb_>  {};
+struct cc_  : poacher::Token<cc_>   {};
+struct tt_  : poacher::Token<tt_>   {};
+struct fr_  : poacher::Token<fr_>   {};
+struct sf_  : poacher::Token<sf_>   {};
+}
 
-struct fun_sin                   : poacher::Token<fun_sin>                  {};
-struct fun_cos                   : poacher::Token<fun_cos>                  {};
-struct fun_tan                   : poacher::Token<fun_tan>                  {};
-struct fun_sec                   : poacher::Token<fun_sec>                  {};
-struct fun_csc                   : poacher::Token<fun_csc>                  {};
-struct fun_cot                   : poacher::Token<fun_cot>                  {};
-struct fun_arcsin                : poacher::Token<fun_arcsin>               {};
-struct fun_arccos                : poacher::Token<fun_arccos>               {};
-struct fun_arctan                : poacher::Token<fun_arctan>               {};
-struct fun_sinh                  : poacher::Token<fun_sinh>                 {};
-struct fun_cosh                  : poacher::Token<fun_cosh>                 {};
-struct fun_tanh                  : poacher::Token<fun_tanh>                 {};
-struct fun_sech                  : poacher::Token<fun_sech>                 {};
-struct fun_csch                  : poacher::Token<fun_csch>                 {};
-struct fun_coth                  : poacher::Token<fun_coth>                 {};
-struct fun_exp                   : poacher::Token<fun_exp>                  {};
-struct fun_log                   : poacher::Token<fun_log>                  {};
-struct fun_ln                    : poacher::Token<fun_ln>                   {};
-struct fun_det                   : poacher::Token<fun_det>                  {};
-struct fun_dim                   : poacher::Token<fun_dim>                  {};
-struct fun_mod                   : poacher::Token<fun_mod>                  {};
-struct fun_gcd                   : poacher::Token<fun_gcd>                  {};
-struct fun_lcm                   : poacher::Token<fun_lcm>                  {};
-struct fun_lub                   : poacher::Token<fun_lub>                  {};
-struct fun_glb                   : poacher::Token<fun_glb>                  {};
-struct fun_min                   : poacher::Token<fun_min>                  {};
-struct fun_max                   : poacher::Token<fun_max>                  {};
-struct fun_f                     : poacher::Token<fun_f>                    {};
-struct fun_g                     : poacher::Token<fun_g>                    {};
+namespace fun {
+struct sin_    : poacher::Token<sin_>     {};
+struct cos_    : poacher::Token<cos_>     {};
+struct tan_    : poacher::Token<tan_>     {};
+struct sec_    : poacher::Token<sec_>     {};
+struct csc_    : poacher::Token<csc_>     {};
+struct cot_    : poacher::Token<cot_>     {};
+struct arcsin_ : poacher::Token<arcsin_>  {};
+struct arccos_ : poacher::Token<arccos_>  {};
+struct arctan_ : poacher::Token<arctan_>  {};
+struct sinh_   : poacher::Token<sinh_>    {};
+struct cosh_   : poacher::Token<cosh_>    {};
+struct tanh_   : poacher::Token<tanh_>    {};
+struct sech_   : poacher::Token<sech_>    {};
+struct csch_   : poacher::Token<csch_>    {};
+struct coth_   : poacher::Token<coth_>    {};
+struct exp_    : poacher::Token<exp_>     {};
+struct log_    : poacher::Token<log_>     {};
+struct ln_     : poacher::Token<ln_>      {};
+struct det_    : poacher::Token<det_>     {};
+struct dim_    : poacher::Token<dim_>     {};
+struct mod_    : poacher::Token<mod_>     {};
+struct gcd_    : poacher::Token<gcd_>     {};
+struct lcm_    : poacher::Token<lcm_>     {};
+struct lub_    : poacher::Token<lub_>     {};
+struct glb_    : poacher::Token<glb_>     {};
+struct min_    : poacher::Token<min_>     {};
+struct max_    : poacher::Token<max_>     {};
+struct f_      : poacher::Token<f_>       {};
+struct g_      : poacher::Token<g_>       {};
+}
 
-struct spe_number                : poacher::Token<spe_number>               {};
-struct spe_ident                 : poacher::Token<spe_ident>                {};
+namespace spe {
+struct number_ : poacher::Token<number_>  {};
+struct ident_  : poacher::Token<ident_>   {};
+}
 
 }  // namespace amath::tokens
 
 namespace amath {
 
-constexpr auto get_sym_token( tokens::op_add )                    { return poacher::ct_string( "+" ); }
-constexpr auto get_sym_token( tokens::op_sub )                    { return poacher::ct_string( "-" ); }
-constexpr auto get_sym_token( tokens::op_cdot )                   { return poacher::ct_string( "*" ); }
-constexpr auto get_sym_token( tokens::op_ast )                    { return poacher::ct_string( "**" ); }
-constexpr auto get_sym_token( tokens::op_star )                   { return poacher::ct_string( "***" ); }
-constexpr auto get_sym_token( tokens::op_slash )                  { return poacher::ct_string( "//" ); }
-constexpr auto get_sym_token( tokens::op_backslash )              { return poacher::ct_string( "\\\\" ); }
-constexpr auto get_sym_token( tokens::op_times )                  { return poacher::ct_string( "xx" ); }
-constexpr auto get_sym_token( tokens::op_div )                    { return poacher::ct_string( "-:" ); }
-constexpr auto get_sym_token( tokens::op_ltimes )                 { return poacher::ct_string( "|><" ); }
-constexpr auto get_sym_token( tokens::op_rtimes )                 { return poacher::ct_string( "><|" ); }
-constexpr auto get_sym_token( tokens::op_bowtie )                 { return poacher::ct_string( "|><|" ); }
-constexpr auto get_sym_token( tokens::op_circ )                   { return poacher::ct_string( "@" ); }
-constexpr auto get_sym_token( tokens::op_oplus )                  { return poacher::ct_string( "o+" ); }
-constexpr auto get_sym_token( tokens::op_otimes )                 { return poacher::ct_string( "ox" ); }
-constexpr auto get_sym_token( tokens::op_odot )                   { return poacher::ct_string( "o." ); }
-constexpr auto get_sym_token( tokens::op_sum )                    { return poacher::ct_string( "sum" ); }
-constexpr auto get_sym_token( tokens::op_prod )                   { return poacher::ct_string( "prod" ); }
-constexpr auto get_sym_token( tokens::op_wedge )                  { return poacher::ct_string( "^^" ); }
-constexpr auto get_sym_token( tokens::op_bidwedge )               { return poacher::ct_string( "^^^" ); }
-constexpr auto get_sym_token( tokens::op_vee )                    { return poacher::ct_string( "vv" ); }
-constexpr auto get_sym_token( tokens::op_bigvee )                 { return poacher::ct_string( "vvv" ); }
-constexpr auto get_sym_token( tokens::op_cap )                    { return poacher::ct_string( "nn" ); }
-constexpr auto get_sym_token( tokens::op_bigcap )                 { return poacher::ct_string( "nnn" ); }
-constexpr auto get_sym_token( tokens::op_cup )                    { return poacher::ct_string( "uu" ); }
-constexpr auto get_sym_token( tokens::op_bigcup )                 { return poacher::ct_string( "uuu" ); }
+constexpr auto get_sym_token( tokens::op::add_ )                    { return poacher::ct_string( "+" ); }
+constexpr auto get_sym_token( tokens::op::sub_ )                    { return poacher::ct_string( "-" ); }
+constexpr auto get_sym_token( tokens::op::cdot_ )                   { return poacher::ct_string( "*" ); }
+constexpr auto get_sym_token( tokens::op::ast_ )                    { return poacher::ct_string( "**" ); }
+constexpr auto get_sym_token( tokens::op::star_ )                   { return poacher::ct_string( "***" ); }
+constexpr auto get_sym_token( tokens::op::slash_ )                  { return poacher::ct_string( "//" ); }
+constexpr auto get_sym_token( tokens::op::backslash_ )              { return poacher::ct_string( "\\\\" ); }
+constexpr auto get_sym_token( tokens::op::times_ )                  { return poacher::ct_string( "xx" ); }
+constexpr auto get_sym_token( tokens::op::div_ )                    { return poacher::ct_string( "-:" ); }
+constexpr auto get_sym_token( tokens::op::ltimes_ )                 { return poacher::ct_string( "|><" ); }
+constexpr auto get_sym_token( tokens::op::rtimes_ )                 { return poacher::ct_string( "><|" ); }
+constexpr auto get_sym_token( tokens::op::bowtie_ )                 { return poacher::ct_string( "|><|" ); }
+constexpr auto get_sym_token( tokens::op::circ_ )                   { return poacher::ct_string( "@" ); }
+constexpr auto get_sym_token( tokens::op::oplus_ )                  { return poacher::ct_string( "o+" ); }
+constexpr auto get_sym_token( tokens::op::otimes_ )                 { return poacher::ct_string( "ox" ); }
+constexpr auto get_sym_token( tokens::op::odot_ )                   { return poacher::ct_string( "o." ); }
+constexpr auto get_sym_token( tokens::op::sum_ )                    { return poacher::ct_string( "sum" ); }
+constexpr auto get_sym_token( tokens::op::prod_ )                   { return poacher::ct_string( "prod" ); }
+constexpr auto get_sym_token( tokens::op::wedge_ )                  { return poacher::ct_string( "^^" ); }
+constexpr auto get_sym_token( tokens::op::bidwedge_ )               { return poacher::ct_string( "^^^" ); }
+constexpr auto get_sym_token( tokens::op::vee_ )                    { return poacher::ct_string( "vv" ); }
+constexpr auto get_sym_token( tokens::op::bigvee_ )                 { return poacher::ct_string( "vvv" ); }
+constexpr auto get_sym_token( tokens::op::cap_ )                    { return poacher::ct_string( "nn" ); }
+constexpr auto get_sym_token( tokens::op::bigcap_ )                 { return poacher::ct_string( "nnn" ); }
+constexpr auto get_sym_token( tokens::op::cup_ )                    { return poacher::ct_string( "uu" ); }
+constexpr auto get_sym_token( tokens::op::bigcup_ )                 { return poacher::ct_string( "uuu" ); }
 
-constexpr auto get_sym_token( tokens::misc_frac )                 { return poacher::ct_string( "/" ); }
-constexpr auto get_sym_token( tokens::misc_exp )                  { return poacher::ct_string( "^" ); }
-constexpr auto get_sym_token( tokens::misc_sqrt )                 { return poacher::ct_string( "sqrt" ); }
-constexpr auto get_sym_token( tokens::misc_root )                 { return poacher::ct_string( "root" ); }
-constexpr auto get_sym_token( tokens::misc_int )                  { return poacher::ct_string( "int" ); }
-constexpr auto get_sym_token( tokens::misc_oint )                 { return poacher::ct_string( "oint" ); }
-constexpr auto get_sym_token( tokens::misc_partial )              { return poacher::ct_string( "del" ); }
-constexpr auto get_sym_token( tokens::misc_nabla )                { return poacher::ct_string( "grad" ); }
-constexpr auto get_sym_token( tokens::misc_pm )                   { return poacher::ct_string( "+-" ); }
-constexpr auto get_sym_token( tokens::misc_emptyset )             { return poacher::ct_string( "O/" ); }
-constexpr auto get_sym_token( tokens::misc_infty )                { return poacher::ct_string( "oo" ); }
-constexpr auto get_sym_token( tokens::misc_aleph )                { return poacher::ct_string( "aleph" ); }
-constexpr auto get_sym_token( tokens::misc_therefore )            { return poacher::ct_string( ":." ); }
-constexpr auto get_sym_token( tokens::misc_because )              { return poacher::ct_string( ":'" ); }
-constexpr auto get_sym_token( tokens::misc_ldots )                { return poacher::ct_string( "|...|" ); }
-constexpr auto get_sym_token( tokens::misc_cdots )                { return poacher::ct_string( "|cdots|" ); }
-constexpr auto get_sym_token( tokens::misc_vdots )                { return poacher::ct_string( "vdots" ); }
-constexpr auto get_sym_token( tokens::misc_ddots )                { return poacher::ct_string( "ddots" ); }
-constexpr auto get_sym_token( tokens::misc_smallquad )            { return poacher::ct_string( "|\\ |" ); }
-constexpr auto get_sym_token( tokens::misc_quad )                 { return poacher::ct_string( "|quad|" ); }
-constexpr auto get_sym_token( tokens::misc_angle )                { return poacher::ct_string( "/_" ); }
-constexpr auto get_sym_token( tokens::misc_frown )                { return poacher::ct_string( "frown" ); }
-constexpr auto get_sym_token( tokens::misc_triangle )             { return poacher::ct_string( "/_\\" ); }
-constexpr auto get_sym_token( tokens::misc_diamond )              { return poacher::ct_string( "diamond" ); }
-constexpr auto get_sym_token( tokens::misc_square )               { return poacher::ct_string( "square" ); }
-constexpr auto get_sym_token( tokens::misc_lfloor )               { return poacher::ct_string( "|__" ); }
-constexpr auto get_sym_token( tokens::misc_rfloor )               { return poacher::ct_string( "__|" ); }
-constexpr auto get_sym_token( tokens::misc_lceiling )             { return poacher::ct_string( "|~" ); }
-constexpr auto get_sym_token( tokens::misc_rceiling )             { return poacher::ct_string( "~|" ); }
-constexpr auto get_sym_token( tokens::misc_C )                    { return poacher::ct_string( "CC" ); }
-constexpr auto get_sym_token( tokens::misc_N )                    { return poacher::ct_string( "NN" ); }
-constexpr auto get_sym_token( tokens::misc_Q )                    { return poacher::ct_string( "QQ" ); }
-constexpr auto get_sym_token( tokens::misc_R )                    { return poacher::ct_string( "RR" ); }
-constexpr auto get_sym_token( tokens::misc_Z )                    { return poacher::ct_string( "ZZ" ); }
+constexpr auto get_sym_token( tokens::misc::frac_ )                 { return poacher::ct_string( "/" ); }
+constexpr auto get_sym_token( tokens::misc::exp_ )                  { return poacher::ct_string( "^" ); }
+constexpr auto get_sym_token( tokens::misc::sqrt_ )                 { return poacher::ct_string( "sqrt" ); }
+constexpr auto get_sym_token( tokens::misc::root_ )                 { return poacher::ct_string( "root" ); }
+constexpr auto get_sym_token( tokens::misc::int_ )                  { return poacher::ct_string( "int" ); }
+constexpr auto get_sym_token( tokens::misc::oint_ )                 { return poacher::ct_string( "oint" ); }
+constexpr auto get_sym_token( tokens::misc::partial_ )              { return poacher::ct_string( "del" ); }
+constexpr auto get_sym_token( tokens::misc::nabla_ )                { return poacher::ct_string( "grad" ); }
+constexpr auto get_sym_token( tokens::misc::pm_ )                   { return poacher::ct_string( "+-" ); }
+constexpr auto get_sym_token( tokens::misc::emptyset_ )             { return poacher::ct_string( "O/" ); }
+constexpr auto get_sym_token( tokens::misc::infty_ )                { return poacher::ct_string( "oo" ); }
+constexpr auto get_sym_token( tokens::misc::aleph_ )                { return poacher::ct_string( "aleph" ); }
+constexpr auto get_sym_token( tokens::misc::therefore_ )            { return poacher::ct_string( ":." ); }
+constexpr auto get_sym_token( tokens::misc::because_ )              { return poacher::ct_string( ":'" ); }
+constexpr auto get_sym_token( tokens::misc::ldots_ )                { return poacher::ct_string( "|...|" ); }
+constexpr auto get_sym_token( tokens::misc::cdots_ )                { return poacher::ct_string( "|cdots|" ); }
+constexpr auto get_sym_token( tokens::misc::vdots_ )                { return poacher::ct_string( "vdots" ); }
+constexpr auto get_sym_token( tokens::misc::ddots_ )                { return poacher::ct_string( "ddots" ); }
+constexpr auto get_sym_token( tokens::misc::smallquad_ )            { return poacher::ct_string( "|\\ |" ); }
+constexpr auto get_sym_token( tokens::misc::quad_ )                 { return poacher::ct_string( "|quad|" ); }
+constexpr auto get_sym_token( tokens::misc::angle_ )                { return poacher::ct_string( "/_" ); }
+constexpr auto get_sym_token( tokens::misc::frown_ )                { return poacher::ct_string( "frown" ); }
+constexpr auto get_sym_token( tokens::misc::triangle_ )             { return poacher::ct_string( "/_\\" ); }
+constexpr auto get_sym_token( tokens::misc::diamond_ )              { return poacher::ct_string( "diamond" ); }
+constexpr auto get_sym_token( tokens::misc::square_ )               { return poacher::ct_string( "square" ); }
+constexpr auto get_sym_token( tokens::misc::lfloor_ )               { return poacher::ct_string( "|__" ); }
+constexpr auto get_sym_token( tokens::misc::rfloor_ )               { return poacher::ct_string( "__|" ); }
+constexpr auto get_sym_token( tokens::misc::lceiling_ )             { return poacher::ct_string( "|~" ); }
+constexpr auto get_sym_token( tokens::misc::rceiling_ )             { return poacher::ct_string( "~|" ); }
+constexpr auto get_sym_token( tokens::misc::C_ )                    { return poacher::ct_string( "CC" ); }
+constexpr auto get_sym_token( tokens::misc::N_ )                    { return poacher::ct_string( "NN" ); }
+constexpr auto get_sym_token( tokens::misc::Q_ )                    { return poacher::ct_string( "QQ" ); }
+constexpr auto get_sym_token( tokens::misc::R_ )                    { return poacher::ct_string( "RR" ); }
+constexpr auto get_sym_token( tokens::misc::Z_ )                    { return poacher::ct_string( "ZZ" ); }
 
-constexpr auto get_sym_token( tokens::rel_eq )                    { return poacher::ct_string( "=" ); }
-constexpr auto get_sym_token( tokens::rel_ne )                    { return poacher::ct_string( "!=" ); }
-constexpr auto get_sym_token( tokens::rel_lt )                    { return poacher::ct_string( "<" ); }
-constexpr auto get_sym_token( tokens::rel_gt )                    { return poacher::ct_string( ">" ); }
-constexpr auto get_sym_token( tokens::rel_le )                    { return poacher::ct_string( "<=" ); }
-constexpr auto get_sym_token( tokens::rel_ge )                    { return poacher::ct_string( ">=" ); }
-constexpr auto get_sym_token( tokens::rel_prec )                  { return poacher::ct_string( "-<" ); }
-constexpr auto get_sym_token( tokens::rel_preceq )                { return poacher::ct_string( "-<=" ); }
-constexpr auto get_sym_token( tokens::rel_succ )                  { return poacher::ct_string( ">-" ); }
-constexpr auto get_sym_token( tokens::rel_succeq )                { return poacher::ct_string( ">-=" ); }
-constexpr auto get_sym_token( tokens::rel_in )                    { return poacher::ct_string( "in" ); }
-constexpr auto get_sym_token( tokens::rel_notin )                 { return poacher::ct_string( "!in" ); }
-constexpr auto get_sym_token( tokens::rel_subset )                { return poacher::ct_string( "sub" ); }
-constexpr auto get_sym_token( tokens::rel_supset )                { return poacher::ct_string( "sup" ); }
-constexpr auto get_sym_token( tokens::rel_subseteq )              { return poacher::ct_string( "sube" ); }
-constexpr auto get_sym_token( tokens::rel_supseteq )              { return poacher::ct_string( "supe" ); }
-constexpr auto get_sym_token( tokens::rel_equiv )                 { return poacher::ct_string( "-=" ); }
-constexpr auto get_sym_token( tokens::rel_cong )                  { return poacher::ct_string( "~=" ); }
-constexpr auto get_sym_token( tokens::rel_approx )                { return poacher::ct_string( "~~" ); }
-constexpr auto get_sym_token( tokens::rel_propto )                { return poacher::ct_string( "prop" ); }
+constexpr auto get_sym_token( tokens::rel::eq_ )                    { return poacher::ct_string( "=" ); }
+constexpr auto get_sym_token( tokens::rel::ne_ )                    { return poacher::ct_string( "!=" ); }
+constexpr auto get_sym_token( tokens::rel::lt_ )                    { return poacher::ct_string( "<" ); }
+constexpr auto get_sym_token( tokens::rel::gt_ )                    { return poacher::ct_string( ">" ); }
+constexpr auto get_sym_token( tokens::rel::le_ )                    { return poacher::ct_string( "<=" ); }
+constexpr auto get_sym_token( tokens::rel::ge_ )                    { return poacher::ct_string( ">=" ); }
+constexpr auto get_sym_token( tokens::rel::prec_ )                  { return poacher::ct_string( "-<" ); }
+constexpr auto get_sym_token( tokens::rel::preceq_ )                { return poacher::ct_string( "-<=" ); }
+constexpr auto get_sym_token( tokens::rel::succ_ )                  { return poacher::ct_string( ">-" ); }
+constexpr auto get_sym_token( tokens::rel::succeq_ )                { return poacher::ct_string( ">-=" ); }
+constexpr auto get_sym_token( tokens::rel::in_ )                    { return poacher::ct_string( "in" ); }
+constexpr auto get_sym_token( tokens::rel::notin_ )                 { return poacher::ct_string( "!in" ); }
+constexpr auto get_sym_token( tokens::rel::subset_ )                { return poacher::ct_string( "sub" ); }
+constexpr auto get_sym_token( tokens::rel::supset_ )                { return poacher::ct_string( "sup" ); }
+constexpr auto get_sym_token( tokens::rel::subseteq_ )              { return poacher::ct_string( "sube" ); }
+constexpr auto get_sym_token( tokens::rel::supseteq_ )              { return poacher::ct_string( "supe" ); }
+constexpr auto get_sym_token( tokens::rel::equiv_ )                 { return poacher::ct_string( "-=" ); }
+constexpr auto get_sym_token( tokens::rel::cong_ )                  { return poacher::ct_string( "~=" ); }
+constexpr auto get_sym_token( tokens::rel::approx_ )                { return poacher::ct_string( "~~" ); }
+constexpr auto get_sym_token( tokens::rel::propto_ )                { return poacher::ct_string( "prop" ); }
 
-constexpr auto get_sym_token( tokens::logic_and )                 { return poacher::ct_string( "and" ); }
-constexpr auto get_sym_token( tokens::logic_or )                  { return poacher::ct_string( "or" ); }
-constexpr auto get_sym_token( tokens::logic_neg )                 { return poacher::ct_string( "not" ); }
-constexpr auto get_sym_token( tokens::logic_implies )             { return poacher::ct_string( "=>" ); }
-constexpr auto get_sym_token( tokens::logic_if )                  { return poacher::ct_string( "if" ); }
-constexpr auto get_sym_token( tokens::logic_iff )                 { return poacher::ct_string( "<=>" ); }
-constexpr auto get_sym_token( tokens::logic_forall )              { return poacher::ct_string( "AA" ); }
-constexpr auto get_sym_token( tokens::logic_exists )              { return poacher::ct_string( "EE" ); }
-constexpr auto get_sym_token( tokens::logic_bot )                 { return poacher::ct_string( "_|_" ); }
-constexpr auto get_sym_token( tokens::logic_top )                 { return poacher::ct_string( "TT" ); }
-constexpr auto get_sym_token( tokens::logic_vdash )               { return poacher::ct_string( "|--" ); }
-constexpr auto get_sym_token( tokens::logic_models )              { return poacher::ct_string( "|==" ); }
+constexpr auto get_sym_token( tokens::logic::and_ )                 { return poacher::ct_string( "and" ); }
+constexpr auto get_sym_token( tokens::logic::or_ )                  { return poacher::ct_string( "or" ); }
+constexpr auto get_sym_token( tokens::logic::neg_ )                 { return poacher::ct_string( "not" ); }
+constexpr auto get_sym_token( tokens::logic::implies_ )             { return poacher::ct_string( "=>" ); }
+constexpr auto get_sym_token( tokens::logic::if_ )                  { return poacher::ct_string( "if" ); }
+constexpr auto get_sym_token( tokens::logic::iff_ )                 { return poacher::ct_string( "<=>" ); }
+constexpr auto get_sym_token( tokens::logic::forall_ )              { return poacher::ct_string( "AA" ); }
+constexpr auto get_sym_token( tokens::logic::exists_ )              { return poacher::ct_string( "EE" ); }
+constexpr auto get_sym_token( tokens::logic::bot_ )                 { return poacher::ct_string( "_|_" ); }
+constexpr auto get_sym_token( tokens::logic::top_ )                 { return poacher::ct_string( "TT" ); }
+constexpr auto get_sym_token( tokens::logic::vdash_ )               { return poacher::ct_string( "|--" ); }
+constexpr auto get_sym_token( tokens::logic::models_ )              { return poacher::ct_string( "|==" ); }
 
-constexpr auto get_sym_token( tokens::grp_lpar )                  { return poacher::ct_string( "(" ); }
-constexpr auto get_sym_token( tokens::grp_rpar )                  { return poacher::ct_string( ")" ); }
-constexpr auto get_sym_token( tokens::grp_lsqbra )                { return poacher::ct_string( "[" ); }
-constexpr auto get_sym_token( tokens::grp_rsqbra )                { return poacher::ct_string( "]" ); }
-constexpr auto get_sym_token( tokens::grp_lcubra )                { return poacher::ct_string( "{" ); }
-constexpr auto get_sym_token( tokens::grp_rcubra )                { return poacher::ct_string( "}" ); }
-constexpr auto get_sym_token( tokens::grp_langle )                { return poacher::ct_string( "(:" ); }
-constexpr auto get_sym_token( tokens::grp_rangle )                { return poacher::ct_string( ":)" ); }
-constexpr auto get_sym_token( tokens::grp_langle_ )               { return poacher::ct_string( "<<" ); }
-constexpr auto get_sym_token( tokens::grp_rangle_ )               { return poacher::ct_string( ">>" ); }
-constexpr auto get_sym_token( tokens::grp_lxpar )                 { return poacher::ct_string( "{: x )" ); }
-constexpr auto get_sym_token( tokens::grp_rxpar )                 { return poacher::ct_string( "( x :}" ); }
-constexpr auto get_sym_token( tokens::grp_abs )                   { return poacher::ct_string( "abs" ); }
-constexpr auto get_sym_token( tokens::grp_floor )                 { return poacher::ct_string( "floor" ); }
-constexpr auto get_sym_token( tokens::grp_ceil )                  { return poacher::ct_string( "ceil" ); }
-constexpr auto get_sym_token( tokens::grp_norm )                  { return poacher::ct_string( "norm" ); }
+constexpr auto get_sym_token( tokens::grp::lpar_ )                  { return poacher::ct_string( "(" ); }
+constexpr auto get_sym_token( tokens::grp::rpar_ )                  { return poacher::ct_string( ")" ); }
+constexpr auto get_sym_token( tokens::grp::lsqbra_ )                { return poacher::ct_string( "[" ); }
+constexpr auto get_sym_token( tokens::grp::rsqbra_ )                { return poacher::ct_string( "]" ); }
+constexpr auto get_sym_token( tokens::grp::lcubra_ )                { return poacher::ct_string( "{" ); }
+constexpr auto get_sym_token( tokens::grp::rcubra_ )                { return poacher::ct_string( "}" ); }
+constexpr auto get_sym_token( tokens::grp::langle_ )                { return poacher::ct_string( "(:" ); }
+constexpr auto get_sym_token( tokens::grp::rangle_ )                { return poacher::ct_string( ":)" ); }
+constexpr auto get_sym_token( tokens::grp::langle__ )               { return poacher::ct_string( "<<" ); }
+constexpr auto get_sym_token( tokens::grp::rangle__ )               { return poacher::ct_string( ">>" ); }
+constexpr auto get_sym_token( tokens::grp::lxpar_ )                 { return poacher::ct_string( "{: x )" ); }
+constexpr auto get_sym_token( tokens::grp::rxpar_ )                 { return poacher::ct_string( "( x :}" ); }
+constexpr auto get_sym_token( tokens::grp::abs_ )                   { return poacher::ct_string( "abs" ); }
+constexpr auto get_sym_token( tokens::grp::floor_ )                 { return poacher::ct_string( "floor" ); }
+constexpr auto get_sym_token( tokens::grp::ceil_ )                  { return poacher::ct_string( "ceil" ); }
+constexpr auto get_sym_token( tokens::grp::norm_ )                  { return poacher::ct_string( "norm" ); }
 
-constexpr auto get_sym_token( tokens::arr_uparrow )               { return poacher::ct_string( "uarr" ); }
-constexpr auto get_sym_token( tokens::arr_downarrow )             { return poacher::ct_string( "darr" ); }
-constexpr auto get_sym_token( tokens::arr_rightarrow )            { return poacher::ct_string( "rarr" ); }
-constexpr auto get_sym_token( tokens::arr_to )                    { return poacher::ct_string( "->" ); }
-constexpr auto get_sym_token( tokens::arr_rightarrowtail )        { return poacher::ct_string( ">->" ); }
-constexpr auto get_sym_token( tokens::arr_twoheadrightarrow )     { return poacher::ct_string( "->>" ); }
-constexpr auto get_sym_token( tokens::arr_twoheadrightarrowtail ) { return poacher::ct_string( ">->>" ); }
-constexpr auto get_sym_token( tokens::arr_mapsto )                { return poacher::ct_string( "|->" ); }
-constexpr auto get_sym_token( tokens::arr_leftarrow )             { return poacher::ct_string( "larr" ); }
-constexpr auto get_sym_token( tokens::arr_leftrightarrow )        { return poacher::ct_string( "harr" ); }
-constexpr auto get_sym_token( tokens::arr_Rightarrow )            { return poacher::ct_string( "rArr" ); }
-constexpr auto get_sym_token( tokens::arr_Leftarrow )             { return poacher::ct_string( "lArr" ); }
-constexpr auto get_sym_token( tokens::arr_Leftrightarrow )        { return poacher::ct_string( "hArr" ); }
+constexpr auto get_sym_token( tokens::arr::uparrow_ )               { return poacher::ct_string( "uarr" ); }
+constexpr auto get_sym_token( tokens::arr::downarrow_ )             { return poacher::ct_string( "darr" ); }
+constexpr auto get_sym_token( tokens::arr::rightarrow_ )            { return poacher::ct_string( "rarr" ); }
+constexpr auto get_sym_token( tokens::arr::to_ )                    { return poacher::ct_string( "->" ); }
+constexpr auto get_sym_token( tokens::arr::rightarrowtail_ )        { return poacher::ct_string( ">->" ); }
+constexpr auto get_sym_token( tokens::arr::twoheadrightarrow_ )     { return poacher::ct_string( "->>" ); }
+constexpr auto get_sym_token( tokens::arr::twoheadrightarrowtail_ ) { return poacher::ct_string( ">->>" ); }
+constexpr auto get_sym_token( tokens::arr::mapsto_ )                { return poacher::ct_string( "|->" ); }
+constexpr auto get_sym_token( tokens::arr::leftarrow_ )             { return poacher::ct_string( "larr" ); }
+constexpr auto get_sym_token( tokens::arr::leftrightarrow_ )        { return poacher::ct_string( "harr" ); }
+constexpr auto get_sym_token( tokens::arr::Rightarrow_ )            { return poacher::ct_string( "rArr" ); }
+constexpr auto get_sym_token( tokens::arr::Leftarrow_ )             { return poacher::ct_string( "lArr" ); }
+constexpr auto get_sym_token( tokens::arr::Leftrightarrow_ )        { return poacher::ct_string( "hArr" ); }
 
-constexpr auto get_sym_token( tokens::acc_hat )                   { return poacher::ct_string( "hat" ); }
-constexpr auto get_sym_token( tokens::acc_bar )                   { return poacher::ct_string( "bar" ); }
-constexpr auto get_sym_token( tokens::acc_ul )                    { return poacher::ct_string( "ul" ); }
-constexpr auto get_sym_token( tokens::acc_vec )                   { return poacher::ct_string( "vec" ); }
-constexpr auto get_sym_token( tokens::acc_dot )                   { return poacher::ct_string( "dot" ); }
-constexpr auto get_sym_token( tokens::acc_ddot )                  { return poacher::ct_string( "ddot" ); }
-constexpr auto get_sym_token( tokens::acc_overset )               { return poacher::ct_string( "overset" ); }
-constexpr auto get_sym_token( tokens::acc_underset )              { return poacher::ct_string( "underset" ); }
-constexpr auto get_sym_token( tokens::acc_ubrace )                { return poacher::ct_string( "ubrace" ); }
-constexpr auto get_sym_token( tokens::acc_obrace )                { return poacher::ct_string( "obrace" ); }
-constexpr auto get_sym_token( tokens::acc_color )                 { return poacher::ct_string( "color" ); }
-constexpr auto get_sym_token( tokens::acc_cancel )                { return poacher::ct_string( "cancel" ); }
+constexpr auto get_sym_token( tokens::acc::hat_ )                   { return poacher::ct_string( "hat" ); }
+constexpr auto get_sym_token( tokens::acc::bar_ )                   { return poacher::ct_string( "bar" ); }
+constexpr auto get_sym_token( tokens::acc::ul_ )                    { return poacher::ct_string( "ul" ); }
+constexpr auto get_sym_token( tokens::acc::vec_ )                   { return poacher::ct_string( "vec" ); }
+constexpr auto get_sym_token( tokens::acc::dot_ )                   { return poacher::ct_string( "dot" ); }
+constexpr auto get_sym_token( tokens::acc::ddot_ )                  { return poacher::ct_string( "ddot" ); }
+constexpr auto get_sym_token( tokens::acc::overset_ )               { return poacher::ct_string( "overset" ); }
+constexpr auto get_sym_token( tokens::acc::underset_ )              { return poacher::ct_string( "underset" ); }
+constexpr auto get_sym_token( tokens::acc::ubrace_ )                { return poacher::ct_string( "ubrace" ); }
+constexpr auto get_sym_token( tokens::acc::obrace_ )                { return poacher::ct_string( "obrace" ); }
+constexpr auto get_sym_token( tokens::acc::color_ )                 { return poacher::ct_string( "color" ); }
+constexpr auto get_sym_token( tokens::acc::cancel_ )                { return poacher::ct_string( "cancel" ); }
 
-constexpr auto get_sym_token( tokens::gr_alpha )                  { return poacher::ct_string( "alpha" ); }
-constexpr auto get_sym_token( tokens::gr_beta )                   { return poacher::ct_string( "beta" ); }
-constexpr auto get_sym_token( tokens::gr_gamma )                  { return poacher::ct_string( "gamma" ); }
-constexpr auto get_sym_token( tokens::gr_Gamma )                  { return poacher::ct_string( "Gamma" ); }
-constexpr auto get_sym_token( tokens::gr_delta )                  { return poacher::ct_string( "delta" ); }
-constexpr auto get_sym_token( tokens::gr_Delta )                  { return poacher::ct_string( "Delta" ); }
-constexpr auto get_sym_token( tokens::gr_epsilon )                { return poacher::ct_string( "epsilon" ); }
-constexpr auto get_sym_token( tokens::gr_varepsilon )             { return poacher::ct_string( "varepsilon" ); }
-constexpr auto get_sym_token( tokens::gr_zeta )                   { return poacher::ct_string( "zeta" ); }
-constexpr auto get_sym_token( tokens::gr_eta )                    { return poacher::ct_string( "eta" ); }
-constexpr auto get_sym_token( tokens::gr_theta )                  { return poacher::ct_string( "theta" ); }
-constexpr auto get_sym_token( tokens::gr_Theta )                  { return poacher::ct_string( "Theta" ); }
-constexpr auto get_sym_token( tokens::gr_vartheta )               { return poacher::ct_string( "vartheta" ); }
-constexpr auto get_sym_token( tokens::gr_iota )                   { return poacher::ct_string( "iota" ); }
-constexpr auto get_sym_token( tokens::gr_kappa )                  { return poacher::ct_string( "kappa" ); }
-constexpr auto get_sym_token( tokens::gr_lambda )                 { return poacher::ct_string( "lambda" ); }
-constexpr auto get_sym_token( tokens::gr_Lambda )                 { return poacher::ct_string( "Lambda" ); }
-constexpr auto get_sym_token( tokens::gr_mu )                     { return poacher::ct_string( "mu" ); }
-constexpr auto get_sym_token( tokens::gr_nu )                     { return poacher::ct_string( "nu" ); }
-constexpr auto get_sym_token( tokens::gr_xi )                     { return poacher::ct_string( "xi" ); }
-constexpr auto get_sym_token( tokens::gr_Xi )                     { return poacher::ct_string( "Xi" ); }
-constexpr auto get_sym_token( tokens::gr_pi )                     { return poacher::ct_string( "pi" ); }
-constexpr auto get_sym_token( tokens::gr_Pi )                     { return poacher::ct_string( "Pi" ); }
-constexpr auto get_sym_token( tokens::gr_rho )                    { return poacher::ct_string( "rho" ); }
-constexpr auto get_sym_token( tokens::gr_sigma )                  { return poacher::ct_string( "sigma" ); }
-constexpr auto get_sym_token( tokens::gr_Sigma )                  { return poacher::ct_string( "Sigma" ); }
-constexpr auto get_sym_token( tokens::gr_tau )                    { return poacher::ct_string( "tau" ); }
-constexpr auto get_sym_token( tokens::gr_upsilon )                { return poacher::ct_string( "upsilon" ); }
-constexpr auto get_sym_token( tokens::gr_phi )                    { return poacher::ct_string( "phi" ); }
-constexpr auto get_sym_token( tokens::gr_Phi )                    { return poacher::ct_string( "Phi" ); }
-constexpr auto get_sym_token( tokens::gr_varphi )                 { return poacher::ct_string( "varphi" ); }
-constexpr auto get_sym_token( tokens::gr_chi )                    { return poacher::ct_string( "chi" ); }
-constexpr auto get_sym_token( tokens::gr_psi )                    { return poacher::ct_string( "psi" ); }
-constexpr auto get_sym_token( tokens::gr_Psi )                    { return poacher::ct_string( "Psi" ); }
-constexpr auto get_sym_token( tokens::gr_omega )                  { return poacher::ct_string( "omega" ); }
-constexpr auto get_sym_token( tokens::gr_Omega )                  { return poacher::ct_string( "Omega" ); }
+constexpr auto get_sym_token( tokens::gr::alpha_ )                  { return poacher::ct_string( "alpha" ); }
+constexpr auto get_sym_token( tokens::gr::beta_ )                   { return poacher::ct_string( "beta" ); }
+constexpr auto get_sym_token( tokens::gr::gamma_ )                  { return poacher::ct_string( "gamma" ); }
+constexpr auto get_sym_token( tokens::gr::Gamma_ )                  { return poacher::ct_string( "Gamma" ); }
+constexpr auto get_sym_token( tokens::gr::delta_ )                  { return poacher::ct_string( "delta" ); }
+constexpr auto get_sym_token( tokens::gr::Delta_ )                  { return poacher::ct_string( "Delta" ); }
+constexpr auto get_sym_token( tokens::gr::epsilon_ )                { return poacher::ct_string( "epsilon" ); }
+constexpr auto get_sym_token( tokens::gr::varepsilon_ )             { return poacher::ct_string( "varepsilon" ); }
+constexpr auto get_sym_token( tokens::gr::zeta_ )                   { return poacher::ct_string( "zeta" ); }
+constexpr auto get_sym_token( tokens::gr::eta_ )                    { return poacher::ct_string( "eta" ); }
+constexpr auto get_sym_token( tokens::gr::theta_ )                  { return poacher::ct_string( "theta" ); }
+constexpr auto get_sym_token( tokens::gr::Theta_ )                  { return poacher::ct_string( "Theta" ); }
+constexpr auto get_sym_token( tokens::gr::vartheta_ )               { return poacher::ct_string( "vartheta" ); }
+constexpr auto get_sym_token( tokens::gr::iota_ )                   { return poacher::ct_string( "iota" ); }
+constexpr auto get_sym_token( tokens::gr::kappa_ )                  { return poacher::ct_string( "kappa" ); }
+constexpr auto get_sym_token( tokens::gr::lambda_ )                 { return poacher::ct_string( "lambda" ); }
+constexpr auto get_sym_token( tokens::gr::Lambda_ )                 { return poacher::ct_string( "Lambda" ); }
+constexpr auto get_sym_token( tokens::gr::mu_ )                     { return poacher::ct_string( "mu" ); }
+constexpr auto get_sym_token( tokens::gr::nu_ )                     { return poacher::ct_string( "nu" ); }
+constexpr auto get_sym_token( tokens::gr::xi_ )                     { return poacher::ct_string( "xi" ); }
+constexpr auto get_sym_token( tokens::gr::Xi_ )                     { return poacher::ct_string( "Xi" ); }
+constexpr auto get_sym_token( tokens::gr::pi_ )                     { return poacher::ct_string( "pi" ); }
+constexpr auto get_sym_token( tokens::gr::Pi_ )                     { return poacher::ct_string( "Pi" ); }
+constexpr auto get_sym_token( tokens::gr::rho_ )                    { return poacher::ct_string( "rho" ); }
+constexpr auto get_sym_token( tokens::gr::sigma_ )                  { return poacher::ct_string( "sigma" ); }
+constexpr auto get_sym_token( tokens::gr::Sigma_ )                  { return poacher::ct_string( "Sigma" ); }
+constexpr auto get_sym_token( tokens::gr::tau_ )                    { return poacher::ct_string( "tau" ); }
+constexpr auto get_sym_token( tokens::gr::upsilon_ )                { return poacher::ct_string( "upsilon" ); }
+constexpr auto get_sym_token( tokens::gr::phi_ )                    { return poacher::ct_string( "phi" ); }
+constexpr auto get_sym_token( tokens::gr::Phi_ )                    { return poacher::ct_string( "Phi" ); }
+constexpr auto get_sym_token( tokens::gr::varphi_ )                 { return poacher::ct_string( "varphi" ); }
+constexpr auto get_sym_token( tokens::gr::chi_ )                    { return poacher::ct_string( "chi" ); }
+constexpr auto get_sym_token( tokens::gr::psi_ )                    { return poacher::ct_string( "psi" ); }
+constexpr auto get_sym_token( tokens::gr::Psi_ )                    { return poacher::ct_string( "Psi" ); }
+constexpr auto get_sym_token( tokens::gr::omega_ )                  { return poacher::ct_string( "omega" ); }
+constexpr auto get_sym_token( tokens::gr::Omega_ )                  { return poacher::ct_string( "Omega" ); }
 
-constexpr auto get_sym_token( tokens::ft_bb )                     { return poacher::ct_string( "bb" ); }
-constexpr auto get_sym_token( tokens::ft_bbb )                    { return poacher::ct_string( "bbb" ); }
-constexpr auto get_sym_token( tokens::ft_cc )                     { return poacher::ct_string( "cc" ); }
-constexpr auto get_sym_token( tokens::ft_tt )                     { return poacher::ct_string( "tt" ); }
-constexpr auto get_sym_token( tokens::ft_fr )                     { return poacher::ct_string( "fr" ); }
-constexpr auto get_sym_token( tokens::ft_sf )                     { return poacher::ct_string( "sf" ); }
+constexpr auto get_sym_token( tokens::ft::bb_ )                     { return poacher::ct_string( "bb" ); }
+constexpr auto get_sym_token( tokens::ft::bbb_ )                    { return poacher::ct_string( "bbb" ); }
+constexpr auto get_sym_token( tokens::ft::cc_ )                     { return poacher::ct_string( "cc" ); }
+constexpr auto get_sym_token( tokens::ft::tt_ )                     { return poacher::ct_string( "tt" ); }
+constexpr auto get_sym_token( tokens::ft::fr_ )                     { return poacher::ct_string( "fr" ); }
+constexpr auto get_sym_token( tokens::ft::sf_ )                     { return poacher::ct_string( "sf" ); }
 
-constexpr auto get_sym_token( tokens::fun_sin )                   { return poacher::ct_string( "sin" ); }
-constexpr auto get_sym_token( tokens::fun_cos )                   { return poacher::ct_string( "cos" ); }
-constexpr auto get_sym_token( tokens::fun_tan )                   { return poacher::ct_string( "tan" ); }
-constexpr auto get_sym_token( tokens::fun_sec )                   { return poacher::ct_string( "sec" ); }
-constexpr auto get_sym_token( tokens::fun_csc )                   { return poacher::ct_string( "csc" ); }
-constexpr auto get_sym_token( tokens::fun_cot )                   { return poacher::ct_string( "cot" ); }
-constexpr auto get_sym_token( tokens::fun_arcsin )                { return poacher::ct_string( "arcsin" ); }
-constexpr auto get_sym_token( tokens::fun_arccos )                { return poacher::ct_string( "arccos" ); }
-constexpr auto get_sym_token( tokens::fun_arctan )                { return poacher::ct_string( "arctan" ); }
-constexpr auto get_sym_token( tokens::fun_sinh )                  { return poacher::ct_string( "sinh" ); }
-constexpr auto get_sym_token( tokens::fun_cosh )                  { return poacher::ct_string( "cosh" ); }
-constexpr auto get_sym_token( tokens::fun_tanh )                  { return poacher::ct_string( "tanh" ); }
-constexpr auto get_sym_token( tokens::fun_sech )                  { return poacher::ct_string( "sech" ); }
-constexpr auto get_sym_token( tokens::fun_csch )                  { return poacher::ct_string( "csch" ); }
-constexpr auto get_sym_token( tokens::fun_coth )                  { return poacher::ct_string( "coth" ); }
-constexpr auto get_sym_token( tokens::fun_exp )                   { return poacher::ct_string( "exp" ); }
-constexpr auto get_sym_token( tokens::fun_log )                   { return poacher::ct_string( "log" ); }
-constexpr auto get_sym_token( tokens::fun_ln )                    { return poacher::ct_string( "ln" ); }
-constexpr auto get_sym_token( tokens::fun_det )                   { return poacher::ct_string( "det" ); }
-constexpr auto get_sym_token( tokens::fun_dim )                   { return poacher::ct_string( "dim" ); }
-constexpr auto get_sym_token( tokens::fun_mod )                   { return poacher::ct_string( "mod" ); }
-constexpr auto get_sym_token( tokens::fun_gcd )                   { return poacher::ct_string( "gcd" ); }
-constexpr auto get_sym_token( tokens::fun_lcm )                   { return poacher::ct_string( "lcm" ); }
-constexpr auto get_sym_token( tokens::fun_lub )                   { return poacher::ct_string( "lub" ); }
-constexpr auto get_sym_token( tokens::fun_glb )                   { return poacher::ct_string( "glb" ); }
-constexpr auto get_sym_token( tokens::fun_min )                   { return poacher::ct_string( "min" ); }
-constexpr auto get_sym_token( tokens::fun_max )                   { return poacher::ct_string( "max" ); }
-constexpr auto get_sym_token( tokens::fun_f )                     { return poacher::ct_string( "f" ); }
-constexpr auto get_sym_token( tokens::fun_g )                     { return poacher::ct_string( "g" ); }
+constexpr auto get_sym_token( tokens::fun::sin_ )                   { return poacher::ct_string( "sin" ); }
+constexpr auto get_sym_token( tokens::fun::cos_ )                   { return poacher::ct_string( "cos" ); }
+constexpr auto get_sym_token( tokens::fun::tan_ )                   { return poacher::ct_string( "tan" ); }
+constexpr auto get_sym_token( tokens::fun::sec_ )                   { return poacher::ct_string( "sec" ); }
+constexpr auto get_sym_token( tokens::fun::csc_ )                   { return poacher::ct_string( "csc" ); }
+constexpr auto get_sym_token( tokens::fun::cot_ )                   { return poacher::ct_string( "cot" ); }
+constexpr auto get_sym_token( tokens::fun::arcsin_ )                { return poacher::ct_string( "arcsin" ); }
+constexpr auto get_sym_token( tokens::fun::arccos_ )                { return poacher::ct_string( "arccos" ); }
+constexpr auto get_sym_token( tokens::fun::arctan_ )                { return poacher::ct_string( "arctan" ); }
+constexpr auto get_sym_token( tokens::fun::sinh_ )                  { return poacher::ct_string( "sinh" ); }
+constexpr auto get_sym_token( tokens::fun::cosh_ )                  { return poacher::ct_string( "cosh" ); }
+constexpr auto get_sym_token( tokens::fun::tanh_ )                  { return poacher::ct_string( "tanh" ); }
+constexpr auto get_sym_token( tokens::fun::sech_ )                  { return poacher::ct_string( "sech" ); }
+constexpr auto get_sym_token( tokens::fun::csch_ )                  { return poacher::ct_string( "csch" ); }
+constexpr auto get_sym_token( tokens::fun::coth_ )                  { return poacher::ct_string( "coth" ); }
+constexpr auto get_sym_token( tokens::fun::exp_ )                   { return poacher::ct_string( "exp" ); }
+constexpr auto get_sym_token( tokens::fun::log_ )                   { return poacher::ct_string( "log" ); }
+constexpr auto get_sym_token( tokens::fun::ln_ )                    { return poacher::ct_string( "ln" ); }
+constexpr auto get_sym_token( tokens::fun::det_ )                   { return poacher::ct_string( "det" ); }
+constexpr auto get_sym_token( tokens::fun::dim_ )                   { return poacher::ct_string( "dim" ); }
+constexpr auto get_sym_token( tokens::fun::mod_ )                   { return poacher::ct_string( "mod" ); }
+constexpr auto get_sym_token( tokens::fun::gcd_ )                   { return poacher::ct_string( "gcd" ); }
+constexpr auto get_sym_token( tokens::fun::lcm_ )                   { return poacher::ct_string( "lcm" ); }
+constexpr auto get_sym_token( tokens::fun::lub_ )                   { return poacher::ct_string( "lub" ); }
+constexpr auto get_sym_token( tokens::fun::glb_ )                   { return poacher::ct_string( "glb" ); }
+constexpr auto get_sym_token( tokens::fun::min_ )                   { return poacher::ct_string( "min" ); }
+constexpr auto get_sym_token( tokens::fun::max_ )                   { return poacher::ct_string( "max" ); }
+constexpr auto get_sym_token( tokens::fun::f_ )                     { return poacher::ct_string( "f" ); }
+constexpr auto get_sym_token( tokens::fun::g_ )                     { return poacher::ct_string( "g" ); }
 
-constexpr auto get_sym_token( tokens::spe_number )                { return poacher::ct_string( "." ); }
-constexpr auto get_sym_token( tokens::spe_ident )                 { return poacher::ct_string( "." ); }
+constexpr auto get_sym_token( tokens::spe::number_ )                { return poacher::ct_string( "." ); }
+constexpr auto get_sym_token( tokens::spe::ident_ )                 { return poacher::ct_string( "." ); }
 
 }
 
@@ -696,222 +718,222 @@ namespace amath {
 
 using token_type_list = poacher::token_type_list
 
-   < tokens::op_add
-   , tokens::op_sub
-   , tokens::op_cdot
-   , tokens::op_ast
-   , tokens::op_star
-   , tokens::op_slash
-   , tokens::op_backslash
-   , tokens::op_times
-   , tokens::op_div
-   , tokens::op_ltimes
-   , tokens::op_rtimes
-   , tokens::op_bowtie
-   , tokens::op_circ
-   , tokens::op_oplus
-   , tokens::op_otimes
-   , tokens::op_odot
-   , tokens::op_sum
-   , tokens::op_prod
-   , tokens::op_wedge
-   , tokens::op_bidwedge
-   , tokens::op_vee
-   , tokens::op_bigvee
-   , tokens::op_cap
-   , tokens::op_bigcap
-   , tokens::op_cup
-   , tokens::op_bigcup
+   < tokens::op::add_
+   , tokens::op::sub_
+   , tokens::op::cdot_
+   , tokens::op::ast_
+   , tokens::op::star_
+   , tokens::op::slash_
+   , tokens::op::backslash_
+   , tokens::op::times_
+   , tokens::op::div_
+   , tokens::op::ltimes_
+   , tokens::op::rtimes_
+   , tokens::op::bowtie_
+   , tokens::op::circ_
+   , tokens::op::oplus_
+   , tokens::op::otimes_
+   , tokens::op::odot_
+   , tokens::op::sum_
+   , tokens::op::prod_
+   , tokens::op::wedge_
+   , tokens::op::bidwedge_
+   , tokens::op::vee_
+   , tokens::op::bigvee_
+   , tokens::op::cap_
+   , tokens::op::bigcap_
+   , tokens::op::cup_
+   , tokens::op::bigcup_
 
-   , tokens::misc_frac
-   , tokens::misc_exp
-   , tokens::misc_sqrt
-   , tokens::misc_root
-   //o , tokens::misc_int
-   //o , tokens::misc_oint
-   //o , tokens::misc_partial
-   //o , tokens::misc_nabla
-   //o , tokens::misc_pm
-   //o , tokens::misc_emptyset
-   //o , tokens::misc_infty
-   //o , tokens::misc_aleph
-   //o , tokens::misc_therefore
-   //o , tokens::misc_because
-   //o , tokens::misc_ldots
-   //o , tokens::misc_cdots
-   //o , tokens::misc_vdots
-   //o , tokens::misc_ddots
-   //o , tokens::misc_smallquad
-   //o , tokens::misc_quad
-   //o , tokens::misc_angle
-   //o , tokens::misc_frown
-   //o , tokens::misc_triangle
-   //o , tokens::misc_diamond
-   //o , tokens::misc_square
-   //o , tokens::misc_lfloor
-   //o , tokens::misc_rfloor
-   //o , tokens::misc_lceiling
-   //o , tokens::misc_rceiling
-   //o , tokens::misc_C
-   //o , tokens::misc_N
-   //o , tokens::misc_Q
-   //o , tokens::misc_R
-   //o , tokens::misc_Z
+   , tokens::misc::frac_
+   , tokens::misc::exp_
+   , tokens::misc::sqrt_
+   , tokens::misc::root_
+   //o , tokens::misc::int_
+   //o , tokens::misc::oint_
+   //o , tokens::misc::partial_
+   //o , tokens::misc::nabla_
+   //o , tokens::misc::pm_
+   //o , tokens::misc::emptyset_
+   //o , tokens::misc::infty_
+   //o , tokens::misc::aleph_
+   //o , tokens::misc::therefore_
+   //o , tokens::misc::because_
+   //o , tokens::misc::ldots_
+   //o , tokens::misc::cdots_
+   //o , tokens::misc::vdots_
+   //o , tokens::misc::ddots_
+   //o , tokens::misc::smallquad_
+   //o , tokens::misc::quad_
+   //o , tokens::misc::angle_
+   //o , tokens::misc::frown_
+   //o , tokens::misc::triangle_
+   //o , tokens::misc::diamond_
+   //o , tokens::misc::square_
+   //o , tokens::misc::lfloor_
+   //o , tokens::misc::rfloor_
+   //o , tokens::misc::lceiling_
+   //o , tokens::misc::rceiling_
+   //o , tokens::misc::C_
+   //o , tokens::misc::N_
+   //o , tokens::misc::Q_
+   //o , tokens::misc::R_
+   //o , tokens::misc::Z_
 
-   , tokens::rel_eq
-   , tokens::rel_ne
-   , tokens::rel_lt
-   , tokens::rel_gt
-   , tokens::rel_le
-   , tokens::rel_ge
-   //o , tokens::rel_prec
-   //o , tokens::rel_preceq
-   //o , tokens::rel_succ
-   //o , tokens::rel_succeq
-   //o , tokens::rel_in
-   //o , tokens::rel_notin
-   //o , tokens::rel_subset
-   //o , tokens::rel_supset
-   //o , tokens::rel_subseteq
-   //o , tokens::rel_supseteq
-   //o , tokens::rel_equiv
-   //o , tokens::rel_cong
-   //o , tokens::rel_approx
-   //o , tokens::rel_propto
+   , tokens::rel::eq_
+   , tokens::rel::ne_
+   , tokens::rel::lt_
+   , tokens::rel::gt_
+   , tokens::rel::le_
+   , tokens::rel::ge_
+   //o , tokens::rel::prec_
+   //o , tokens::rel::preceq_
+   //o , tokens::rel::succ_
+   //o , tokens::rel::succeq_
+   //o , tokens::rel::in_
+   //o , tokens::rel::notin_
+   //o , tokens::rel::subset_
+   //o , tokens::rel::supset_
+   //o , tokens::rel::subseteq_
+   //o , tokens::rel::supseteq_
+   //o , tokens::rel::equiv_
+   //o , tokens::rel::cong_
+   //o , tokens::rel::approx_
+   //o , tokens::rel::propto_
 
-   , tokens::logic_and
-   , tokens::logic_or
-   , tokens::logic_neg
-   , tokens::logic_implies
-   , tokens::logic_if
-   , tokens::logic_iff
-   , tokens::logic_forall
-   , tokens::logic_exists
-   , tokens::logic_bot
-   , tokens::logic_top
-   , tokens::logic_vdash
-   , tokens::logic_models
+   , tokens::logic::and_
+   , tokens::logic::or_
+   , tokens::logic::neg_
+   , tokens::logic::implies_
+   , tokens::logic::if_
+   , tokens::logic::iff_
+   , tokens::logic::forall_
+   , tokens::logic::exists_
+   , tokens::logic::bot_
+   , tokens::logic::top_
+   , tokens::logic::vdash_
+   , tokens::logic::models_
 
-   , tokens::grp_lpar
-   , tokens::grp_rpar
-   //o , tokens::grp_lsqbra
-   //o , tokens::grp_rsqbra
-   //o , tokens::grp_lcubra
-   //o , tokens::grp_rcubra
-   //o , tokens::grp_langle
-   //o , tokens::grp_rangle
-   //o , tokens::grp_langle_
-   //o , tokens::grp_rangle_
-   //o , tokens::grp_lxpar
-   //o , tokens::grp_rxpar
-   //o , tokens::grp_abs
-   //o , tokens::grp_floor
-   //o , tokens::grp_ceil
-   //o , tokens::grp_norm
+   , tokens::grp::lpar_
+   , tokens::grp::rpar_
+   //o , tokens::grp::lsqbra_
+   //o , tokens::grp::rsqbra_
+   //o , tokens::grp::lcubra_
+   //o , tokens::grp::rcubra_
+   //o , tokens::grp::langle_
+   //o , tokens::grp::rangle_
+   //o , tokens::grp::langle__
+   //o , tokens::grp::rangle__
+   //o , tokens::grp::lxpar_
+   //o , tokens::grp::rxpar_
+   //o , tokens::grp::abs_
+   //o , tokens::grp::floor_
+   //o , tokens::grp::ceil_
+   //o , tokens::grp::norm_
 
-   //o , tokens::arr_uparrow
-   //o , tokens::arr_downarrow
-   //o , tokens::arr_rightarrow
-   //o , tokens::arr_to
-   //o , tokens::arr_rightarrowtail
-   //o , tokens::arr_twoheadrightarrow
-   //o , tokens::arr_twoheadrightarrowtail
-   //o , tokens::arr_mapsto
-   //o , tokens::arr_leftarrow
-   //o , tokens::arr_leftrightarrow
-   //o , tokens::arr_Rightarrow
-   //o , tokens::arr_Leftarrow
-   //o , tokens::arr_Leftrightarrow
+   //o , tokens::arr::uparrow_
+   //o , tokens::arr::downarrow_
+   //o , tokens::arr::rightarrow_
+   //o , tokens::arr::to_
+   //o , tokens::arr::rightarrowtail_
+   //o , tokens::arr::twoheadrightarrow_
+   //o , tokens::arr::twoheadrightarrowtail_
+   //o , tokens::arr::mapsto_
+   //o , tokens::arr::leftarrow_
+   //o , tokens::arr::leftrightarrow_
+   //o , tokens::arr::Rightarrow_
+   //o , tokens::arr::Leftarrow_
+   //o , tokens::arr::Leftrightarrow_
 
-   //o , tokens::acc_hat
-   //o , tokens::acc_bar
-   //o , tokens::acc_ul
-   //o , tokens::acc_vec
-   //o , tokens::acc_dot
-   //o , tokens::acc_ddot
-   //o , tokens::acc_overset
-   //o , tokens::acc_underset
-   //o , tokens::acc_ubrace
-   //o , tokens::acc_obrace
-   //o , tokens::acc_color
-   //o , tokens::acc_cancel
+   //o , tokens::acc::hat_
+   //o , tokens::acc::bar_
+   //o , tokens::acc::ul_
+   //o , tokens::acc::vec_
+   //o , tokens::acc::dot_
+   //o , tokens::acc::ddot_
+   //o , tokens::acc::overset_
+   //o , tokens::acc::underset_
+   //o , tokens::acc::ubrace_
+   //o , tokens::acc::obrace_
+   //o , tokens::acc::color_
+   //o , tokens::acc::cancel_
 
-   //o , tokens::gr_alpha
-   //o , tokens::gr_beta
-   //o , tokens::gr_gamma
-   //o , tokens::gr_Gamma
-   //o , tokens::gr_delta
-   //o , tokens::gr_Delta
-   //o , tokens::gr_epsilon
-   //o , tokens::gr_varepsilon
-   //o , tokens::gr_zeta
-   //o , tokens::gr_eta
-   //o , tokens::gr_theta
-   //o , tokens::gr_Theta
-   //o , tokens::gr_vartheta
-   //o , tokens::gr_iota
-   //o , tokens::gr_kappa
-   //o , tokens::gr_lambda
-   //o , tokens::gr_Lambda
-   //o , tokens::gr_mu
-   //o , tokens::gr_nu
-   //o , tokens::gr_xi
-   //o , tokens::gr_Xi
-   //o , tokens::gr_pi
-   //o , tokens::gr_Pi
-   //o , tokens::gr_rho
-   //o , tokens::gr_sigma
-   //o , tokens::gr_Sigma
-   //o , tokens::gr_tau
-   //o , tokens::gr_upsilon
-   //o , tokens::gr_phi
-   //o , tokens::gr_Phi
-   //o , tokens::gr_varphi
-   //o , tokens::gr_chi
-   //o , tokens::gr_psi
-   //o , tokens::gr_Psi
-   //o , tokens::gr_omega
-   //o , tokens::gr_Omega
+   //o , tokens::gr::alpha_
+   //o , tokens::gr::beta_
+   //o , tokens::gr::gamma_
+   //o , tokens::gr::Gamma_
+   //o , tokens::gr::delta_
+   //o , tokens::gr::Delta_
+   //o , tokens::gr::epsilon_
+   //o , tokens::gr::varepsilon_
+   //o , tokens::gr::zeta_
+   //o , tokens::gr::eta_
+   //o , tokens::gr::theta_
+   //o , tokens::gr::Theta_
+   //o , tokens::gr::vartheta_
+   //o , tokens::gr::iota_
+   //o , tokens::gr::kappa_
+   //o , tokens::gr::lambda_
+   //o , tokens::gr::Lambda_
+   //o , tokens::gr::mu_
+   //o , tokens::gr::nu_
+   //o , tokens::gr::xi_
+   //o , tokens::gr::Xi_
+   //o , tokens::gr::pi_
+   //o , tokens::gr::Pi_
+   //o , tokens::gr::rho_
+   //o , tokens::gr::sigma_
+   //o , tokens::gr::Sigma_
+   //o , tokens::gr::tau_
+   //o , tokens::gr::upsilon_
+   //o , tokens::gr::phi_
+   //o , tokens::gr::Phi_
+   //o , tokens::gr::varphi_
+   //o , tokens::gr::chi_
+   //o , tokens::gr::psi_
+   //o , tokens::gr::Psi_
+   //o , tokens::gr::omega_
+   //o , tokens::gr::Omega_
 
-   , tokens::ft_bb
-   , tokens::ft_bbb
-   , tokens::ft_cc
-   , tokens::ft_tt
-   , tokens::ft_fr
-   , tokens::ft_sf
+   , tokens::ft::bb_
+   , tokens::ft::bbb_
+   , tokens::ft::cc_
+   , tokens::ft::tt_
+   , tokens::ft::fr_
+   , tokens::ft::sf_
 
-   , tokens::fun_sin
-   , tokens::fun_cos
-   , tokens::fun_tan
-   //o , tokens::fun_sec
-   //o , tokens::fun_csc
-   //o , tokens::fun_cot
-   //o , tokens::fun_arcsin
-   //o , tokens::fun_arccos
-   //o , tokens::fun_arctan
-   //o , tokens::fun_sinh
-   //o , tokens::fun_cosh
-   //o , tokens::fun_tanh
-   //o , tokens::fun_sech
-   //o , tokens::fun_csch
-   //o , tokens::fun_coth
-   //o , tokens::fun_exp
-   //o , tokens::fun_log
-   //o , tokens::fun_ln
-   //o , tokens::fun_det
-   //o , tokens::fun_dim
-   //o , tokens::fun_mod
-   //o , tokens::fun_gcd
-   //o , tokens::fun_lcm
-   //o , tokens::fun_lub
-   //o , tokens::fun_glb
-   //o , tokens::fun_min
-   //o , tokens::fun_max
-   //o , tokens::fun_f
-   //o , tokens::fun_g
+   , tokens::fun::sin_
+   , tokens::fun::cos_
+   , tokens::fun::tan_
+   //o , tokens::fun::sec_
+   //o , tokens::fun::csc_
+   //o , tokens::fun::cot_
+   //o , tokens::fun::arcsin_
+   //o , tokens::fun::arccos_
+   //o , tokens::fun::arctan_
+   //o , tokens::fun::sinh_
+   //o , tokens::fun::cosh_
+   //o , tokens::fun::tanh_
+   //o , tokens::fun::sech_
+   //o , tokens::fun::csch_
+   //o , tokens::fun::coth_
+   //o , tokens::fun::exp_
+   //o , tokens::fun::log_
+   //o , tokens::fun::ln_
+   //o , tokens::fun::det_
+   //o , tokens::fun::dim_
+   //o , tokens::fun::mod_
+   //o , tokens::fun::gcd_
+   //o , tokens::fun::lcm_
+   //o , tokens::fun::lub_
+   //o , tokens::fun::glb_
+   //o , tokens::fun::min_
+   //o , tokens::fun::max_
+   //o , tokens::fun::f_
+   //o , tokens::fun::g_
 
-   , tokens::spe_number
-   , tokens::spe_ident
+   , tokens::spe::number_
+   , tokens::spe::ident_
    >;
 
 }
