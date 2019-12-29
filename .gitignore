@@ -1,3 +1,5 @@
+exclude/
+
 *.d
 *.asm
 *.o
