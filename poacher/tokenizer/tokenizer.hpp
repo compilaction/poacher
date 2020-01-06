@@ -96,8 +96,8 @@ constexpr auto tokenize( String str, Tokenizer tkz )
             current += cur_token.value.size();
          }
 
-         std::visit( [&] ( auto t ) {
-            if constexpr ( t != tokens::error{} && t != tokens::skip{} ) {
+         std::visit( [&] ( auto param_t ) {
+            if constexpr ( param_t != tokens::error{} && param_t != tokens::skip{} ) {
                token_list.push_back( cur_token );
             }
          }, cur_token.type );
