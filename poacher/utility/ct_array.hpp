@@ -3,13 +3,14 @@
 //-----------------------------------------------------------------------------
 // ct_array
 
+#include <algorithm>
 #include <utility>
 
 #include <poacher/utility/ct_assert.hpp>
 
 namespace poacher {
 
-template < typename T, std::size_t Capacity >
+template < typename T, std::size_t Capacity>
 class ct_array
 {
 
@@ -24,6 +25,10 @@ private:
 public:
 
    constexpr ct_array() noexcept : actual_size_(0), data_{} {}
+   constexpr ct_array(std::size_t sz) noexcept : actual_size_(sz), data_{}
+   {
+      POACHER_CT_ASSERT( actual_size_ <= capacity() );
+   }
 
    template < typename U, typename... Ts >
    constexpr ct_array(U v, Ts... vs) noexcept
@@ -52,7 +57,7 @@ public:
 
    constexpr void resize(int nsz)
    {
-      POACHER_CT_ASSERT( nsz < capacity() );
+      POACHER_CT_ASSERT( nsz <= capacity() );
       actual_size_ = nsz;
    }
 
@@ -80,12 +85,29 @@ public:
       POACHER_CT_ASSERT( actual_size_ );
       actual_size_--;
    }
-};
 
-template <typename T, int Capacity>
-ct_array(const T (&)[Capacity]) -> ct_array<T, Capacity>;
+   template<std::size_t M>
+   constexpr ct_array& append( ct_array<T,M> const& other) noexcept
+   {
+      POACHER_CT_ASSERT( actual_size_ + other.size() <= capacity() );
+      for(auto const& e : other)
+         push_back(e);
+
+      return *this;
+   }
+};
 
 template< typename T, typename... Ts >
 ct_array( T v, Ts... vs ) -> ct_array< T, 1 + sizeof...(Ts) >;
+
+template<typename T, std::size_t... Ns>
+constexpr auto aggregate( ct_array<T,Ns> const&... as ) noexcept
+{
+  ct_array<ct_array<T,std::max({Ns...})>, sizeof...(Ns)> that(sizeof...(Ns));
+
+  auto b = that.begin();
+  (((b++)->append(as)),...);
+  return that;
+}
 
 }  // namespace poacher
