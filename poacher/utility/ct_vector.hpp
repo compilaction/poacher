@@ -65,6 +65,10 @@ public:
   constexpr ct_vector ( std::initializer_list<element_t> elmts )
   : ct_vector( elmts.begin(), elmts.end() ) {}
 
+  template<auto N>
+  constexpr ct_vector ( std::array<element_t, N> elmts )
+  : ct_vector( elmts.begin(), elmts.end() ) {}
+
   constexpr ~ct_vector () {
     if( data_ ) delete[] data_;
     this->size_ = 0;
