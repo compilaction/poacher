@@ -123,8 +123,47 @@ public:
     return *this;
   }
 
+  constexpr ct_vector& swap ( ct_vector & other )
+  {
+    auto const data = other.data_;
+    other.data_ = this->data_;
+    this->data_ = data;
+
+    auto const size = other.size_;
+    other.size_ = this->size_;
+    this->size_ = size;
+
+    auto const capacity = other.capacity_;
+    other.capacity_ = this->capacity_;
+    this->capacity_ = capacity;
+
+    return *this;
+  }
+
   constexpr bool empty () const { return this->size_ == 0; }
 };
+
+template<typename T>
+constexpr bool operator==( ct_vector<T> const& a, ct_vector<T> const& b )
+{
+  if( a.size() != b.size() ) return false;
+  if( a.size() == 0 ) return true;
+
+  for( std::size_t i = 0; i < a.size(); i++ )
+    if( a[i] != b[i] ) return false;
+  return true;
+}
+
+template<typename T>
+constexpr bool operator!=( ct_vector<T> const& a, ct_vector<T> const& b )
+{
+  if( a.size() != b.size() ) return true;
+  if( a.size() == 0 ) return false;
+
+  for( std::size_t i = 0; i < a.size(); i++ )
+    if( a[i] != b[i] ) return true;
+  return false;
+}
 
 constexpr auto eval_to_array ( auto f ) {
   constexpr size_t size = f().size();
