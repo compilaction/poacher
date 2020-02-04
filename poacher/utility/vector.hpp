@@ -61,6 +61,12 @@ public:
   constexpr T&       operator[] ( size_t n )       { return data_[n]; }
   constexpr T const& operator[] ( size_t n ) const { return data_[n]; }
 
+  constexpr T&        front ()        { return this->data_[0]; }
+  constexpr T const&  front ()  const { return this->data_[0]; }
+  constexpr T&        back ()         { return this->data_[ this->size_-1 ]; }
+  constexpr T const&  back ()   const { return this->data_[ this->size_-1 ]; }
+  constexpr T*        data ()         { return this->data_; }
+
   constexpr size_t size ()      const { return size_; }
   constexpr size_t capacity ()  const { return capacity_; }
 
