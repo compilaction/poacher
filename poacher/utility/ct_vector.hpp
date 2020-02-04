@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <optional>
 
 namespace poacher {
 
@@ -30,17 +31,17 @@ public:
   {}
 
   constexpr ct_vector ( std::size_t n )
-  : data_( new T[n] ), size_( n ), capacity_( n ) {
-    for( auto & e : *this ) e = T();
+  : data_( new element_t[n] ), size_( n ), capacity_( n ) {
+    for( auto & e : *this ) e = element_t();
   }
 
-  constexpr ct_vector ( std::size_t n, T const& val )
-  : data_( new T[n] ), size_( n ), capacity_( n ) {
+  constexpr ct_vector ( std::size_t n, element_t const& val )
+  : data_( new element_t[n] ), size_( n ), capacity_( n ) {
     for( auto & e : *this ) e = val;
   }
 
   constexpr ct_vector ( ct_vector const& other )
-  : data_( new T[ other.size() ] ), size_( other.size_ ) {
+  : data_( new element_t[ other.size() ] ), size_( other.size_ ) {
     for( std::size_t i = 0; i < size_; i++ ) (*this)[i] = other[i];
   }
 
@@ -48,6 +49,21 @@ public:
   : data_( other.data_ ), size_( other.size_ ) {
     other.data_ = nullptr;
   }
+
+  constexpr ct_vector ( auto begin, auto end )
+  : data_( new element_t[ end - begin ] )
+  , size_( end - begin )
+  , capacity_( end - begin )
+  {
+    auto begin_ = this->begin();
+
+    while( begin != end ) {
+      *begin_++ = *begin++;
+    }
+  }
+
+  constexpr ct_vector ( std::initializer_list<element_t> elmts )
+  : ct_vector( elmts.begin(), elmts.end() ) {}
 
   constexpr ~ct_vector () {
     if( data_ ) delete[] data_;
