@@ -3,10 +3,10 @@
 
 include config.mk
 
-CXXSRC	= $(shell find . -name "*.cpp")	# C++ Sources
-PROG	= $(CXXSRC:.cpp=.prog)			# Objects
-DEP		= $(CXXSRC:.cpp=.d)				# Dependency files
-RUN		= $(CXXSRC:.cpp=.run)			# Run files (virtual)
+CXXSRC  = $(shell find . -name "*.cpp") # C++ Sources
+PROG    = $(CXXSRC:.cpp=.prog) 	        # Objects
+DEP     = $(CXXSRC:.cpp=.d)    	        # Dependency files
+RUN     = $(CXXSRC:.cpp=.run)  	        # Run files (virtual)
 
 all: $(PROG)
 
