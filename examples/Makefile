@@ -15,7 +15,7 @@ all: $(PROG)
 
 # Compilation
 .cpp.prog:
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) -MMD -o $@ $<
+	$(CLANG_TRUNK_HOME)/bin/clang++ $(CXXFLAGS) $(LDFLAGS) -MMD -o $@ $<
 
 .prog.run:
 	./$<
