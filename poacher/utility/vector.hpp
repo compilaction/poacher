@@ -79,7 +79,7 @@ public:
   constexpr const T*  end ()    const { return data_ + size_; }
 
   //---------------------------------------------------------------------------
-  //  MODIFYING METHODS
+  //  MODIFIERS
 
   constexpr ct_vector& push_back ( T const& elmt ) {
     if( this->size_ + 1 > this->capacity_ )
@@ -150,7 +150,7 @@ public:
 };
 
 template<typename T>
-constexpr bool operator==( ct_vector<T> const& a, ct_vector<T> const& b )
+constexpr bool operator== ( ct_vector<T> const& a, ct_vector<T> const& b )
 {
   if( a.size() != b.size() ) return false;
   if( a.size() == 0 ) return true;
@@ -161,7 +161,7 @@ constexpr bool operator==( ct_vector<T> const& a, ct_vector<T> const& b )
 }
 
 template<typename T>
-constexpr bool operator!=( ct_vector<T> const& a, ct_vector<T> const& b )
+constexpr bool operator!= ( ct_vector<T> const& a, ct_vector<T> const& b )
 {
   if( a.size() != b.size() ) return true;
   if( a.size() == 0 ) return false;
