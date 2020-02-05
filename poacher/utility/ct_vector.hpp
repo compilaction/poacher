@@ -1,7 +1,6 @@
 #pragma once
 
 #include <array>
-#include <optional>
 #include <tuple>
 #include <variant>
 
@@ -239,7 +238,7 @@ constexpr auto eval_as_array ( auto f )
   return arr;
 }
 
-namespace detail_ {
+namespace detail_eval_as_unvarianted_tuple {
 template<typename T, bool V> struct type_reduce { using type = T; };
 
 template<typename T1, bool V1, typename T2, bool V2>
@@ -253,12 +252,9 @@ constexpr auto operator | ( type_reduce<T1, V1>, type_reduce<T2, V2> )
 constexpr auto eval_as_unvarianted_tuple ( auto f )
 {
   using namespace std;
-  using namespace detail_;
+  using namespace detail_eval_as_unvarianted_tuple;
 
   constexpr size_t size = f().size();
-
-  auto res = f();
-
   return [&] <size_t... Vs> ( integer_sequence<size_t, Vs...> )
   {
     return make_tuple( [&] ( auto I )
