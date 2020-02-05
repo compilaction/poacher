@@ -229,22 +229,6 @@ constexpr auto eval_as_tuple ( auto f )
   } ( std::make_integer_sequence<std::size_t, size>{} );
 }
 
-constexpr auto eval_as_tuple_ ( auto f )
-{
-  constexpr size_t size = f().size();
-  auto res = f();
-  return [&] <std::size_t... Vs> ( std::integer_sequence<std::size_t, Vs...> )
-  {
-    return std::make_tuple( [&] ( auto I ) {
-      constexpr auto val = f()[I];
-
-      // TODO: Static unrolling on types...
-
-      return val;
-    } ( std::integral_constant<std::size_t, Vs>{} ) ... );
-  } ( std::make_integer_sequence<std::size_t, size>{} );
-}
-
 constexpr auto eval_as_array ( auto f )
 {
   using elmt_t = typename decltype(f())::element_t;
@@ -254,5 +238,41 @@ constexpr auto eval_as_array ( auto f )
   for( size_t i = 0; i < v.size(); i++) arr[i] = v[i];
   return arr;
 }
+
+namespace detail_ {
+template<typename T, bool V> struct type_reduce { using type = T; };
+
+template<typename T1, bool V1, typename T2, bool V2>
+constexpr auto operator | ( type_reduce<T1, V1>, type_reduce<T2, V2> )
+  -> std::conditional_t<V1, type_reduce<T1, V1>, type_reduce<T2, V2>>
+{
+  return std::conditional_t< V1, type_reduce<T1, V1>, type_reduce<T2, V2> >{};
+}
+}
+
+constexpr auto eval_as_unvarianted_tuple ( auto f )
+{
+  using namespace std;
+  using namespace detail_;
+
+  constexpr size_t size = f().size();
+
+  auto res = f();
+
+  return [&] <size_t... Vs> ( integer_sequence<size_t, Vs...> )
+  {
+    return make_tuple( [&] ( auto I )
+    {
+      constexpr auto val = f()[I];
+      auto constexpr type_holder = [&] <typename... Ts> ( variant<Ts...> )
+      {
+        return ( type_reduce<Ts, holds_alternative<Ts>(val)>{} | ... );
+      } ( val );
+      using typ = typename decltype(type_holder)::type;
+      return get<typ>(val);
+    } ( integral_constant<size_t, Vs>{} ) ... );
+  } ( make_integer_sequence<size_t, size>{} );
+}
+
 
 }
