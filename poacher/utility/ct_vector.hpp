@@ -2,6 +2,7 @@
 
 #include <array>
 #include <optional>
+#include <tuple>
 
 namespace poacher {
 
@@ -15,13 +16,13 @@ class ct_vector
   std::size_t size_;
   std::size_t capacity_;
 
+public:
+
   //---------------------------------------------------------------------------
   //  TYPES
 
   using element_t = T;
   using size_t = std::size_t;
-
-public:
 
   //---------------------------------------------------------------------------
   //  CONSTRUCTORS & DESTRUCTOR
@@ -50,24 +51,19 @@ public:
     other.data_ = nullptr;
   }
 
-  constexpr ct_vector ( auto begin, auto end )
-  : data_( new element_t[ end - begin ] )
-  , size_( end - begin )
-  , capacity_( end - begin )
-  {
-    auto begin_ = this->begin();
-
-    while( begin != end ) {
-      *begin_++ = *begin++;
-    }
-  }
-
   constexpr ct_vector ( std::initializer_list<element_t> elmts )
   : ct_vector( elmts.begin(), elmts.end() ) {}
 
   template<auto N>
   constexpr ct_vector ( std::array<element_t, N> elmts )
   : ct_vector( elmts.begin(), elmts.end() ) {}
+
+  template<typename... Ts>
+  constexpr ct_vector ( std::tuple<Ts...> const& tup )
+  : ct_vector()
+  {
+    std::apply( [this]( auto... Vs ) { ( this->push_back(Vs), ... ); }, tup );
+  }
 
   constexpr ~ct_vector () {
     if( data_ ) delete[] data_;
@@ -191,12 +187,32 @@ constexpr bool operator!= ( ct_vector<T> const& a, ct_vector<T> const& b )
   return false;
 }
 
-constexpr auto eval_to_array ( auto f ) {
+constexpr auto eval_as_tuple( auto f ) {
+  using elmt_t = typename decltype(f())::element_t;
+  constexpr size_t size = f().size();
+  auto res = f();
+  return [&] <std::size_t... Vs> ( std::integer_sequence<std::size_t, Vs...> )
+  {
+    return std::make_tuple( res[Vals] ... );
+  } ( std::make_integer_sequence<std::size_t, size>{} );
+}
+
+constexpr auto eval_as_array ( auto f ) {
   constexpr size_t size = f().size();
   auto const v = f();
   std::array<int, size> arr;
   for( size_t i = 0; i < v.size(); i++) arr[i] = v[i];
   return arr;
+}
+
+template<typename... Ts>
+constexpr ct_vector<std::variant<Ts...>>
+as_vector ( std::tuple<Ts...> const& tup ) {
+  ct_vector<std::variant<Ts...>> res;
+  std::apply( [&] ( auto... vals ) {
+    ( res.push_back(std::variant<Ts...> { vals } ), ... );
+  }, tup );
+  return res;
 }
 
 }
