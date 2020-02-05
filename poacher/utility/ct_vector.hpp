@@ -28,44 +28,71 @@ public:
   //  CONSTRUCTORS & DESTRUCTOR
 
   constexpr ct_vector()
-  : data_(nullptr), size_(0), capacity_(0)
+  : data_( nullptr )
+  , size_( 0 )
+  , capacity_( 0 )
   {}
 
   constexpr ct_vector ( std::size_t n )
-  : data_( new element_t[n] ), size_( n ), capacity_( n ) {
+  : data_( new element_t[n] )
+  , size_( n )
+  , capacity_( n )
+  {
     for( auto & e : *this ) e = element_t();
   }
 
   constexpr ct_vector ( std::size_t n, element_t const& val )
-  : data_( new element_t[n] ), size_( n ), capacity_( n ) {
+  : data_( new element_t[n] )
+  , size_( n )
+  , capacity_( n )
+  {
     for( auto & e : *this ) e = val;
   }
 
   constexpr ct_vector ( ct_vector const& other )
-  : data_( new element_t[ other.size() ] ), size_( other.size_ ) {
+  : data_( new element_t[ other.size() ] )
+  , size_( other.size_ )
+  , capacity_( other.size_ )
+  {
     for( std::size_t i = 0; i < size_; i++ ) (*this)[i] = other[i];
   }
 
   constexpr ct_vector ( ct_vector && other )
-  : data_( other.data_ ), size_( other.size_ ) {
+  : data_( other.data_ )
+  , size_( other.size_ )
+  , capacity_ ( other.capacity_ )
+  {
     other.data_ = nullptr;
+    other.size_ = 0;
+    other.capacity_ = 0;
   }
 
-  constexpr ct_vector ( std::initializer_list<element_t> elmts )
-  : ct_vector( elmts.begin(), elmts.end() ) {}
+  constexpr ct_vector ( std::initializer_list<element_t> list )
+  : data_( new element_t[ list.size() ] )
+  , size_( 0 )
+  , capacity_( list.size() )
+  {
+    for( auto const& e : list ) this->push_back( e );
+  }
 
   template<auto N>
   constexpr ct_vector ( std::array<element_t, N> elmts )
-  : ct_vector( elmts.begin(), elmts.end() ) {}
+  : ct_vector( elmts.begin(), elmts.end() )
+  {}
 
   template<typename... Ts>
   constexpr ct_vector ( std::tuple<Ts...> const& tup )
-  : ct_vector()
+  : data_( new element_t[ sizeof...( Ts ) ] )
+  , size_ ( 0 )
+  , capacity_ ( sizeof...( Ts ) )
   {
-    std::apply( [this]( auto... Vs ) { ( this->push_back(Vs), ... ); }, tup );
+    std::apply( [this]( auto... Vs ) {
+      ( this->push_back(Vs), ... );
+    }, tup );
   }
 
-  constexpr ~ct_vector () {
+  constexpr ~ct_vector ()
+  {
     if( data_ ) delete[] data_;
     this->size_ = 0;
     this->capacity_ = 0;
@@ -97,7 +124,8 @@ public:
   //---------------------------------------------------------------------------
   //  MODIFIERS
 
-  constexpr ct_vector& push_back ( T const& elmt ) {
+  constexpr ct_vector& push_back ( T const& elmt )
+  {
     if( this->size_ + 1 > this->capacity_ )
       this->reserve( capacity_ == 0 ? 512 : capacity_ * 2 );
     this->size_++;
@@ -105,7 +133,8 @@ public:
     return *this;
   }
 
-  constexpr ct_vector& push_back ( T && elmt ) {
+  constexpr ct_vector& push_back ( T && elmt )
+  {
     if( this->size_ + 1 > this->capacity_ )
       this->reserve( capacity_ == 0 ? 512 : capacity_ * 2 );
     this->size_++;
@@ -113,7 +142,8 @@ public:
     return *this;
   }
 
-  constexpr ct_vector& pop_back () {
+  constexpr ct_vector& pop_back ()
+  {
     (*this)[this->size_ - 1].~T();
     this->size_--;
     return *this;
@@ -135,7 +165,8 @@ public:
     return *this;
   }
 
-  constexpr ct_vector& reserve ( size_t n ) {
+  constexpr ct_vector& reserve ( size_t n )
+  {
     if( n <= this->capacity_ ) return *this;
     T* new_data = new T[n];
     for( size_t i = 0; i < this->size_; i++ )
@@ -187,7 +218,8 @@ constexpr bool operator!= ( ct_vector<T> const& a, ct_vector<T> const& b )
   return false;
 }
 
-constexpr auto eval_as_tuple( auto f ) {
+constexpr auto eval_as_tuple ( auto f )
+{
   using elmt_t = typename decltype(f())::element_t;
   constexpr size_t size = f().size();
   auto res = f();
@@ -197,7 +229,8 @@ constexpr auto eval_as_tuple( auto f ) {
   } ( std::make_integer_sequence<std::size_t, size>{} );
 }
 
-constexpr auto eval_as_array ( auto f ) {
+constexpr auto eval_as_array ( auto f )
+{
   using elmt_t = typename decltype(f())::element_t;
   constexpr size_t size = f().size();
   auto const v = f();
