@@ -193,7 +193,7 @@ constexpr auto eval_as_tuple( auto f ) {
   auto res = f();
   return [&] <std::size_t... Vs> ( std::integer_sequence<std::size_t, Vs...> )
   {
-    return std::make_tuple( res[Vals] ... );
+    return std::make_tuple( res[Vs] ... );
   } ( std::make_integer_sequence<std::size_t, size>{} );
 }
 
@@ -203,16 +203,6 @@ constexpr auto eval_as_array ( auto f ) {
   std::array<int, size> arr;
   for( size_t i = 0; i < v.size(); i++) arr[i] = v[i];
   return arr;
-}
-
-template<typename... Ts>
-constexpr ct_vector<std::variant<Ts...>>
-as_vector ( std::tuple<Ts...> const& tup ) {
-  ct_vector<std::variant<Ts...>> res;
-  std::apply( [&] ( auto... vals ) {
-    ( res.push_back(std::variant<Ts...> { vals } ), ... );
-  }, tup );
-  return res;
 }
 
 }
