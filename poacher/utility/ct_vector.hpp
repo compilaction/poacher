@@ -198,9 +198,10 @@ constexpr auto eval_as_tuple( auto f ) {
 }
 
 constexpr auto eval_as_array ( auto f ) {
+  using elmt_t = typename decltype(f())::element_t;
   constexpr size_t size = f().size();
   auto const v = f();
-  std::array<int, size> arr;
+  std::array<elmt_t, size> arr;
   for( size_t i = 0; i < v.size(); i++) arr[i] = v[i];
   return arr;
 }
