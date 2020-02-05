@@ -3,6 +3,7 @@
 #include <array>
 #include <optional>
 #include <tuple>
+#include <variant>
 
 namespace poacher {
 
@@ -225,6 +226,22 @@ constexpr auto eval_as_tuple ( auto f )
   return [&] <std::size_t... Vs> ( std::integer_sequence<std::size_t, Vs...> )
   {
     return std::make_tuple( res[Vs] ... );
+  } ( std::make_integer_sequence<std::size_t, size>{} );
+}
+
+constexpr auto eval_as_tuple_ ( auto f )
+{
+  constexpr size_t size = f().size();
+  auto res = f();
+  return [&] <std::size_t... Vs> ( std::integer_sequence<std::size_t, Vs...> )
+  {
+    return std::make_tuple( [&] ( auto I ) {
+      constexpr auto val = f()[I];
+
+      // TODO: Static unrolling on types...
+
+      return val;
+    } ( std::integral_constant<std::size_t, Vs>{} ) ... );
   } ( std::make_integer_sequence<std::size_t, size>{} );
 }
 
