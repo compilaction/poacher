@@ -220,7 +220,6 @@ constexpr bool operator!= ( ct_vector<T> const& a, ct_vector<T> const& b )
 
 constexpr auto eval_as_tuple ( auto f )
 {
-  using elmt_t = typename decltype(f())::element_t;
   constexpr size_t size = f().size();
   auto res = f();
   return [&] <std::size_t... Vs> ( std::integer_sequence<std::size_t, Vs...> )
