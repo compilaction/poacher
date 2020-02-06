@@ -2,6 +2,7 @@
 
 #include <array>
 #include <tuple>
+#include <type_traits>
 #include <variant>
 
 namespace poacher {
@@ -27,12 +28,14 @@ public:
   //---------------------------------------------------------------------------
   //  CONSTRUCTORS & DESTRUCTOR
 
+  // Default constructor
   constexpr ct_vector()
   : data_( nullptr )
   , size_( 0 )
   , capacity_( 0 )
   {}
 
+  // Constructs a vector with n initialized values
   constexpr ct_vector ( std::size_t n )
   : data_( new element_t[n] )
   , size_( n )
@@ -133,6 +136,7 @@ public:
     return *this;
   }
 
+
   constexpr ct_vector& push_back ( T && elmt )
   {
     if( this->size_ + 1 > this->capacity_ )
@@ -142,12 +146,14 @@ public:
     return *this;
   }
 
+
   constexpr ct_vector& pop_back ()
   {
     (*this)[this->size_ - 1].~T();
     this->size_--;
     return *this;
   }
+
 
   constexpr ct_vector& resize ( size_t size, T const& value = T() )
   {
@@ -165,6 +171,7 @@ public:
     return *this;
   }
 
+
   constexpr ct_vector& reserve ( size_t n )
   {
     if( n <= this->capacity_ ) return *this;
@@ -175,6 +182,7 @@ public:
     this->data_ = new_data;
     return *this;
   }
+
 
   constexpr ct_vector& swap ( ct_vector & other )
   {
@@ -193,8 +201,10 @@ public:
     return *this;
   }
 
+
   constexpr bool empty () const { return this->size_ == 0; }
 };
+
 
 template<typename T>
 constexpr bool operator== ( ct_vector<T> const& a, ct_vector<T> const& b )
@@ -207,6 +217,7 @@ constexpr bool operator== ( ct_vector<T> const& a, ct_vector<T> const& b )
   return true;
 }
 
+
 template<typename T>
 constexpr bool operator!= ( ct_vector<T> const& a, ct_vector<T> const& b )
 {
@@ -218,6 +229,7 @@ constexpr bool operator!= ( ct_vector<T> const& a, ct_vector<T> const& b )
   return false;
 }
 
+
 constexpr auto eval_as_tuple ( auto f )
 {
   constexpr size_t size = f().size();
@@ -227,6 +239,7 @@ constexpr auto eval_as_tuple ( auto f )
     return std::make_tuple( res[Vs] ... );
   } ( std::make_integer_sequence<std::size_t, size>{} );
 }
+
 
 constexpr auto eval_as_array ( auto f )
 {
@@ -238,16 +251,30 @@ constexpr auto eval_as_array ( auto f )
   return arr;
 }
 
+
 namespace detail_eval_as_unvarianted_tuple {
+
+template<typename ... Ts>
+constexpr auto args ( Ts && ... vs ) {
+  return std::forward_as_tuple( vs ... );
+}
+
+template<typename F, typename... Ts>
+constexpr auto operator>>( std::tuple<Ts...> args, F f )
+-> std::invoke_result_t<F, Ts...> {
+  return std::apply( f, args );
+}
+
 template<typename T, bool V> struct type_reduce { using type = T; };
 
 template<typename T1, bool V1, typename T2, bool V2>
 constexpr auto operator | ( type_reduce<T1, V1>, type_reduce<T2, V2> )
-  -> std::conditional_t<V1, type_reduce<T1, V1>, type_reduce<T2, V2>>
-{
+  -> std::conditional_t<V1, type_reduce<T1, V1>, type_reduce<T2, V2>> {
   return std::conditional_t< V1, type_reduce<T1, V1>, type_reduce<T2, V2> >{};
 }
+
 }
+
 
 constexpr auto eval_as_unvarianted_tuple ( auto f )
 {
@@ -255,19 +282,60 @@ constexpr auto eval_as_unvarianted_tuple ( auto f )
   using namespace detail_eval_as_unvarianted_tuple;
 
   constexpr size_t size = f().size();
-  return [&] <size_t... Vs> ( integer_sequence<size_t, Vs...> )
+
+  // Getting a pack of size_t from size
+  return args( make_integer_sequence<size_t, size>{} )
+  >> [&] <size_t... Vs> ( integer_sequence<size_t, Vs...> ) {
+
+    // Returns the value contained in the constexpr variant of index I
+    auto unvariant = [&] ( auto I )
+    {
+      // Storing val as a *constexpr* variable
+      constexpr auto val = f()[I];
+
+      // Extracting val's underlying type
+      auto constexpr type_holder = args ( val )
+      >> [&] <typename... Ts> ( variant<Ts...> const& ) {
+        // Reducing type
+        return ( type_reduce<Ts, holds_alternative<Ts>( val )>{} | ... );
+      };
+      using typ = typename decltype(type_holder)::type;
+
+
+      return get<typ>(val);
+    };
+
+    // For each index: unvariant
+    return tuple( unvariant( integral_constant<size_t, Vs>{} ) ... );
+  };
+}
+
+template<typename... TupTs>
+constexpr auto unvariant_tuple ( std::tuple<TupTs...> f )
+{
+  using namespace std;
+  using namespace detail_eval_as_unvarianted_tuple;
+
+  constexpr size_t size = sizeof...(TupTs);
+
+  return args( make_integer_sequence<size_t, size>{} )
+  >> [&] <size_t... Vs> ( integer_sequence<size_t, Vs...> )
   {
-    return make_tuple( [&] ( auto I )
+    return make_tuple( args( integral_constant<size_t, Vs>{} ) ... )
+    >> [&] ( auto I )
     {
       constexpr auto val = f()[I];
-      auto constexpr type_holder = [&] <typename... Ts> ( variant<Ts...> )
+
+      auto constexpr type_holder = args( val )
+      >> [&] <typename... VarTs> ( variant<VarTs...> )
       {
-        return ( type_reduce<Ts, holds_alternative<Ts>(val)>{} | ... );
-      } ( val );
+        return ( type_reduce<VarTs, holds_alternative<VarTs>(val)>{} | ... );
+      };
       using typ = typename decltype(type_holder)::type;
+
       return get<typ>(val);
-    } ( integral_constant<size_t, Vs>{} ) ... );
-  } ( make_integer_sequence<size_t, size>{} );
+    };
+  };
 }
 
 
