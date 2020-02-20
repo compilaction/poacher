@@ -102,6 +102,23 @@ public:
   }
 
   //---------------------------------------------------------------------------
+  //  ASSIGNMENT
+
+  ct_vector& operator= ( ct_vector const& other )
+  {
+    this->~ct_vector();
+    this->ct_vector( other );
+    return *this;
+  }
+
+  ct_vector& operator= ( ct_vector && other )
+  {
+    this->~ct_vector();
+    this->ct_vector( std::move(other) );
+    return *this;
+  }
+
+  //---------------------------------------------------------------------------
   //  ACCESSORS
 
   constexpr T&       operator[] ( size_t n )       { return data_[n]; }
@@ -339,4 +356,4 @@ constexpr auto unvariant_tuple ( std::tuple<TupTs...> f )
 }
 
 
-}
+} //  namespace poacher
